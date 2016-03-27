@@ -113,12 +113,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_networkqt.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_networkqt.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\qrc_networkqt.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
@@ -135,9 +129,6 @@
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="testClass.cpp">
-      <Filter>Source Files\QT</Filter>
-    </ClCompile>
-    <ClCompile Include="networkqt.cpp">
       <Filter>Source Files\QT</Filter>
     </ClCompile>
     <ClCompile Include="GraphSelectView.cpp">
@@ -247,6 +238,33 @@
     </ClCompile>
     <ClCompile Include="GraphManager.cpp">
       <Filter>Source Files\Core\Auxillary</Filter>
+    </ClCompile>
+    <ClCompile Include="networkqt.cpp">
+      <Filter>Source Files\QT</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_networkqt.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_networkqt.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MultiInputDialog.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MultiInputDialog.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiInputDialog.cpp">
+      <Filter>Source Files\QT</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CompleteGraphInputDialog.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CompleteGraphInputDialog.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CompleteGraphInputDialog.cpp">
+      <Filter>Source Files\QT</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -384,13 +402,19 @@
     <CustomBuild Include="GraphSelectView.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="networkqt.h">
-      <Filter>Header Files\QT</Filter>
-    </CustomBuild>
     <CustomBuild Include="GraphSelectView.h">
       <Filter>Header Files\QT</Filter>
     </CustomBuild>
     <CustomBuild Include="testClass.h">
+      <Filter>Header Files\QT</Filter>
+    </CustomBuild>
+    <CustomBuild Include="networkqt.h">
+      <Filter>Header Files\QT</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MultiInputDialog.h">
+      <Filter>Header Files\QT</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CompleteGraphInputDialog.h">
       <Filter>Header Files\QT</Filter>
     </CustomBuild>
   </ItemGroup>

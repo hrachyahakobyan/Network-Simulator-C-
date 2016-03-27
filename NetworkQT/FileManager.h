@@ -37,6 +37,8 @@ public:
 	bool clear_dir(const Path& p);
 	bool del_file(const Path& p);
 
+	bool copy_dir(const boost::filesystem::path& src, const boost::filesystem::path& dest);
+
 	boost::filesystem::path simulation_path();
 	boost::filesystem::path graph_path();
 

@@ -23,7 +23,8 @@ public:
 		}
 	}
 
-	boost::filesystem::path graphImageWithOptions(const GraphOptions& options);
+	void graphImageWithOptions(const GraphOptions& options, boost::filesystem::path& image_path, boost::filesystem::path& folder_path);
+	void saveGraphImage(const boost::filesystem::path& src_path, const boost::filesystem::path& dst_path);
 
 private:
 	static GraphManager* _graphManager;
