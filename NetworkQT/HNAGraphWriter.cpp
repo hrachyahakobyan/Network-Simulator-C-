@@ -3,7 +3,7 @@
 
 
 
-boost::filesystem::path HNAGraphWriter::writeGraph(const HNAGraph& graph, const Path& path, const std::string& name) 
+boost::filesystem::path HNAGraphWriter::writeGraph(const HNAGraph& graph, const boost::filesystem::path& path, const std::string& name) 
 {
 	v_.set_v_prop(graph.v_params());
 	g_.set_g_prop(graph.properties());

@@ -141,3 +141,15 @@ boost::filesystem::path FileManager::simulation_path()
 	make_dir(path);
 	return path;
 }
+
+
+boost::filesystem::path FileManager::graph_path()
+{
+	std::string time_string = TimeManager::sharedTimeManager()->date_string();
+	time_string.append("-graph");
+	Path path(pgraph_);
+	path.append("/");
+	path.append(time_string);
+	make_dir(path);
+	return path;
+}

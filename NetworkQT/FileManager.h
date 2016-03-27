@@ -37,8 +37,8 @@ public:
 	bool clear_dir(const Path& p);
 	bool del_file(const Path& p);
 
-	Path simulation_path();
-	Path graph_path();
+	boost::filesystem::path simulation_path();
+	boost::filesystem::path graph_path();
 
 
 private:

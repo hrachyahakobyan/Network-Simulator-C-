@@ -126,6 +126,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="GraphBuilder.cpp" />
+    <ClCompile Include="GraphManager.cpp" />
     <ClCompile Include="GraphRenderer.cpp" />
     <ClCompile Include="GraphSelectView.cpp" />
     <ClCompile Include="HNABroadcastSchemeBuilder.cpp" />
@@ -172,6 +173,7 @@
     <ClInclude Include="FileManager.h" />
     <ClInclude Include="GeneratedFiles\ui_GraphSelectView.h" />
     <ClInclude Include="GeneratedFiles\ui_networkqt.h" />
+    <ClInclude Include="GraphManager.h" />
     <ClInclude Include="signalslib.hpp" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TimeManager.h" />

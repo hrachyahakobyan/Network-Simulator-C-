@@ -245,6 +245,9 @@
     <ClCompile Include="Timer.cpp">
       <Filter>Source Files\Core\Auxillary</Filter>
     </ClCompile>
+    <ClCompile Include="GraphManager.cpp">
+      <Filter>Source Files\Core\Auxillary</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -366,6 +369,9 @@
     </ClInclude>
     <ClInclude Include="signalslib.hpp">
       <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphManager.h">
+      <Filter>Header Files\Core\Auxillary</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

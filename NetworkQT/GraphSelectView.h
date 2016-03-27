@@ -2,11 +2,7 @@
 #define GRAPHSELECTVIEW_H
 
 #include "ui_GraphSelectView.h"
-
-struct GraphOptions
-{
-	std::string type_;
-};
+#include "GraphManager.h"
 
 class GraphSelectViewDelegate
 {
@@ -23,12 +19,16 @@ public:
 	~GraphSelectView();
 	void reject();
 	bool shouldSave_;
-private:
-	Ui::GraphSelectView ui;
 public Q_SLOTS:
 	void on_graphTypeBox_currentIndexChanged(QString s);
 	void on_okButton_clicked();
-
+private:
+	Ui::GraphSelectView ui;
+	boost::filesystem::path graph_path_;
+	GraphOptions options_;
+	std::map<int, std::string> type_mapper_;
+	QGraphicsScene* imageScene_;
+	QPixMap image_;
 };
 
 #endif // GRAPHSELECTVIEW_H

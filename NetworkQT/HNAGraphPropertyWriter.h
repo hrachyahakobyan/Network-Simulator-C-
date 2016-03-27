@@ -8,8 +8,10 @@ struct HNAGraphPropertyWriterOptions
 	bool w_type_;
 	bool w_nodes_;
 	bool w_edges_;
+	bool w_br_time_;
+	bool w_br_type_;
 	int font_size_;
-	HNAGraphPropertyWriterOptions(bool wt, bool wn, bool we) : w_type_(wt), w_nodes_(wn), w_edges_(we), font_size_(12){};
+	HNAGraphPropertyWriterOptions(bool wt, bool wn, bool we, bool w_br_time, bool w_br_type) : w_type_(wt), w_nodes_(wn), w_edges_(we), w_br_time_(w_br_time), w_br_type_(w_br_type), font_size_(12){};
 };
 
 class HNAGraphPropertyWriter
@@ -47,12 +49,18 @@ public:
 			title.append(std::to_string(n_vertices_));
 			title.append("\n");
 		}
-		title.append("Broadcasting ");
-		title.append(g_prop_.broadcast_type_);
-		title.append("\n");
-		title.append("Broadcast time ");
-		title.append(std::to_string(g_prop_.broadcast_time_));
-		title.append("\n");
+		if (options_.w_br_type_ == true)
+		{
+			title.append("Broadcasting ");
+			title.append(g_prop_.broadcast_type_);
+			title.append("\n");
+		}
+		if (options_.w_br_time_ == true)
+		{
+			title.append("Broadcast time ");
+			title.append(std::to_string(g_prop_.broadcast_time_));
+			title.append("\n");
+		}
 		title.append("\"");
 		os << title;
 
