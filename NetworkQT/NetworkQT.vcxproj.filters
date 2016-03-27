@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;cxx;c;def</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug">
+      <UniqueIdentifier>{9d3ba34f-22aa-4b07-810e-c3aa3c73680d}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release">
+      <UniqueIdentifier>{8af7b1a8-4d20-4216-905c-7a1dbf560611}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Header Files\QT">
+      <UniqueIdentifier>{1b26121d-f700-49ac-ab07-d5b7a38a6cec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\QT">
+      <UniqueIdentifier>{cdecc705-fa9c-40ab-bfc5-a517c921d500}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core">
+      <UniqueIdentifier>{481bf632-a7e0-452c-8fe4-29b486d9f500}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core">
+      <UniqueIdentifier>{39db5739-d5c3-44f8-bae9-620916af1a77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\Graph">
+      <UniqueIdentifier>{eec781b0-59c6-4702-bae6-363b98ee9213}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\Auxillary">
+      <UniqueIdentifier>{27acaecb-954d-4e30-a265-c43a8b3a3007}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\Rendering">
+      <UniqueIdentifier>{c2490844-cf9f-49a1-98c6-773d037d7cbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\Session">
+      <UniqueIdentifier>{1016c6da-d7be-4df5-a446-564627cee98b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\Writers">
+      <UniqueIdentifier>{de117f77-a542-4786-a9bf-142ef6ef110a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\Broadcast">
+      <UniqueIdentifier>{9a035f35-55cc-407f-9e50-42368bad2fb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Graph">
+      <UniqueIdentifier>{17ccede2-3314-4ea7-9312-873c9876c92f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Auxillary">
+      <UniqueIdentifier>{bbee14c4-aa52-477c-b115-4ac17ba86b67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Broadcast">
+      <UniqueIdentifier>{a7da9d32-4335-4f12-a344-9446b4548adc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Writers">
+      <UniqueIdentifier>{6e98d762-663c-47ce-8adb-c0d081129010}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Session">
+      <UniqueIdentifier>{675140a0-2982-4c53-ade4-baf686e1905d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Rendering">
+      <UniqueIdentifier>{2e028784-201a-4135-975f-b1ccb2f42cde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\Broadcast\Finish">
+      <UniqueIdentifier>{caf2703e-15b6-4af1-99cd-4329418104b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\Broadcast\Send">
+      <UniqueIdentifier>{b4919422-9fce-478b-adb9-55c2aedbaed1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\Broadcast\Receive">
+      <UniqueIdentifier>{556ac0d6-27b0-4988-bfe2-7938c2ca302a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\Graph\Builders">
+      <UniqueIdentifier>{b6dfcce2-073f-4bb7-803b-58a081924145}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Graph\Builders">
+      <UniqueIdentifier>{00104d14-3ee5-479a-a496-f66af58350a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Broadcast\Send">
+      <UniqueIdentifier>{0c13bf47-f9d5-47d3-b46f-a6fa3859817e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Broadcast\Receive">
+      <UniqueIdentifier>{567f6802-99cc-45b8-89ec-29f99250e29c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Broadcast\Finish">
+      <UniqueIdentifier>{9f596721-d4a5-4a3e-be13-d356fb2341e5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_networkqt.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_networkqt.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\qrc_networkqt.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_testClass.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_testClass.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_GraphSelectView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_GraphSelectView.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="testClass.cpp">
+      <Filter>Source Files\QT</Filter>
+    </ClCompile>
+    <ClCompile Include="networkqt.cpp">
+      <Filter>Source Files\QT</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphSelectView.cpp">
+      <Filter>Source Files\QT</Filter>
+    </ClCompile>
+    <ClCompile Include="BinomialTreeBuilder.cpp">
+      <Filter>Source Files\Core\Graph\Builders</Filter>
+    </ClCompile>
+    <ClCompile Include="BroadcastFinishScheme.cpp">
+      <Filter>Source Files\Core\Broadcast\Finish</Filter>
+    </ClCompile>
+    <ClCompile Include="BroadcastFinishSchemeM.cpp">
+      <Filter>Source Files\Core\Broadcast\Finish</Filter>
+    </ClCompile>
+    <ClCompile Include="BroadcastFinishSchemeFactory.cpp">
+      <Filter>Source Files\Core\Broadcast\Finish</Filter>
+    </ClCompile>
+    <ClCompile Include="BroadcastReceiveSchemeM.cpp">
+      <Filter>Source Files\Core\Broadcast\Receive</Filter>
+    </ClCompile>
+    <ClCompile Include="BroadcastReceiveScheme.cpp">
+      <Filter>Source Files\Core\Broadcast\Receive</Filter>
+    </ClCompile>
+    <ClCompile Include="BroadcastReceiveSchemeFactory.cpp">
+      <Filter>Source Files\Core\Broadcast\Receive</Filter>
+    </ClCompile>
+    <ClCompile Include="BroadcastScheme.cpp">
+      <Filter>Source Files\Core\Broadcast</Filter>
+    </ClCompile>
+    <ClCompile Include="BroadcastSendSchemeM3.cpp">
+      <Filter>Source Files\Core\Broadcast\Send</Filter>
+    </ClCompile>
+    <ClCompile Include="BroadcastSendScheme.cpp">
+      <Filter>Source Files\Core\Broadcast\Send</Filter>
+    </ClCompile>
+    <ClCompile Include="BroadcastSendSchemeFactory.cpp">
+      <Filter>Source Files\Core\Broadcast\Send</Filter>
+    </ClCompile>
+    <ClCompile Include="BroadcastSendSchemeM1.cpp">
+      <Filter>Source Files\Core\Broadcast\Send</Filter>
+    </ClCompile>
+    <ClCompile Include="BroadcastSendSchemeM2.cpp">
+      <Filter>Source Files\Core\Broadcast\Send</Filter>
+    </ClCompile>
+    <ClCompile Include="BroadcastSimulation.cpp">
+      <Filter>Source Files\Core\Broadcast</Filter>
+    </ClCompile>
+    <ClCompile Include="CMDGraphRenderer.cpp">
+      <Filter>Source Files\Core\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="CompleteGraphBuilder.cpp">
+      <Filter>Source Files\Core\Graph\Builders</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultNotificationCenter.cpp">
+      <Filter>Source Files\Core\Auxillary</Filter>
+    </ClCompile>
+    <ClCompile Include="FileManager.cpp">
+      <Filter>Source Files\Core\Auxillary</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphBuilder.cpp">
+      <Filter>Source Files\Core\Graph\Builders</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphRenderer.cpp">
+      <Filter>Source Files\Core\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="HNABroadcastSchemeBuilder.cpp">
+      <Filter>Source Files\Core\Broadcast</Filter>
+    </ClCompile>
+    <ClCompile Include="HNABroadcastSession.cpp">
+      <Filter>Source Files\Core\Broadcast</Filter>
+    </ClCompile>
+    <ClCompile Include="HNAGraph.cpp">
+      <Filter>Source Files\Core\Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="HNAGraphFactory.cpp">
+      <Filter>Source Files\Core\Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="HNAVertexWriter.cpp">
+      <Filter>Source Files\Core\Writers</Filter>
+    </ClCompile>
+    <ClCompile Include="HNAEdgeWriter.cpp">
+      <Filter>Source Files\Core\Writers</Filter>
+    </ClCompile>
+    <ClCompile Include="HNAGraphPropertyWriter.cpp">
+      <Filter>Source Files\Core\Writers</Filter>
+    </ClCompile>
+    <ClCompile Include="HNAGraphWriter.cpp">
+      <Filter>Source Files\Core\Writers</Filter>
+    </ClCompile>
+    <ClCompile Include="HypercubeBuilder.cpp">
+      <Filter>Source Files\Core\Graph\Builders</Filter>
+    </ClCompile>
+    <ClCompile Include="KAryTreeBuilder.cpp">
+      <Filter>Source Files\Core\Graph\Builders</Filter>
+    </ClCompile>
+    <ClCompile Include="KnodelBuilder.cpp">
+      <Filter>Source Files\Core\Graph\Builders</Filter>
+    </ClCompile>
+    <ClCompile Include="OptimalTreeBuilder.cpp">
+      <Filter>Source Files\Core\Graph\Builders</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>Source Files\Core\Auxillary</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Source Files\Core\Auxillary</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_networkqt.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_GraphSelectView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BroadcastFinishSchemeM.h">
+      <Filter>Header Files\Core\Broadcast\Finish</Filter>
+    </ClInclude>
+    <ClInclude Include="BroadcastFinishScheme.h">
+      <Filter>Header Files\Core\Broadcast\Finish</Filter>
+    </ClInclude>
+    <ClInclude Include="BroadcastFinishSchemeFactory.h">
+      <Filter>Header Files\Core\Broadcast\Finish</Filter>
+    </ClInclude>
+    <ClInclude Include="BroadcastReceiveSchemeM.h">
+      <Filter>Header Files\Core\Broadcast\Receive</Filter>
+    </ClInclude>
+    <ClInclude Include="BroadcastReceiveScheme.h">
+      <Filter>Header Files\Core\Broadcast\Receive</Filter>
+    </ClInclude>
+    <ClInclude Include="BroadcastReceiveSchemeFactory.h">
+      <Filter>Header Files\Core\Broadcast\Receive</Filter>
+    </ClInclude>
+    <ClInclude Include="BroadcastSendSchemeM2.h">
+      <Filter>Header Files\Core\Broadcast\Send</Filter>
+    </ClInclude>
+    <ClInclude Include="BroadcastSendSchemeM3.h">
+      <Filter>Header Files\Core\Broadcast\Send</Filter>
+    </ClInclude>
+    <ClInclude Include="BroadcastSendScheme.h">
+      <Filter>Header Files\Core\Broadcast\Send</Filter>
+    </ClInclude>
+    <ClInclude Include="BroadcastSendSchemeFactory.h">
+      <Filter>Header Files\Core\Broadcast\Send</Filter>
+    </ClInclude>
+    <ClInclude Include="BroadcastSendSchemeM1.h">
+      <Filter>Header Files\Core\Broadcast\Send</Filter>
+    </ClInclude>
+    <ClInclude Include="BinomialTreeBuilder.h">
+      <Filter>Header Files\Core\Graph\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="BroadcastScheme.h">
+      <Filter>Header Files\Core\Broadcast</Filter>
+    </ClInclude>
+    <ClInclude Include="BroadcastSimulation.h">
+      <Filter>Header Files\Core\Broadcast</Filter>
+    </ClInclude>
+    <ClInclude Include="CMDGraphRenderer.h">
+      <Filter>Header Files\Core\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="CompleteGraphBuilder.h">
+      <Filter>Header Files\Core\Graph\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultNotificationCenter.h">
+      <Filter>Header Files\Core\Auxillary</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphBuilder.h">
+      <Filter>Header Files\Core\Graph\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphRenderer.h">
+      <Filter>Header Files\Core\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="HNABroadcastSchemeBuilder.h">
+      <Filter>Header Files\Core\Broadcast</Filter>
+    </ClInclude>
+    <ClInclude Include="HNABroadcastSession.h">
+      <Filter>Header Files\Core\Session</Filter>
+    </ClInclude>
+    <ClInclude Include="HNAEdgeWriter.h">
+      <Filter>Header Files\Core\Writers</Filter>
+    </ClInclude>
+    <ClInclude Include="HNAGraph.h">
+      <Filter>Header Files\Core\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="HNAGraphFactory.h">
+      <Filter>Header Files\Core\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="HNAGraphPropertyWriter.h">
+      <Filter>Header Files\Core\Writers</Filter>
+    </ClInclude>
+    <ClInclude Include="HNAVertexWriter.h">
+      <Filter>Header Files\Core\Writers</Filter>
+    </ClInclude>
+    <ClInclude Include="HNAGraphWriter.h">
+      <Filter>Header Files\Core\Writers</Filter>
+    </ClInclude>
+    <ClInclude Include="HypercubeBuilder.h">
+      <Filter>Header Files\Core\Graph\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="KAryTreeBuilder.h">
+      <Filter>Header Files\Core\Graph\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="KnodelBuilder.h">
+      <Filter>Header Files\Core\Graph\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="OptimalTreeBuilder.h">
+      <Filter>Header Files\Core\Graph\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeManager.h">
+      <Filter>Header Files\Core\Auxillary</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Header Files\Core\Auxillary</Filter>
+    </ClInclude>
+    <ClInclude Include="FileManager.h">
+      <Filter>Header Files\Core\Auxillary</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="signalslib.hpp">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="networkqt.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="networkqt.qrc">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GraphSelectView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="networkqt.h">
+      <Filter>Header Files\QT</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GraphSelectView.h">
+      <Filter>Header Files\QT</Filter>
+    </CustomBuild>
+    <CustomBuild Include="testClass.h">
+      <Filter>Header Files\QT</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="NetworkQT.rc" />
+  </ItemGroup>
+</Project>
