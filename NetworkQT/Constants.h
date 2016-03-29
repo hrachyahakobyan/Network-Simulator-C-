@@ -31,6 +31,11 @@ static const std::string GRAPH_KTREE = "K-ary tree";
 static const std::string GRAPH_BINOMIAL = "Binomial tree";
 static const std::string GRAPH_COMPLETE = "Complete graph";
 
+static const int GRAPH_BINOMIAL_MAX_HEIGHT = 10;
+static const int GRAPH_HYPER_MAX_DIM = 5;
+static const int GRAPH_KNODEL_MAX_VERTICES = 50;
+static const int GRAPH_COMPLETE_MAX_VERTICES = 20;
+static const int GRAPH_KTREE_MAX_VERTICES = 150;
 
 // Enums
 

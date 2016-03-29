@@ -17,5 +17,5 @@ CompleteGraphInputDialog::~CompleteGraphInputDialog()
 
 bool CompleteGraphInputDialog::validate()
 {
-	return false;
+	return true;
 }

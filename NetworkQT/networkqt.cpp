@@ -37,13 +37,3 @@ void NetworkQT::on_actionExit_triggered()
 	qDebug() << "Action exit\n";
 	QCoreApplication::exit();
 }
-
-void NetworkQT::graphSelectViewDidSaveGraph(GraphSelectView* view, const GraphOptions& options, const boost::filesystem::path& image_path)
-{
-
-}
-
-void NetworkQT::graphSelectViewDidSelectGraph(GraphSelectView* view, const GraphOptions& options, const boost::filesystem::path& image_path)
-{
-
-}

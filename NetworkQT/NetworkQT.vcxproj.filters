@@ -105,6 +105,9 @@
     <Filter Include="Source Files\Core\Broadcast\Finish">
       <UniqueIdentifier>{9f596721-d4a5-4a3e-be13-d356fb2341e5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\QT\Validators">
+      <UniqueIdentifier>{bf96a79e-8eb8-486d-a249-594b84d7f1e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -257,14 +260,23 @@
     <ClCompile Include="MultiInputDialog.cpp">
       <Filter>Source Files\QT</Filter>
     </ClCompile>
+    <ClCompile Include="CompleteGraphInputDialog.cpp">
+      <Filter>Source Files\QT</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_GraphOptionsInputDialog.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_GraphOptionsInputDialog.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphOptionsInputDialog.cpp">
+      <Filter>Source Files\QT</Filter>
+    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_CompleteGraphInputDialog.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_CompleteGraphInputDialog.cpp">
       <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="CompleteGraphInputDialog.cpp">
-      <Filter>Source Files\QT</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -412,6 +424,9 @@
       <Filter>Header Files\QT</Filter>
     </CustomBuild>
     <CustomBuild Include="MultiInputDialog.h">
+      <Filter>Header Files\QT</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GraphOptionsInputDialog.h">
       <Filter>Header Files\QT</Filter>
     </CustomBuild>
     <CustomBuild Include="CompleteGraphInputDialog.h">

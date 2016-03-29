@@ -3,16 +3,7 @@
 
 #include "ui_GraphSelectView.h"
 #include "GraphManager.h"
-#include "CompleteGraphInputDialog.h"
-
-class GraphSelectView;
-
-class GraphSelectViewDelegate
-{
-public:
-	virtual void graphSelectViewDidSaveGraph(GraphSelectView* view, const GraphOptions& options, const boost::filesystem::path& image_path) = 0;
-	virtual void graphSelectViewDidSelectGraph(GraphSelectView* view, const GraphOptions& options, const boost::filesystem::path& image_path) = 0;
-};
+#include "GraphOptionsInputDialog.h"
 
 class GraphSelectView : public QDialog
 {
@@ -22,11 +13,14 @@ public:
 	GraphSelectView(QWidget *parent = 0);
 	~GraphSelectView();
 	void reject();
+	void accept();
 	bool shouldSave_;
-	GraphSelectViewDelegate* delegate_;
 public Q_SLOTS:
 	void on_graphTypeBox_currentIndexChanged(QString s);
 	void on_okButton_clicked();
+	void inputDialogFinished(int status, const GraphOptions& options);
+Q_SIGNALS:
+	void finishedSelect(int state, const GraphOptions& options, const boost::filesystem::path& image_path);
 private:
 	Ui::GraphSelectView ui;
 	boost::filesystem::path graph_path_;
@@ -35,9 +29,7 @@ private:
 	std::map<int, std::string> type_mapper_;
 	QGraphicsScene* imageScene_;
 	QPixmap image_;
-	MultiInputDialog* dialog_;
-
-	void disappear();
+	GraphOptionsInputDialog* dialog_;
 };
 
 #endif // GRAPHSELECTVIEW_H

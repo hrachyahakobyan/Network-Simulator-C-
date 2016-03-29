@@ -7,7 +7,7 @@ MultiInputDialog::MultiInputDialog(QWidget *parent)
 
 }
 MultiInputDialog::MultiInputDialog(QWidget* parent, QList<QString> labels, QString title)
-	: QDialog(parent), labels_(labels), delegate_(NULL)
+	: QDialog(parent), labels_(labels)
 {
 	form_ = new QFormLayout(this);
 	form_->addRow(new QLabel(title));
@@ -39,20 +39,29 @@ MultiInputDialog::~MultiInputDialog()
 	delete buttons_;
 }
 
+void MultiInputDialog::addInputs(QList<QString> labels)
+{
+	for (int i = 0; i < labels.size(); i++)
+	{
+		QLineEdit *lineEdit = new QLineEdit(this);
+		form_->addRow(labels_.at(i), lineEdit);
+		lines_ << lineEdit;
+		lines_map_[lines_.size() + i] = labels_.at(i);
+		connect(lineEdit, SIGNAL(textChanged(const QString&)), this, SLOT(lineTextChanged(const QString&)));
+	}
+}
+
 
 void MultiInputDialog::cancelButtonClicked()
 {
 	qDebug() << "Cancel button clicked \n";
+	done(QDialog::Rejected);
 }
 
 void MultiInputDialog::okButtonClicked()
 {
 	qDebug() << "Ok button clicked \n";
-	if (delegate_ != NULL)
-	{
-		delegate_->multiInputDialogDidDismissWithInputs(this, inputs_map_);
-		close();
-	}
+	done(QDialog::Accepted);
 }
 
 void MultiInputDialog::lineTextChanged(const QString& string)

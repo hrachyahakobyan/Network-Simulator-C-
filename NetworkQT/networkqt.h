@@ -4,7 +4,7 @@
 #include "ui_networkqt.h"
 #include "GraphSelectView.h"
 
-class NetworkQT : public QMainWindow, public GraphSelectViewDelegate
+class NetworkQT : public QMainWindow
 {
 	Q_OBJECT
 
@@ -20,11 +20,6 @@ public Q_SLOTS:
 	void on_actionExit_triggered();
 	void on_actionGraph_triggered();
 	void on_pushButton_clicked();
-
-// GraphSelectViewDelegate
-public:
-	void graphSelectViewDidSaveGraph(GraphSelectView* view, const GraphOptions& options, const boost::filesystem::path& image_path);
-	void graphSelectViewDidSelectGraph(GraphSelectView* view, const GraphOptions& options, const boost::filesystem::path& image_path);
 };
 
 #endif // NETWORKQT_H
