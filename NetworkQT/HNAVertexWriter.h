@@ -8,6 +8,10 @@ struct HNAVertexWriteOptions
 	bool write_labels_;
 	bool write_colors_;
 	HNAVertexWriteOptions(bool wl, bool wc) : write_labels_(wl), write_colors_(wc){};
+	static HNAVertexWriteOptions defaultOptions()
+	{
+		return HNAVertexWriteOptions(false, true);
+	}
 };
 
 class HNAVertexWriter
@@ -21,6 +25,11 @@ public:
 		font_color_map_.insert(std::make_pair("red", "white"));
 		font_color_map_.insert(std::make_pair("green", "white"));
 	};
+
+	static HNAVertexWriter defaultWriter()
+	{
+		return HNAVertexWriter(HNAVertexWriteOptions::defaultOptions());
+	}
 	~HNAVertexWriter(){};
 
 	void set_color_map(const std::map<int, std::string>& color_map) 

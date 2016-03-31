@@ -23,11 +23,10 @@ HNAGraphFactory::~HNAGraphFactory()
 	builders_.clear();
 }
 
-HNAGraph HNAGraphFactory::getGraph(const GraphOptions& options)
+std::unique_ptr<HNAGraph> HNAGraphFactory::getGraph(const GraphOptions& options)
 {
 	assert(builders_.find(options.type_.c_str()) != builders_.end() && "ERROR: HNAGraphFactory: nonexistent graph type");
 	std::unique_ptr<GraphBuilder>* blder = &(*(builders_.find(options.type_.c_str()))).second;
-	HNAGraph g = (*(*blder)).getGraph(options);
-	g.printGraph();
-	return g;
+	std::unique_ptr<HNAGraph>gptr = (*(*blder)).getGraph(options);
+	return gptr;
 }

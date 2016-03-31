@@ -12,7 +12,10 @@ HNABroadcastSession::~HNABroadcastSession()
 
 bool HNABroadcastSession::tick(int count)
 {
-	return (*sim_ptr_).tick(count);
+	bool tick = (*sim_ptr_).tick(count);
+	draw();
+	cur_index_ = img_paths_.size() - 1;
+	return tick;
 }
 
 bool HNABroadcastSession::finish(bool write)
@@ -25,44 +28,54 @@ bool HNABroadcastSession::finish(bool write)
 		while ((*sim_ptr_).finished() == false && ticks > 0)
 		{
 			(*sim_ptr_).tick();
-			image_path();
 			ticks--;
 		}
+		draw();
+		cur_index_ = img_paths_.size() - 1;
 		return (*sim_ptr_).finished();
 	}
 }
 
-void HNABroadcastSession::add_edge(int source, int target)
+void HNABroadcastSession::edit(const GraphEditAction& edit)
 {
-	(*sim_ptr_).add_edge(source, target);
+	(*sim_ptr_).edit(edit);
+	draw();
 }
 
-void HNABroadcastSession::add_vertex()
+boost::filesystem::path HNABroadcastSession::last()
 {
-	(*sim_ptr_).add_vertex();
+	return img_paths_[img_paths_.size() - 1];
 }
 
-void HNABroadcastSession::delete_vertex(int vertex)
+boost::filesystem::path HNABroadcastSession::previous()
 {
-	(*sim_ptr_).delete_vertex(vertex);
-}
-
-void HNABroadcastSession::delete_edge(int source, int target)
-{
-	(*sim_ptr_).delete_edge(source, target);
+	cur_index_ = cur_index_ > 0 ? cur_index_ - 1 : cur_index_;
+	return img_paths_[cur_index_];
 }
 
 
-void HNABroadcastSession::set_state(int vertex, int state)
+boost::filesystem::path HNABroadcastSession::next()
 {
-	(*sim_ptr_).set_state(vertex, state);
+	cur_index_ = cur_index_ >= img_paths_.size() - 1 ? cur_index_ : cur_index_ + 1;
+	return img_paths_[cur_index_];
 }
 
-boost::filesystem::path HNABroadcastSession::image_path()
+
+void HNABroadcastSession::draw()
 {
-	std::string name = std::to_string(img_count_);
+	std::string name = std::to_string(img_paths_.size());
 	boost::filesystem::path file_path = (*write_ptr_).writeGraph((*sim_ptr_).state(), sim_path_, name);
-	boost::filesystem::path image_path = (*rend_ptr_).render_graph(file_path, sim_path_, to_string(img_count_));
-	img_count_++;
-	return image_path;
+	boost::filesystem::path image_path = (*rend_ptr_).render_graph(file_path, sim_path_, name);
+	img_paths_.push_back(image_path);
+}
+
+void HNABroadcastSession::save(const boost::filesystem::path& dest)
+{
+	std::string date = TimeManager::sharedTimeManager()->date_string();
+	Path p(dest);
+	p.append("/");
+	p.append(date);
+	p.append("-simulation");
+	FileManager::sharedManager()->copy_dir(sim_path_, p);
+
 }

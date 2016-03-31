@@ -1,37 +1,12 @@
 #include "stdafx.h"
 #include "GraphOptionsInputDialog.h"
 
-GraphOptionsInputDialog::GraphOptionsInputDialog(QWidget *parent, const std::string& type)
-	: MultiInputDialog(parent), type_(type)
+GraphOptionsInputDialog::GraphOptionsInputDialog(QWidget *parent, QList<QString> labels, const std::string& type)
+	: MultiInputDialog(parent, labels), type_(type)
 {
-	if (type_.compare(GRAPH_BINOMIAL) == 0)
-	{
-		addInputs(QList<QString>({ "Height" }));
-	}
-	else if (type_.compare(GRAPH_COMPLETE) == 0)
-	{
-		addInputs(QList<QString>({ "Vertices" }));
-	}
-	else if (type_.compare(GRAPH_HYPER) == 0)
-	{
-		addInputs(QList<QString>({ "Dimension" }));
-	}
-	else if (type_.compare(GRAPH_KNODEL) == 0)
-	{
-		addInputs(QList<QString>({ "Vertices" }));
-	}
-	else if (type_.compare(GRAPH_KTREE) == 0)
-	{
-		addInputs(QList<QString>({ "Height" }));
-		addInputs(QList<QString>({ "K" }));
-	}
-	else
-	{
-		assert(false && "ERROR: GraphOptionsInputDialog: unknown graph type \n");
-	}
 	for each (QLineEdit* line in lines_)
 	{
-		line->setValidator(new QIntValidator(1, 30, this));
+		line->setValidator(new QIntValidator(1, 200, this));
 	}
 }
 
@@ -154,15 +129,15 @@ void GraphOptionsInputDialog::cancelButtonClicked()
 
 void GraphOptionsInputDialog::reject()
 {
-	Q_EMIT finishedInput(QDialog::Rejected, options_);
 	QDialog::reject();
+	Q_EMIT finishedInput(QDialog::Rejected, options_);
 }
 
 
 void GraphOptionsInputDialog::accept()
 {
-	Q_EMIT finishedInput(QDialog::Accepted, options_);
 	QDialog::reject();
+	Q_EMIT finishedInput(QDialog::Accepted, options_);
 }
 
 

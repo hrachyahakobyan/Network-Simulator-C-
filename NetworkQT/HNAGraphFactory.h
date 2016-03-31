@@ -26,7 +26,7 @@ public:
 		}
 	}
 
-	HNAGraph getGraph(const GraphOptions& options);
+	std::unique_ptr<HNAGraph> getGraph(const GraphOptions& options);
 
 private:
 	static HNAGraphFactory* graphFactory;

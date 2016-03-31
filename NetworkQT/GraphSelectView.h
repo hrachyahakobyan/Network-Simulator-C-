@@ -23,13 +23,17 @@ Q_SIGNALS:
 	void finishedSelect(int state, const GraphOptions& options, const boost::filesystem::path& image_path);
 private:
 	Ui::GraphSelectView ui;
+
 	boost::filesystem::path graph_path_;
 	boost::filesystem::path folder_path_;
-	GraphOptions options_;
 	std::map<int, std::string> type_mapper_;
+	GraphOptions options_;
+
 	QGraphicsScene* imageScene_;
 	QPixmap image_;
 	GraphOptionsInputDialog* dialog_;
+
+	void buildInputDialog(const std::string& type);
 };
 
 #endif // GRAPHSELECTVIEW_H

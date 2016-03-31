@@ -19,12 +19,12 @@ public:
 	{}
 	~HypercubeBuilder()
 	{}
-	HNAGraph getGraph(const GraphOptions& options)
+	std::unique_ptr<HNAGraph> getGraph(const GraphOptions& options)
 	{
 		int dims = options.dim_;
 		assert(dims > 0 && "Error: HypercubeBuilder: nonpositive dimensions");
-		HNAGraph graph(int(std::pow(2, dims)));
-		Graph g = graph.g_container;
+		std::unique_ptr<HNAGraph> gptr(new HNAGraph(int(std::pow(2, dims))));
+		Graph g = (*gptr).g_container;
 		IndexMap graph_indeces = get(vertex_index, g);
 		std::pair<vertex_iter, vertex_iter> vp;
 		for (vp = vertices(g); vp.first != vp.second; ++vp.first)
@@ -45,7 +45,7 @@ public:
 				{
 					if (graph_indeces[*vp2.first] == *it)
 					{
-						graph.AddEdge(v, *vp2.first);
+						(*gptr).AddEdge(v, *vp2.first);
 						break;
 					}
 				}
@@ -55,8 +55,8 @@ public:
 		std::string type(GRAPH_HYPER);
 		type.append(", dim = ");
 		type.append(std::to_string(dims));
-		graph.properties().type_ = type;
-		return graph;
+		(*gptr).properties().type_ = type;
+		return gptr;
 	}
 private:
 	std::string dec_to_string(int number)

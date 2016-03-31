@@ -20,12 +20,13 @@ GraphManager::~GraphManager()
 
 void GraphManager::graphImageWithOptions(const GraphOptions& options, boost::filesystem::path& image_path, boost::filesystem::path& f_path)
 {
-	HNAGraph graph = HNAGraphFactory::sharedFactory()->getGraph(options);
+	std::unique_ptr<HNAGraph> graph = HNAGraphFactory::sharedFactory()->getGraph(options);
 	boost::filesystem::path folder_path = FileManager::sharedManager()->graph_path();
-	boost::filesystem::path g_path =  (*writer_ptr_).writeGraph(graph, folder_path, "graph");
+	boost::filesystem::path g_path =  (*writer_ptr_).writeGraph(*graph, folder_path, "graph");
 	boost::filesystem::path im_path = (*rend_ptr_).render_graph(g_path, folder_path, "graph");
 	image_path = im_path;
 	f_path = folder_path;
+	graph.reset();
 }
 
 void GraphManager::saveGraphImage(const boost::filesystem::path& src_path, const boost::filesystem::path& dst_path)

@@ -14,12 +14,12 @@ class CompleteGraphBuilder : public GraphBuilder
 	typedef  property_map<Graph, vertex_index_t>::type IndexMap;
 	typedef  graph_traits<Graph>::vertex_iterator vertex_iter;
 public:
-	HNAGraph getGraph(const GraphOptions& options)
+	std::unique_ptr<HNAGraph> getGraph(const GraphOptions& options)
 	{
 		int n = options.n_vertices_;
 		assert(n > 0 && "ERROR: CompleteGraphBuilder: nonpositive number of vertices");
-		HNAGraph graph(n);
-		Graph g = graph.g_container;
+		std::unique_ptr<HNAGraph> gptr(new HNAGraph(n));
+		Graph g = (*gptr).g_container;
 		IndexMap graph_indeces = get(vertex_index, g);
 		std::pair<vertex_iter, vertex_iter> vp;
 		for (vp = vertices(g); vp.first != vp.second; ++vp.first)
@@ -28,13 +28,13 @@ public:
 			for (; vp2 != vp.second; ++vp2)
 			{
 				if (graph_indeces[*vp.first] != graph_indeces[*vp2])
-					graph.AddEdge(*vp.first, *vp2);
+					(*gptr).AddEdge(*vp.first, *vp2);
 			}
 		}
 		std::string type(GRAPH_COMPLETE);
 		type.append(std::to_string(n));
-		graph.properties().type_ = type;
-		return graph;
+		(*gptr).properties().type_ = type;
+		return gptr;
 	}
 
 	CompleteGraphBuilder();

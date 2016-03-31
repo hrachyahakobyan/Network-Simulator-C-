@@ -1,7 +1,11 @@
 #include "stdafx.h"
 #include "HNAGraphWriter.h"
 
-
+std::unique_ptr<HNAGraphWriter> HNAGraphWriter::defaultWrtier()
+{
+	std::unique_ptr<HNAGraphWriter> ptr(new HNAGraphWriter(HNAVertexWriter::defaultWriter(), HNAEdgeWriter::defaultWriter(), HNAGraphPropertyWriter::defaultWriter()));
+	return ptr;
+}
 
 boost::filesystem::path HNAGraphWriter::writeGraph(const HNAGraph& graph, const boost::filesystem::path& path, const std::string& name) 
 {

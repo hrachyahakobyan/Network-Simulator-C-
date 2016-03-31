@@ -18,7 +18,8 @@ GraphSelectView::~GraphSelectView()
 {
 	imageScene_->clear();
 	delete imageScene_;
-	delete dialog_;
+	if (dialog_ != 0)
+		delete dialog_;
 }
 
 void GraphSelectView::on_graphTypeBox_currentIndexChanged(QString s)
@@ -27,13 +28,9 @@ void GraphSelectView::on_graphTypeBox_currentIndexChanged(QString s)
 	qDebug() << s;
 	qDebug() << "\n";
 	int index = ui.graphTypeBox->currentIndex();
-	if (index == 0 && ui.okButton->isEnabled() == false)
-	{
-		ui.okButton->setDisabled(true);
-	}
-	else if (index != 0)
+	if (index != 0)
 	{	
-		dialog_ = new GraphOptionsInputDialog(this, type_mapper_.at(index));
+		buildInputDialog(type_mapper_.at(index));
 		connect(dialog_, SIGNAL(finishedInput(int, const GraphOptions&)), this, SLOT(inputDialogFinished(int, const GraphOptions&)));
 		dialog_->exec();
 	}
@@ -54,6 +51,7 @@ void GraphSelectView::inputDialogFinished(int status, const GraphOptions& option
 		ui.okButton->setEnabled(true);
 	}
 	delete dialog_;
+	dialog_ = 0;
 }
 
 void GraphSelectView::on_okButton_clicked()
@@ -67,8 +65,11 @@ void GraphSelectView::on_okButton_clicked()
 			QFileDialog::ShowDirsOnly
 			| QFileDialog::DontResolveSymlinks);
 		boost::filesystem::path dest_path(dir.toLocal8Bit().constData());
-		GraphManager::sharedManager()->saveGraphImage(folder_path_, dest_path);
-		accept();
+		if (dir.size() > 0)
+		{
+			GraphManager::sharedManager()->saveGraphImage(folder_path_, dest_path);
+			accept();
+		}
 	}
 	else
 	{
@@ -80,11 +81,46 @@ void GraphSelectView::on_okButton_clicked()
 void GraphSelectView::reject()
 {
 	QDialog::reject();
+	imageScene_->clear();
+	imageScene_->setSceneRect(0, 0, 0, 0);
+	ui.okButton->setEnabled(false);
+	ui.graphTypeBox->setCurrentIndex(0);
 	Q_EMIT finishedSelect(QDialog::Rejected, options_, graph_path_);
 }
 
 void GraphSelectView::accept()
 {
 	QDialog::accept();
+	imageScene_->clear();
+	imageScene_->setSceneRect(0, 0, 0, 0);
+	ui.okButton->setEnabled(false);
+	ui.graphTypeBox->setCurrentIndex(0);
 	Q_EMIT finishedSelect(QDialog::Accepted, options_, graph_path_);
+}
+
+void GraphSelectView::buildInputDialog(const std::string& type)
+{
+	QList<QString> labels;
+	if (type.compare(GRAPH_BINOMIAL) == 0)
+	{
+		labels << "Height";
+	}
+	else if (type.compare(GRAPH_COMPLETE) == 0)
+	{
+		labels << "Vertices";
+	}
+	else if (type.compare(GRAPH_HYPER) == 0)
+	{
+		labels << "Dimension";
+	}
+	else if (type.compare(GRAPH_KNODEL) == 0)
+	{
+		labels << "Vertices";
+	}
+	else if (type.compare(GRAPH_KTREE) == 0)
+	{
+		labels << "Height";
+		labels << "K";
+	}
+	dialog_ = new GraphOptionsInputDialog(this, labels, type);
 }

@@ -16,6 +16,6 @@ class GraphBuilder
 public:
 	GraphBuilder();
 	virtual ~GraphBuilder();
-	virtual HNAGraph getGraph(const GraphOptions& options) = 0;
+	virtual std::unique_ptr<HNAGraph> getGraph(const GraphOptions& options) = 0;
 };
 

@@ -11,9 +11,7 @@ public:
 	MultiInputDialog(QWidget *parent);
 	MultiInputDialog(QWidget *parent, QList<QString> labels, QString title_ = "Input form");
 	virtual ~MultiInputDialog();
-	virtual void addInputs(QList<QString> labels);
 protected:
-	QList<QString> labels_;
 	QList<QLineEdit*> lines_;
 	QDialogButtonBox* buttons_;
 	QPushButton* ok_button_;

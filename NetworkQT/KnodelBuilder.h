@@ -19,12 +19,12 @@ public:
 	{}
 	~KnodelBuilder()
 	{}
-	HNAGraph getGraph(const GraphOptions& options)
+	std::unique_ptr<HNAGraph> getGraph(const GraphOptions& options)
 	{
 		int n = options.n_vertices_;
-		assert(n % 2 == 1 && "ERROR: KnodelBuilder: n must be even");
+		assert(n % 2 != 1 && "ERROR: KnodelBuilder: n must be even");
 		int max_deg = int(floor(log2(n)));
-		HNAGraph graph(n);
+		std::unique_ptr<HNAGraph>  gptr(new HNAGraph(n));
 		for (int s = 1; s <= max_deg; s++)
 		{
 			int top = int(std::pow(2, s)) - 1;
@@ -32,13 +32,13 @@ public:
 				for (int y = 0; y <= n - 1; y++)
 				{
 					if ((x + y) % n == top)
-					   graph.AddEdge(x, y);
+					   (*gptr).AddEdge(x, y);
 				}
 				
 		}
 		std::string type(GRAPH_KNODEL);
-		graph.properties().type_ = type;
-		return graph;
+		(*gptr).properties().type_ = type;
+		return gptr;
 	}
 };
 

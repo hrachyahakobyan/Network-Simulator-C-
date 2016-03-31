@@ -105,9 +105,6 @@
     <Filter Include="Source Files\Core\Broadcast\Finish">
       <UniqueIdentifier>{9f596721-d4a5-4a3e-be13-d356fb2341e5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\QT\Validators">
-      <UniqueIdentifier>{bf96a79e-8eb8-486d-a249-594b84d7f1e0}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -119,20 +116,11 @@
     <ClCompile Include="GeneratedFiles\qrc_networkqt.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_testClass.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_testClass.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_GraphSelectView.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_GraphSelectView.cpp">
       <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="testClass.cpp">
-      <Filter>Source Files\QT</Filter>
     </ClCompile>
     <ClCompile Include="GraphSelectView.cpp">
       <Filter>Source Files\QT</Filter>
@@ -197,9 +185,6 @@
     <ClCompile Include="GraphRenderer.cpp">
       <Filter>Source Files\Core\Rendering</Filter>
     </ClCompile>
-    <ClCompile Include="HNABroadcastSchemeBuilder.cpp">
-      <Filter>Source Files\Core\Broadcast</Filter>
-    </ClCompile>
     <ClCompile Include="HNABroadcastSession.cpp">
       <Filter>Source Files\Core\Broadcast</Filter>
     </ClCompile>
@@ -260,9 +245,6 @@
     <ClCompile Include="MultiInputDialog.cpp">
       <Filter>Source Files\QT</Filter>
     </ClCompile>
-    <ClCompile Include="CompleteGraphInputDialog.cpp">
-      <Filter>Source Files\QT</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_GraphOptionsInputDialog.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
@@ -272,11 +254,32 @@
     <ClCompile Include="GraphOptionsInputDialog.cpp">
       <Filter>Source Files\QT</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_CompleteGraphInputDialog.cpp">
+    <ClCompile Include="GeneratedFiles\Debug\moc_BroadcastSelectView.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_CompleteGraphInputDialog.cpp">
+    <ClCompile Include="GeneratedFiles\Release\moc_BroadcastSelectView.cpp">
       <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="BroadcastSelectView.cpp">
+      <Filter>Source Files\QT</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_BroadcastSessionView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_BroadcastSessionView.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="BroadcastSessionView.cpp">
+      <Filter>Source Files\QT</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_BroadcastSessionEditInputDialog.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_BroadcastSessionEditInputDialog.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="BroadcastSessionEditInputDialog.cpp">
+      <Filter>Source Files\QT</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -349,9 +352,6 @@
     <ClInclude Include="GraphRenderer.h">
       <Filter>Header Files\Core\Rendering</Filter>
     </ClInclude>
-    <ClInclude Include="HNABroadcastSchemeBuilder.h">
-      <Filter>Header Files\Core\Broadcast</Filter>
-    </ClInclude>
     <ClInclude Include="HNABroadcastSession.h">
       <Filter>Header Files\Core\Session</Filter>
     </ClInclude>
@@ -403,6 +403,12 @@
     <ClInclude Include="GraphManager.h">
       <Filter>Header Files\Core\Auxillary</Filter>
     </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_BroadcastSelectView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_BroadcastSessionView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="networkqt.ui">
@@ -417,9 +423,6 @@
     <CustomBuild Include="GraphSelectView.h">
       <Filter>Header Files\QT</Filter>
     </CustomBuild>
-    <CustomBuild Include="testClass.h">
-      <Filter>Header Files\QT</Filter>
-    </CustomBuild>
     <CustomBuild Include="networkqt.h">
       <Filter>Header Files\QT</Filter>
     </CustomBuild>
@@ -429,7 +432,19 @@
     <CustomBuild Include="GraphOptionsInputDialog.h">
       <Filter>Header Files\QT</Filter>
     </CustomBuild>
-    <CustomBuild Include="CompleteGraphInputDialog.h">
+    <CustomBuild Include="BroadcastSelectView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="BroadcastSelectView.h">
+      <Filter>Header Files\QT</Filter>
+    </CustomBuild>
+    <CustomBuild Include="BroadcastSessionView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="BroadcastSessionView.h">
+      <Filter>Header Files\QT</Filter>
+    </CustomBuild>
+    <CustomBuild Include="BroadcastSessionEditInputDialog.h">
       <Filter>Header Files\QT</Filter>
     </CustomBuild>
   </ItemGroup>

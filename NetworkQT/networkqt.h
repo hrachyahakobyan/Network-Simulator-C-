@@ -3,6 +3,9 @@
 
 #include "ui_networkqt.h"
 #include "GraphSelectView.h"
+#include "BroadcastSelectView.h"
+#include "HNABroadcastSession.h"
+#include "BroadcastSessionView.h"
 
 class NetworkQT : public QMainWindow
 {
@@ -15,11 +18,17 @@ public:
 private:
 	Ui::NetworkQTClass ui;
 	GraphSelectView* graphSelectView_;
+	BroadcastSelectView* broadcastSelectView_;
+	BroadcastSessionView* broadcastSessionView_;
+	GraphOptions g_op_;
+	BroadcastSchemeOptions s_op_;
 public Q_SLOTS:
 	void on_actionSimulation_triggered();
 	void on_actionExit_triggered();
 	void on_actionGraph_triggered();
-	void on_pushButton_clicked();
+	void graphSelectViewFinished(int state, const GraphOptions& options, const boost::filesystem::path& image_path);
+	void broadcastSchemeSelectViewFinished(int state, const BroadcastSchemeOptions& options);
+	void broadcastSessionViewDidFinish(int state);
 };
 
 #endif // NETWORKQT_H

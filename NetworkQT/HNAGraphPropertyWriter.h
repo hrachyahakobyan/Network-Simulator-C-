@@ -12,6 +12,10 @@ struct HNAGraphPropertyWriterOptions
 	bool w_br_type_;
 	int font_size_;
 	HNAGraphPropertyWriterOptions(bool wt, bool wn, bool we, bool w_br_time, bool w_br_type) : w_type_(wt), w_nodes_(wn), w_edges_(we), w_br_time_(w_br_time), w_br_type_(w_br_type), font_size_(12){};
+	static HNAGraphPropertyWriterOptions defaultOptions()
+	{
+		return HNAGraphPropertyWriterOptions(true, true, true, true, true);
+	}
 };
 
 class HNAGraphPropertyWriter
@@ -20,6 +24,11 @@ public:
 	HNAGraphPropertyWriter(const HNAGraphPropertyWriterOptions& options) : options_(options){};
 	~HNAGraphPropertyWriter();
 
+	static HNAGraphPropertyWriter defaultWriter()
+	{
+		return HNAGraphPropertyWriter(HNAGraphPropertyWriterOptions::defaultOptions());
+	}
+
 	void set_g_prop(const HNAGraphBundle& g_prop)
 	{
 		g_prop_ = g_prop;
@@ -27,7 +36,7 @@ public:
 
 	void operator () (std::ostream& os) const
 	{
-		if (options_.w_edges_ == false && options_.w_edges_ == false && options_.w_type_ == false)
+		if (options_.w_edges_ == false && options_.w_nodes_ == false && options_.w_type_ == false)
 			return;
 		os << "label = \"";
 		std::string title;

@@ -16,7 +16,7 @@ public:
 	KAryTreeBuilder();
 	~KAryTreeBuilder();
 
-	HNAGraph getGraph(const GraphOptions& options)
+	std::unique_ptr<HNAGraph> getGraph(const GraphOptions& options)
 	{
 		int height = options.height_;
 		int k = options.k_;
@@ -44,7 +44,7 @@ private:
 		}
 	}
 
-	HNAGraph getGraphIterative(int height, int k)
+	std::unique_ptr<HNAGraph> getGraphIterative(int height, int k)
 	{
 		int lastnode = 0;
 
@@ -52,22 +52,22 @@ private:
 			lastnode += int(std::pow(k, i));
 		}
 		int n = lastnode + 1;
-		HNAGraph g(n);
+		std::unique_ptr<HNAGraph> gptr( new HNAGraph(n));
 		int parent = 0;
 		for (int i = 1; i <= lastnode; i++) {
 			if (i % k == 0)
 				parent = i / k - 1;
 			else
 				parent = int(floor(i / k));
-			g.AddEdge(parent, i); // connect nodes with indeces parent and i
+			(*gptr).AddEdge(parent, i); // connect nodes with indeces parent and i
 		}
 		std::string type(GRAPH_KTREE);
 		type.append(", height = ");
 		type.append(std::to_string(height));
 		type.append(", k = ");
 		type.append(std::to_string(k));
-		g.properties().type_ = type;
-		return g;
+		(*gptr).properties().type_ = type;
+		return gptr;
 	}
 };
 
