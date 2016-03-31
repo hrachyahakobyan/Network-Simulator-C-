@@ -2,7 +2,7 @@
 #include "BroadcastSessionView.h"
 
 BroadcastSessionView::BroadcastSessionView(QWidget *parent)
-	: QDialog(parent)
+	: QDialog(parent), editDialog_(0)
 {
 	ui.setupUi(this);
 	ui.tickSpinBox->setValue(1);
@@ -23,6 +23,8 @@ BroadcastSessionView::~BroadcastSessionView()
 	session_.reset();
 	imageScene_->clear();
 	delete imageScene_;
+	if (editDialog_ != 0)
+		delete editDialog_;
 }
 
 void BroadcastSessionView::on_saveButton_clicked()
@@ -49,6 +51,12 @@ void BroadcastSessionView::on_tickButton_clicked()
 void BroadcastSessionView::on_finishButton_clicked()
 {
 	qDebug() << "BroadcastView finish button clicked \n";
+	if (!(*session_).finish())
+	{
+		QMessageBox msg;
+		msg.setText("Failed to finish in 100 steps");
+		msg.exec();
+	}
 }
 
 void BroadcastSessionView::on_nextButton_clicked()
@@ -61,6 +69,14 @@ void BroadcastSessionView::on_previousButton_clicked()
 {
 	qDebug() << "BroadcastView prev button clicked \n";
 	draw((*session_).previous());
+}
+
+void BroadcastSessionView::on_editTypeBox_currentIndexChanged(QString s)
+{
+	if (ui.editTypeBox->currentIndex() != 0)
+	{
+		buildEditInputDialog();
+	}
 }
 
 
@@ -95,5 +111,40 @@ void BroadcastSessionView::draw(const boost::filesystem::path& img)
 
 void BroadcastSessionView::buildEditInputDialog()
 {
+	if (ui.editTypeBox->currentIndex() != 0)
+	{
+		GraphEditAction::EditType type = GraphEditAction::EditType(ui.editTypeBox->currentIndex() - 1);
+		QList<QString> labels;
+		switch (type)
+		{
+		case GraphEditAction::EditType::AddEdge | GraphEditAction::EditType::DeleteEdge:
+		{
+			labels << "Source" << "Target";
+		}
+		break;
+		case GraphEditAction::EditType::AddVertex | GraphEditAction::EditType::SetState:
+		{
+			labels << "State" << "Vertex";
+		}
+		break;
+		case GraphEditAction::EditType::DeleteVertex:
+		{
+			labels << "Vertex";
+		}
+		break;
+		}
+		editDialog_ = new BroadcastSessionEditInputDialog(this, labels, type);
+		connect(editDialog_, SIGNAL(editDialogDidFinish(int, const GraphEditAction&)), this, SLOT(editDialogDidFinish(int, const GraphEditAction&)));
+		editDialog_->exec();
+	}
+}
 
+
+void BroadcastSessionView::editDialogDidFinish(int state, const GraphEditAction& action)
+{
+	qDebug() << "Graph edit input finished with state " << state << "\n";
+	(*session_).edit(action);
+	draw((*session_).last());
+	delete editDialog_;
+	editDialog_ = 0;
 }

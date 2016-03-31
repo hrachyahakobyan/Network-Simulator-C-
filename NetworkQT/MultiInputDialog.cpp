@@ -35,9 +35,9 @@ MultiInputDialog::MultiInputDialog(QWidget* parent, QList<QString> labels, QStri
 
 MultiInputDialog::~MultiInputDialog()
 {
-	lines_.clear();
 	delete form_;
 	delete buttons_;
+	lines_.clear();
 }
 
 

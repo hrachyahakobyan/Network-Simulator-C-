@@ -2,7 +2,7 @@
 #include "GraphSelectView.h"
 
 GraphSelectView::GraphSelectView(QWidget *parent)
-	: QDialog(parent), shouldSave_(false)
+	: QDialog(parent), shouldSave_(false), dialog_(0)
 {
 	ui.setupUi(this);
 	ui.okButton->setDisabled(true);

@@ -5,8 +5,8 @@
 int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
-	NetworkQT w;
-	w.show();
+	NetworkQT* w = new NetworkQT();
+	w->show();
 	return a.exec();
 
 

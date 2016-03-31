@@ -8,7 +8,7 @@ BroadcastSessionEditInputDialog::BroadcastSessionEditInputDialog(QWidget *parent
 	{
 		line->setValidator(new QIntValidator(0, 1000, this));
 	}
-	action_.type_ == editType;
+	action_.type_ = editType;
 }
 
 BroadcastSessionEditInputDialog::~BroadcastSessionEditInputDialog()
@@ -97,11 +97,11 @@ void BroadcastSessionEditInputDialog::cancelButtonClicked()
 void BroadcastSessionEditInputDialog::accept()
 {
 	QDialog::accept();
-	Q_EMIT editDialogDidFinish(QDialog::Accepted, action_ )
+	Q_EMIT editDialogDidFinish(QDialog::Accepted, action_);
 }
 
 void BroadcastSessionEditInputDialog::reject()
 {
 	QDialog::reject();
-	Q_EMIT editDialogDidFinish(QDialog::Rejected, action_)
+	Q_EMIT editDialogDidFinish(QDialog::Rejected, action_);
 }

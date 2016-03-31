@@ -32,7 +32,7 @@ public:
 	~HNABroadcastSession();
 
 	bool tick(int tick = 1);
-	bool finish(bool write = false);
+	bool finish();
 	void edit(const GraphEditAction& edit);
 	void save(const boost::filesystem::path& dest);
 	boost::filesystem::path last();

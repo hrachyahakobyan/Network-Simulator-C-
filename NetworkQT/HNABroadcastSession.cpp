@@ -12,28 +12,27 @@ HNABroadcastSession::~HNABroadcastSession()
 
 bool HNABroadcastSession::tick(int count)
 {
+	if ((*sim_ptr_).finished())
+		return true;
 	bool tick = (*sim_ptr_).tick(count);
 	draw();
 	cur_index_ = img_paths_.size() - 1;
 	return tick;
 }
 
-bool HNABroadcastSession::finish(bool write)
+bool HNABroadcastSession::finish()
 {
-	if (write == false)
-		return (*sim_ptr_).finish();
-	else
+	if ((*sim_ptr_).finished())
+		return true;
+	int ticks = MAX_TICKS;
+	while ((*sim_ptr_).finished() == false && ticks > 0)	
 	{
-		int ticks = MAX_TICKS;
-		while ((*sim_ptr_).finished() == false && ticks > 0)
-		{
-			(*sim_ptr_).tick();
-			ticks--;
-		}
-		draw();
-		cur_index_ = img_paths_.size() - 1;
-		return (*sim_ptr_).finished();
+		(*sim_ptr_).tick();
+		ticks--;
 	}
+	draw();
+	cur_index_ = img_paths_.size() - 1;
+	return (*sim_ptr_).finished();
 }
 
 void HNABroadcastSession::edit(const GraphEditAction& edit)
@@ -74,8 +73,8 @@ void HNABroadcastSession::save(const boost::filesystem::path& dest)
 	std::string date = TimeManager::sharedTimeManager()->date_string();
 	Path p(dest);
 	p.append("/");
-	p.append(date);
-	p.append("-simulation");
+	date.append("-simulation");
+	p.append(date.c_str());
 	FileManager::sharedManager()->copy_dir(sim_path_, p);
 
 }

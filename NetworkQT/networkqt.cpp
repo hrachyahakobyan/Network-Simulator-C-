@@ -1,20 +1,35 @@
 #include "stdafx.h"
 #include "networkqt.h"
+#include "FileManager.h"
+#include "TimeManager.h"
+#include "GraphManager.h"
+#include "DefaultNotificationCenter.h"
+
 
 NetworkQT::NetworkQT(QWidget *parent)
-	: QMainWindow(parent)
+	: QMainWindow(parent), broadcastSessionView_(0), broadcastSelectView_(0), graphSelectView_(0)
 {
 	ui.setupUi(this);
 	graphSelectView_ = new GraphSelectView(this);
 	broadcastSelectView_ = new BroadcastSelectView(this);
 	connect(graphSelectView_, SIGNAL(finishedSelect(int, const GraphOptions&, const boost::filesystem::path&)), this, SLOT(graphSelectViewFinished(int, const GraphOptions&, const boost::filesystem::path&)));
 	connect(broadcastSelectView_, SIGNAL(broadcastDialogFinishedSelect(int, const BroadcastSchemeOptions&)), this, SLOT(broadcastSchemeSelectViewFinished(int, const BroadcastSchemeOptions&)));
+	this->setAttribute(Qt::WidgetAttribute::WA_DeleteOnClose);
 }
 
 NetworkQT::~NetworkQT()
 {
-	delete graphSelectView_;
-	delete broadcastSelectView_;
+	FileManager::release();
+	TimeManager::release();
+	GraphManager::release();
+	DefaultNotificationCenter::release();
+	if (graphSelectView_ != 0)
+		delete graphSelectView_;
+	if (broadcastSelectView_ != 0)
+		delete broadcastSelectView_;
+	if (broadcastSessionView_ != 0)
+		delete broadcastSessionView_;
+	_CrtDumpMemoryLeaks();
 }
 
 void NetworkQT::on_actionSimulation_triggered()
@@ -72,4 +87,5 @@ void NetworkQT::broadcastSessionViewDidFinish(int state)
 {
 	qDebug() << "Session view finished \n";
 	delete broadcastSessionView_;
+	broadcastSessionView_ = 0;
 }
