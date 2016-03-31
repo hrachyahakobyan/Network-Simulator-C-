@@ -123,4 +123,5 @@ void GraphSelectView::buildInputDialog(const std::string& type)
 		labels << "K";
 	}
 	dialog_ = new GraphOptionsInputDialog(this, labels, type);
+	labels.clear();
 }

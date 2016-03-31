@@ -382,9 +382,6 @@
     <ClInclude Include="KnodelBuilder.h">
       <Filter>Header Files\Core\Graph\Builders</Filter>
     </ClInclude>
-    <ClInclude Include="OptimalTreeBuilder.h">
-      <Filter>Header Files\Core\Graph\Builders</Filter>
-    </ClInclude>
     <ClInclude Include="TimeManager.h">
       <Filter>Header Files\Core\Auxillary</Filter>
     </ClInclude>
@@ -405,6 +402,9 @@
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_BroadcastSessionView.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OptimalTreeBuilder.h">
+      <Filter>Header Files\Core\Graph</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -10,7 +10,7 @@ BroadcastSessionView::BroadcastSessionView(QWidget *parent)
 }
 
 BroadcastSessionView::BroadcastSessionView(QWidget* parent, std::unique_ptr<HNABroadcastSession> session)
-	: QDialog(parent), session_(std::move(session))
+	: QDialog(parent), session_(std::move(session)), editDialog_(0)
 {
 	ui.setupUi(this);
 	ui.tickSpinBox->setValue(1);

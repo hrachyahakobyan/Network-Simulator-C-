@@ -4,6 +4,7 @@
 #include "TimeManager.h"
 #include "GraphManager.h"
 #include "DefaultNotificationCenter.h"
+#include "HNAGraphFactory.h"
 
 
 NetworkQT::NetworkQT(QWidget *parent)
@@ -23,13 +24,17 @@ NetworkQT::~NetworkQT()
 	TimeManager::release();
 	GraphManager::release();
 	DefaultNotificationCenter::release();
+	HNAGraphFactory::release();
+	BroadcastFinishSchemeFactory::release();
+	BroadcastReceiveSchemeFactory::release();
+	BroadcastSendSchemeFactory::release();
+
 	if (graphSelectView_ != 0)
 		delete graphSelectView_;
 	if (broadcastSelectView_ != 0)
 		delete broadcastSelectView_;
 	if (broadcastSessionView_ != 0)
 		delete broadcastSessionView_;
-	_CrtDumpMemoryLeaks();
 }
 
 void NetworkQT::on_actionSimulation_triggered()
@@ -79,6 +84,7 @@ void NetworkQT::broadcastSchemeSelectViewFinished(int state, const BroadcastSche
 		s_op_ = options;
 		std::unique_ptr<HNABroadcastSession> session = HNABroadcastSession::session(g_op_, s_op_);
 		broadcastSessionView_ = new BroadcastSessionView(this, std::move(session));
+		connect(broadcastSessionView_, SIGNAL(sessionViewDidFinish(int)), this, SLOT(broadcastSessionViewDidFinish(int)));
 		broadcastSessionView_->exec();
 	}
 }

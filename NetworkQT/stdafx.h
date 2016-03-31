@@ -1,7 +1,7 @@
 #pragma once
 
 #include "targetver.h"
-
+#include <vld.h> 
 #include <boost/asio.hpp>
 #include "Constants.h"
 #include <boost/config.hpp> 
