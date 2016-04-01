@@ -27,6 +27,7 @@ public Q_SLOTS:
 	void on_finishButton_clicked();
 	void on_nextButton_clicked();
 	void on_previousButton_clicked();
+	void on_redrawButton_clicked();
 	void on_tickSpinBox_valueChanged(int v);
 	void on_editTypeBox_currentIndexChanged(QString s);
 	void editDialogDidFinish(int state, const GraphEditAction& action);

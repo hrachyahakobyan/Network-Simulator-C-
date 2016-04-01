@@ -13,7 +13,7 @@ class HNABroadcastSession
 	typedef boost::filesystem::path Path;
 public:
 	HNABroadcastSession(Sim_Ptr sim_ptr, Write_Ptr write_ptr, Rend_Ptr rend_ptr) : sim_ptr_(std::move(sim_ptr)),
-		write_ptr_(std::move(write_ptr)), rend_ptr_(std::move(rend_ptr)), cur_index_(0)
+		write_ptr_(std::move(write_ptr)), rend_ptr_(std::move(rend_ptr)), cur_index_(0), eng_index_(0), engines_(RENDER_ENGINES)
 	{
 		sim_path_ = FileManager::sharedManager()->simulation_path();
 		assert(FileManager::sharedManager()->dir_exists(sim_path_) && "ERROR: HNABroadcastSession: failed to create directory");
@@ -35,6 +35,7 @@ public:
 	bool finish();
 	void edit(const GraphEditAction& edit);
 	void save(const boost::filesystem::path& dest);
+	boost::filesystem::path redraw();
 	boost::filesystem::path last();
 	boost::filesystem::path previous();
 	boost::filesystem::path next();
@@ -43,9 +44,12 @@ private:
 	Sim_Ptr sim_ptr_;
 	Write_Ptr write_ptr_;
 	Rend_Ptr rend_ptr_;
-	std::vector<Path> img_paths_;
+	std::vector<Path> img_paths_; 
+	std::vector<std::string> engines_;
 	Path sim_path_;
 	int cur_index_;
+	int eng_index_;
 	void draw();
+	int mod(int a, int n);
 };
 

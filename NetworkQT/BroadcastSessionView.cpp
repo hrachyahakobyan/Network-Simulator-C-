@@ -59,6 +59,13 @@ void BroadcastSessionView::on_finishButton_clicked()
 	}
 }
 
+void BroadcastSessionView::on_redrawButton_clicked()
+{
+	boost::filesystem::path p = (*session_).redraw();
+	if (p.empty() == false)
+		draw(p);
+}
+
 void BroadcastSessionView::on_nextButton_clicked()
 {
 	qDebug() << "BroadcastView next button clicked \n";

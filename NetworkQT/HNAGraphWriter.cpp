@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "HNAGraphWriter.h"
+#include "FileManager.h"
 
 std::unique_ptr<HNAGraphWriter> HNAGraphWriter::defaultWrtier()
 {
@@ -18,7 +19,8 @@ boost::filesystem::path HNAGraphWriter::writeGraph(const HNAGraph& graph, const 
 	p.append("/");
 	p.append(name);
 	p.append(".dot");
-	assert(!boost::filesystem::exists(p) && "ERROR: HNAGraphWriter: file already exists ");
+	if (FileManager::sharedManager()->file_exists(p))
+		FileManager::sharedManager()->del_file(p);
 	std::ofstream of(p.c_str());
 	boost::write_graphviz(of, graph.g_container, v_, e_, g_);
 	return p;

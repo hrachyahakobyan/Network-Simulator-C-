@@ -42,6 +42,28 @@ void HNABroadcastSession::edit(const GraphEditAction& edit)
 	cur_index_ = img_paths_.size() - 1;
 }
 
+boost::filesystem::path HNABroadcastSession::redraw()
+{
+	if (cur_index_ == img_paths_.size() - 1)
+	{
+		eng_index_ = mod(eng_index_ + 1, engines_.size() - 1);
+		if (img_paths_.empty() == false)
+		{
+			Path lastImg = img_paths_.back();
+			FileManager::sharedManager()->del_file(lastImg);
+			img_paths_.pop_back();
+		}
+		draw();
+		return last();
+	}
+	return boost::filesystem::path();
+}
+
+int HNABroadcastSession::mod(int a, int n)
+{
+	return (a % n) + (a < 0 ? n : 0);
+}
+
 boost::filesystem::path HNABroadcastSession::last()
 {
 	return img_paths_[img_paths_.size() - 1];
@@ -65,7 +87,7 @@ void HNABroadcastSession::draw()
 {
 	std::string name = std::to_string(img_paths_.size());
 	boost::filesystem::path file_path = (*write_ptr_).writeGraph((*sim_ptr_).state(), sim_path_, name);
-	boost::filesystem::path image_path = (*rend_ptr_).render_graph(file_path, sim_path_, name);
+	boost::filesystem::path image_path = (*rend_ptr_).render_graph(file_path, sim_path_, name, IMG_EXT_JPG, engines_[eng_index_]);
 	img_paths_.push_back(image_path);
 }
 
