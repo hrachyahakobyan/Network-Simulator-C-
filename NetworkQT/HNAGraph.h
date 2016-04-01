@@ -61,7 +61,7 @@ public:
 	friend class CompleteGraphBuilder;
 	friend class HNAGraphWriter;
 	friend class BroadcastSimulation;
-	
+	friend class RandomGraphBuilder;
 	/*Constructors and destructor*/
 	HNAGraph()
 	{}
@@ -134,7 +134,7 @@ public:
 
 	std::pair<Edge, bool> AddEdge(const Vertex& v1, const Vertex& v2)
 	{
-		if (vertexExists(v1) && vertexExists(v2))
+		if (vertexExists(v1) && vertexExists(v2) && v1 != v2)
 		{
 			std::pair<Edge, bool> pair =  add_edge(v1, v2, g_container);
 			return pair;

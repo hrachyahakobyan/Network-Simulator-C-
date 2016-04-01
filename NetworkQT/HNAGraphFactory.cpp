@@ -10,6 +10,10 @@ HNAGraphFactory::HNAGraphFactory()
 	builders_.insert(std::make_pair(GRAPH_KTREE, std::unique_ptr<GraphBuilder>(new KAryTreeBuilder)));
 	builders_.insert(std::make_pair(GRAPH_BINOMIAL, std::unique_ptr<GraphBuilder>(new BinomialTreeBuilder)));
 	builders_.insert(std::make_pair(GRAPH_HYPER, std::unique_ptr<GraphBuilder>(new HypercubeBuilder)));
+	builders_.insert(std::make_pair(GRAPH_GRID, std::unique_ptr<GraphBuilder>(new GridGraphBuilder)));
+	builders_.insert(std::make_pair(GRAPH_TORUS, std::unique_ptr<GraphBuilder>(new TorusGraphBuilder)));
+	builders_.insert(std::make_pair(GRAPH_RANDOM, std::unique_ptr<GraphBuilder>(new RandomGraphBuilder)));
+	builders_.insert(std::make_pair(GRAPH_CCC, std::unique_ptr<GraphBuilder>(new CCCGraphBuilder)));
 }
 
 

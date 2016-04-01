@@ -9,6 +9,9 @@ struct GraphOptions
 	int dim_;
 	int height_;
 	int k_;
+	int m_;
+	int n_;
+	double p_;
 };
 
 class GraphBuilder

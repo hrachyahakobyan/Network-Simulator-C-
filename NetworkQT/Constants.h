@@ -30,6 +30,9 @@ static const std::string GRAPH_KNODEL = "Knodel graph";
 static const std::string GRAPH_KTREE = "K-ary tree";
 static const std::string GRAPH_BINOMIAL = "Binomial tree";
 static const std::string GRAPH_COMPLETE = "Complete graph";
+static const std::string GRAPH_GRID = "Grid";
+static const std::string GRAPH_TORUS = "Torus";
+static const std::string GRAPH_CCC = "CCC";
 
 static const int GRAPH_BINOMIAL_MAX_HEIGHT = 10;
 static const int GRAPH_HYPER_MAX_DIM = 5;

@@ -10,8 +10,12 @@ GraphSelectView::GraphSelectView(QWidget *parent)
 	type_mapper_.insert(std::make_pair(1, GRAPH_COMPLETE));
 	type_mapper_.insert(std::make_pair(2, GRAPH_HYPER));
 	type_mapper_.insert(std::make_pair(3, GRAPH_KNODEL));
-	type_mapper_.insert(std::make_pair(1, GRAPH_COMPLETE));
-	type_mapper_.insert(std::make_pair(1, GRAPH_COMPLETE));
+	type_mapper_.insert(std::make_pair(4, GRAPH_GRID));
+	type_mapper_.insert(std::make_pair(5, GRAPH_TORUS));
+	type_mapper_.insert(std::make_pair(6, GRAPH_BINOMIAL));
+	type_mapper_.insert(std::make_pair(7, GRAPH_KTREE));
+	type_mapper_.insert(std::make_pair(8, GRAPH_RANDOM));
+	type_mapper_.insert(std::make_pair(9, GRAPH_CCC));
 }
 
 GraphSelectView::~GraphSelectView()
@@ -121,6 +125,25 @@ void GraphSelectView::buildInputDialog(const std::string& type)
 	{
 		labels << "Height";
 		labels << "K";
+	}
+	else if (type.compare(GRAPH_GRID) == 0)
+	{
+		labels << "N";
+		labels << "M";
+	}
+	else if (type.compare(GRAPH_TORUS) == 0)
+	{
+		labels << "N";
+		labels << "M";
+	}
+	else if (type.compare(GRAPH_RANDOM) == 0)
+	{
+		labels << "Probability";
+		labels << "Vertices";
+	}
+	else if (type.compare(GRAPH_CCC) == 0)
+	{
+		labels << "Dimension";
 	}
 	dialog_ = new GraphOptionsInputDialog(this, labels, type);
 	labels.clear();

@@ -48,7 +48,7 @@ bool GraphOptionsInputDialog::validate()
 		}
 		return false;
 	}
-	else if (type_.compare(GRAPH_HYPER) == 0)
+	else if (type_.compare(GRAPH_HYPER) == 0 || type_.compare(GRAPH_CCC) == 0)
 	{
 		assert(inputs_map_.find("Dimension") != inputs_map_.end() && "ERROR: GraphOptionsInputDialog: Inputs do not contain required input");
 		QString d_string = inputs_map_["Dimension"];
@@ -83,8 +83,8 @@ bool GraphOptionsInputDialog::validate()
 	}
 	else if (type_.compare(GRAPH_KTREE) == 0)
 	{
-		assert(inputs_map_.find("Height") != inputs_map_.end() && "ERROR: GraphOptionsInputDialog: Inputs do not contain required input");
-		assert(inputs_map_.find("K") != inputs_map_.end() && "ERROR: GraphOptionsInputDialog: Inputs do not contain required input");
+		if (inputs_map_.find("Height") == inputs_map_.end() || inputs_map_.find("K") == inputs_map_.end())
+			return false;
 		QString h_string = inputs_map_["Height"];
 		QString k_string = inputs_map_["K"];
 		bool b_h, b_k;
@@ -94,11 +94,56 @@ bool GraphOptionsInputDialog::validate()
 		{
 			if (height > 0 && k > 0)
 			{
-				if ((int(std::pow(k, height + 1)) - 1) / (k - 1) < GRAPH_KTREE_MAX_VERTICES)
+				if (k == 1 && height < GRAPH_KTREE_MAX_VERTICES)
+				{
+					return true;
+				}
+				else if ((int(std::pow(k, height + 1)) - 1) / (k - 1) < GRAPH_KTREE_MAX_VERTICES)
 				{
 					return true;
 				}
 				return false;
+			}
+			return false;
+		}
+	}
+	else if (type_.compare(GRAPH_GRID) == 0 || type_.compare(GRAPH_TORUS) == 0)
+	{
+		if (inputs_map_.find("N") == inputs_map_.end() || inputs_map_.find("M") == inputs_map_.end())
+			return false;
+		QString n_string = inputs_map_["N"];
+		QString m_string = inputs_map_["M"];
+		bool b_n, b_m;
+		int n = n_string.toInt(&b_n);
+		int m = m_string.toInt(&b_m);
+		if (b_n && b_m)
+		{
+			if (n > 0 && m > 0)
+			{
+				if ( n * m < GRAPH_KTREE_MAX_VERTICES)
+				{
+
+					return true;
+				}
+				return false;
+			}
+			return false;
+		}
+	}
+	else if (type_.compare(GRAPH_RANDOM) == 0)
+	{
+		if (inputs_map_.find("Probability") == inputs_map_.end() || inputs_map_.find("Vertices") == inputs_map_.end())
+			return false;
+		QString p_string = inputs_map_["Probability"];
+		QString n_string = inputs_map_["Vertices"];
+		bool b_p, b_n;
+		int n = n_string.toInt(&b_n);
+		int p = p_string.toInt(&b_p);
+		if (b_n && b_p)
+		{
+			if (n > 0 && p >= 0 && p <= 100)
+			{
+				return true;
 			}
 			return false;
 		}
@@ -119,6 +164,12 @@ void GraphOptionsInputDialog::okButtonClicked()
 		options_.n_vertices_ = inputs_map_["Vertices"].toInt();
 	if (inputs_map_.find("Dimension") != inputs_map_.end())
 		options_.dim_ = inputs_map_["Dimension"].toInt();
+	if (inputs_map_.find("M") != inputs_map_.end())
+		options_.m_ = inputs_map_["M"].toInt();
+	if (inputs_map_.find("N") != inputs_map_.end())
+		options_.n_ = inputs_map_["N"].toInt();
+	if (inputs_map_.find("Probability") != inputs_map_.end())
+		options_.p_ = double(inputs_map_["Probability"].toInt() / 100.0);
 	accept();
 }
 

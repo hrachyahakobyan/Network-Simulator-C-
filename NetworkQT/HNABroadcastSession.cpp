@@ -39,6 +39,7 @@ void HNABroadcastSession::edit(const GraphEditAction& edit)
 {
 	(*sim_ptr_).edit(edit);
 	draw();
+	cur_index_ = img_paths_.size() - 1;
 }
 
 boost::filesystem::path HNABroadcastSession::last()

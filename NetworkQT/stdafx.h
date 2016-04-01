@@ -11,7 +11,8 @@
 #include <boost/property_map/property_map.hpp> 
 #include <boost/graph/copy.hpp>
 #include <boost/static_assert.hpp>
-#include <boost/graph/isomorphism.hpp>
+#include <boost/graph/erdos_renyi_generator.hpp>
+#include <boost/random/linear_congruential.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/thread.hpp>
 

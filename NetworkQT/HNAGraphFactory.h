@@ -4,6 +4,10 @@
 #include "KnodelBuilder.h"
 #include "KAryTreeBuilder.h"
 #include "HypercubeBuilder.h"
+#include "GridGraphBuilder.h"
+#include "TorusGraphBuilder.h"
+#include "RandomGraphBuilder.h"
+#include "CCGraphBuilder.h"
 #include "Constants.h"
 
 class HNAGraphFactory

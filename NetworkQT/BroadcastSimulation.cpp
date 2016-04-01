@@ -103,7 +103,7 @@ void BroadcastSimulation::edit(const GraphEditAction& edit)
 		{
 			add_vertex();
 			if (edit.state_ > 0)
-				set_state(edit.v_, edit.state_);
+				set_state((*graph_p_).getVertexCount() - 1, edit.state_);
 		}
 		break;
 		case GraphEditAction::EditType::DeleteEdge:

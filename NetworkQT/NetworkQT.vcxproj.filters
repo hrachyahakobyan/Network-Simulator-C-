@@ -281,6 +281,18 @@
     <ClCompile Include="BroadcastSessionEditInputDialog.cpp">
       <Filter>Source Files\QT</Filter>
     </ClCompile>
+    <ClCompile Include="GridGraphBuilder.cpp">
+      <Filter>Source Files\Core\Graph\Builders</Filter>
+    </ClCompile>
+    <ClCompile Include="TorusGraphBuilder.cpp">
+      <Filter>Source Files\Core\Graph\Builders</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomGraphBuilder.cpp">
+      <Filter>Source Files\Core\Graph\Builders</Filter>
+    </ClCompile>
+    <ClCompile Include="CCGraphBuilder.cpp">
+      <Filter>Source Files\Core\Graph\Builders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -405,6 +417,18 @@
     </ClInclude>
     <ClInclude Include="OptimalTreeBuilder.h">
       <Filter>Header Files\Core\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="GridGraphBuilder.h">
+      <Filter>Header Files\Core\Graph\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="TorusGraphBuilder.h">
+      <Filter>Header Files\Core\Graph\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomGraphBuilder.h">
+      <Filter>Header Files\Core\Graph\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="CCGraphBuilder.h">
+      <Filter>Header Files\Core\Graph\Builders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -57,7 +57,22 @@
    </item>
    <item>
     <property name="text">
-     <string>Custom</string>
+     <string>Binomial</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>K Tree</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Random Graph</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Cube connected cycle</string>
     </property>
    </item>
   </widget>

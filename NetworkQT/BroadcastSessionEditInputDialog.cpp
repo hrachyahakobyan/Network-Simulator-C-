@@ -19,9 +19,7 @@ BroadcastSessionEditInputDialog::~BroadcastSessionEditInputDialog()
 
 bool BroadcastSessionEditInputDialog::validate()
 {
-	switch (action_.type_)
-	{
-	case GraphEditAction::EditType::AddEdge | GraphEditAction::EditType::DeleteEdge:
+	if (action_.type_ == GraphEditAction::EditType::AddEdge || action_.type_ == GraphEditAction::EditType::DeleteEdge)
 	{
 		if (inputs_map_.find("Source") != inputs_map_.end() && inputs_map_.find("Target") != inputs_map_.end())
 		{
@@ -37,8 +35,22 @@ bool BroadcastSessionEditInputDialog::validate()
 		}
 		return false;
 	}
-	break;
-	case GraphEditAction::EditType::AddVertex | GraphEditAction::EditType::SetState:
+	else if (action_.type_ == GraphEditAction::EditType::SetState) 
+	{
+		if (inputs_map_.find("Vertex") != inputs_map_.end() && inputs_map_.find("State") != inputs_map_.end())
+		{
+			if (inputs_map_["Vertex"].toInt() < 0 || inputs_map_["State"].toInt() < 0)
+				return false;
+			else
+			{
+				action_.v_ = inputs_map_["Vertex"].toInt();
+				action_.state_ = inputs_map_["State"].toInt();
+				return true;
+			}
+		}
+		return false;
+	}
+	else if (action_.type_ == GraphEditAction::EditType::AddVertex)
 	{
 		if (inputs_map_.find("State") != inputs_map_.end())
 		{
@@ -47,8 +59,13 @@ bool BroadcastSessionEditInputDialog::validate()
 			else
 			{
 				action_.state_ = inputs_map_["State"].toInt();
+				return true;
 			}
 		}
+		return false;
+	}
+	else
+	{
 		if (inputs_map_.find("Vertex") != inputs_map_.end())
 		{
 			if (inputs_map_["Vertex"].toInt() < 0)
@@ -60,23 +77,6 @@ bool BroadcastSessionEditInputDialog::validate()
 			}
 		}
 		return false;
-	}
-	break;
-	case GraphEditAction::EditType::DeleteVertex:
-	{
-		if (inputs_map_.find("Vertex") != inputs_map_.end())
-		{
-			if (inputs_map_["Vertex"].toInt() < 0)
-				return false;
-			else
-			{
-				action_.v_ = inputs_map_["Vertex"].toInt();
-				return true;
-			}
-		}
-		return false;	
-	}
-	break;
 	}
 	return true;
 }

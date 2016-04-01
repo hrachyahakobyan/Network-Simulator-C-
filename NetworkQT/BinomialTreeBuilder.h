@@ -31,7 +31,7 @@ public:
 			HNAGraph g2 = HNAGraph(*gpt);
 			(*gpt).Attach(g2, 0, 0);
 		}
-		std::string type(GRAPH_BINOMIAL);
+		std::string type = GRAPH_BINOMIAL;
 		type.append(", height = ");
 		type.append(std::to_string(height));
 		(*gpt).properties().type_ = type;

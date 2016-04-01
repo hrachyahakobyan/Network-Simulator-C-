@@ -115,23 +115,21 @@ void BroadcastSessionView::buildEditInputDialog()
 	{
 		GraphEditAction::EditType type = GraphEditAction::EditType(ui.editTypeBox->currentIndex() - 1);
 		QList<QString> labels;
-		switch (type)
-		{
-		case GraphEditAction::EditType::AddEdge | GraphEditAction::EditType::DeleteEdge:
+		if (type == GraphEditAction::EditType::AddEdge || type == GraphEditAction::EditType::DeleteEdge)
 		{
 			labels << "Source" << "Target";
 		}
-		break;
-		case GraphEditAction::EditType::AddVertex | GraphEditAction::EditType::SetState:
+		else if (type == GraphEditAction::EditType::SetState)
 		{
 			labels << "State" << "Vertex";
 		}
-		break;
-		case GraphEditAction::EditType::DeleteVertex:
+		else if (type == GraphEditAction::EditType::AddVertex)
+		{
+			labels << "State";
+		}
+		else
 		{
 			labels << "Vertex";
-		}
-		break;
 		}
 		editDialog_ = new BroadcastSessionEditInputDialog(this, labels, type);
 		connect(editDialog_, SIGNAL(editDialogDidFinish(int, const GraphEditAction&)), this, SLOT(editDialogDidFinish(int, const GraphEditAction&)));
@@ -143,8 +141,12 @@ void BroadcastSessionView::buildEditInputDialog()
 void BroadcastSessionView::editDialogDidFinish(int state, const GraphEditAction& action)
 {
 	qDebug() << "Graph edit input finished with state " << state << "\n";
-	(*session_).edit(action);
-	draw((*session_).last());
+	if (state == QDialog::Accepted)
+	{
+		(*session_).edit(action);
+		draw((*session_).last());
+	}
+	ui.editTypeBox->setCurrentIndex(0);
 	delete editDialog_;
 	editDialog_ = 0;
 }
