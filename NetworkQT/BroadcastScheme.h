@@ -42,8 +42,8 @@ public:
 		return BroadcastScheme::scheme(std::move(s), std::move(r), std::move(f));
 	}
 
-	void send(const HNAGraph& graph, const Vertex& node, std::map<Vertex, HNANodeBundle>& messages) const;
-	void receive(const HNAGraph& graph, const Vertex& node, const std::map<Vertex, HNANodeBundle>& messages, HNANodeBundle& message) const;
+	void send(const HNAGraph& graph, const HNAGraph::Vertex& node, std::map<HNAGraph::Vertex, HNAGraph::HNANodeBundle>& messages) const;
+	void receive(const HNAGraph& graph, const HNAGraph::Vertex& node, const std::map<HNAGraph::Vertex, HNAGraph::HNANodeBundle>& messages, HNAGraph::HNANodeBundle& message) const;
 	bool broadcasting_finished(const HNAGraph& graph) const;
 	std::string description() const;
 private:

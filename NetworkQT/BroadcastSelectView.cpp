@@ -9,6 +9,7 @@ BroadcastSelectView::BroadcastSelectView(QWidget *parent)
 	op_map_.insert(std::make_pair(QString("M1"), BroadcastSchemeOptions(SEND_SCHEME_M1, RECEIVE_SCHEME_M, FINISH_SCHEME_M)));
 	op_map_.insert(std::make_pair(QString("M2"), BroadcastSchemeOptions(SEND_SCHEME_M2, RECEIVE_SCHEME_M, FINISH_SCHEME_M)));
 	op_map_.insert(std::make_pair(QString("M3"), BroadcastSchemeOptions(SEND_SCHEME_M3, RECEIVE_SCHEME_M, FINISH_SCHEME_M)));
+	op_map_.insert(std::make_pair(QString("Radio"), BroadcastSchemeOptions(SEND_SCHEME_RADIO, RECEIVE_SCHEME_RADIO, FINISH_SCHEME_M)));
 }
 
 BroadcastSelectView::~BroadcastSelectView()

@@ -22,7 +22,7 @@ public:
 		return HNAEdgeWriter(HNAEdgeWriterOptions::defaultOptions());
 	}
 
-    void operator()(std::ostream &out, const Edge& e) const
+	void operator()(std::ostream &out, const HNAGraph::Edge& e) const
 	{
 
 	}

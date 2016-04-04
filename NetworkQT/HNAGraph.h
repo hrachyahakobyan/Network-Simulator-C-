@@ -9,52 +9,52 @@ namespace boost
 	BOOST_INSTALL_PROPERTY(edge, properties);
 }
 
-struct HNANodeBundle
-{
-	std::string label_;
-	int state_;
-	std::set<int> informers_;
-	HNANodeBundle() : state_(0){};
-};
-
-struct HNAEdgeBundle
-{
-
-};
-
-struct HNAGraphBundle
-{
-	std::string type_;
-	std::string broadcast_type_;
-	int broadcast_time_;
-	HNAGraphBundle() : broadcast_time_(0){};
-};
-
-using namespace boost;
-
-typedef adjacency_list<setS, vecS, undirectedS,
-	property<vertex_properties_t, HNANodeBundle>,
-	property<edge_properties_t, HNAEdgeBundle>,
-	HNAGraphBundle
-> GraphContainer;
-
-typedef  graph_traits<GraphContainer>::vertex_descriptor Vertex;
-typedef  graph_traits<GraphContainer>::edge_descriptor Edge;
-
-typedef  graph_traits<GraphContainer>::vertex_iterator vertex_iter;
-typedef  graph_traits<GraphContainer>::edge_iterator edge_iter;
-typedef  graph_traits<GraphContainer>::adjacency_iterator adjacency_iter;
-typedef  graph_traits<GraphContainer>::out_edge_iterator out_edge_iter;
-typedef  graph_traits<GraphContainer>::degree_size_type degree_t;
-typedef  property_map<GraphContainer, vertex_index_t>::type index_map;
-typedef  property_map<GraphContainer, vertex_properties_t>::const_type vertex_params;
-typedef std::pair<adjacency_iter, adjacency_iter> adjacency_vertex_range_t;
-typedef std::pair<out_edge_iter, out_edge_iter> out_edge_range_t;
-typedef std::pair<vertex_iter, vertex_iter> vertex_range_t;
-typedef std::pair<edge_iter, edge_iter> edge_range_t;
 
 class HNAGraph
 {
+	/* Bundles */
+public:
+	struct HNANodeBundle
+	{
+		std::string label_;
+		int state_;
+		std::set<int> informers_;
+		HNANodeBundle() : state_(0){};
+	};
+
+	struct HNAEdgeBundle
+	{
+
+	};
+
+	struct HNAGraphBundle
+	{
+		std::string type_;
+		std::string broadcast_type_;
+		int broadcast_time_;
+		HNAGraphBundle() : broadcast_time_(0){};
+	};
+public:
+	/*Typedefs*/
+	typedef boost::adjacency_list<boost::setS, boost::vecS, boost::undirectedS,
+		boost::property<vertex_properties_t, HNANodeBundle>,
+		boost::property<edge_properties_t, HNAEdgeBundle>,
+		HNAGraphBundle
+	> GraphContainer;
+	typedef  boost::graph_traits<GraphContainer>::vertex_descriptor Vertex;
+	typedef  boost::graph_traits<GraphContainer>::edge_descriptor Edge;
+	typedef  boost::graph_traits<GraphContainer>::vertex_iterator Vertex_Iter;
+	typedef  boost::graph_traits<GraphContainer>::edge_iterator Edge_Iter;
+	typedef  boost::graph_traits<GraphContainer>::adjacency_iterator Adjacency_Iter;
+	typedef  boost::graph_traits<GraphContainer>::out_edge_iterator Out_Edge_Iter;
+	typedef  boost::graph_traits<GraphContainer>::degree_size_type Degree_T;
+	typedef  boost::property_map<GraphContainer, boost::vertex_index_t>::type Index_Map;
+	typedef  boost::property_map<GraphContainer, vertex_properties_t>::const_type Const_Vertex_Params;
+	typedef std::pair<Adjacency_Iter, Adjacency_Iter> Adjacency_Range;
+	typedef std::pair<Out_Edge_Iter, Out_Edge_Iter> Out_Edge_Range;
+	typedef std::pair<Vertex_Iter, Vertex_Iter> Vertex_Range;
+	typedef std::pair<Edge_Iter, Edge_Iter> Edge_Range;
+
 public:
 
 	friend class HypercubeBuilder;
@@ -62,6 +62,7 @@ public:
 	friend class HNAGraphWriter;
 	friend class BroadcastSimulation;
 	friend class RandomGraphBuilder;
+	friend class CustomGraphBuilder;
 	/*Constructors and destructor*/
 	HNAGraph()
 	{}
@@ -86,7 +87,7 @@ public:
 
 	HNAGraph& operator+=(const HNAGraph& rhs) 
 	{
-		copy_graph(rhs.g_container, this->g_container);
+		boost::copy_graph(rhs.g_container, this->g_container);
 		return *this; // return the result by reference
 	}
 
@@ -114,7 +115,7 @@ public:
 		{
 			clear_vertex(v, g_container);
 			remove_vertex(v, g_container);
-			vertex_range_t vers = vertices(g_container);
+			Vertex_Range vers = boost::vertices(g_container);
 			for (; vers.first != vers.second; ++vers.first)
 			{
 				std::set<int>::iterator it;
@@ -157,45 +158,45 @@ public:
 	
 	HNANodeBundle& properties(const Vertex& v)
 	{
-		property_map<GraphContainer, vertex_properties_t>::type param = get(vertex_properties, g_container);
+		boost::property_map<GraphContainer, vertex_properties_t>::type param = get(vertex_properties, g_container);
 		return param[v];
 	}
 
 	const HNANodeBundle& properties(const Vertex& v) const
 	{
-		property_map<GraphContainer, vertex_properties_t>::const_type param = get(vertex_properties, g_container);
+		boost::property_map<GraphContainer, vertex_properties_t>::const_type param = get(vertex_properties, g_container);
 		return param[v];
 	}
 
 	HNAEdgeBundle& properties(const Edge& v)
 	{
-		property_map<GraphContainer, edge_properties_t>::type param = get(edge_properties, g_container);
+		boost::property_map<GraphContainer, edge_properties_t>::type param = get(edge_properties, g_container);
 		return param[v];
 	}
 
 	const HNAEdgeBundle& properties(const Edge& v) const
 	{
-		property_map<GraphContainer, edge_properties_t>::const_type param = get(edge_properties, g_container);
+		boost::property_map<GraphContainer, edge_properties_t>::const_type param = get(edge_properties, g_container);
 		return param[v];
 	}
 
 	HNAGraphBundle& properties()
 	{
-		return g_container[graph_bundle];
+		return g_container[boost::graph_bundle];
 	}
 
 	const HNAGraphBundle& properties() const
 	{
-		return g_container[graph_bundle];
+		return g_container[boost::graph_bundle];
 	}
 
-	const index_map& i_map() const
+	const Index_Map& i_map() const
 	{
-		return get(vertex_index, g_container);
+		return get(boost::vertex_index, g_container);
 	}
 
 
-	vertex_params v_params() const
+	Const_Vertex_Params v_params() const
 	{
 		return get(vertex_properties, g_container);
 	}
@@ -207,12 +208,12 @@ public:
 		return g_container;
 	}
 
-	vertex_range_t getVertices() const
+	Vertex_Range getVertices() const
 	{
 		return vertices(g_container);
 	}
 
-	adjacency_vertex_range_t getAdjacentVertices(const Vertex& v) const
+	Adjacency_Range getAdjacentVertices(const Vertex& v) const
 	{
 		return adjacent_vertices(v, g_container);
 	}
@@ -236,11 +237,11 @@ public:
 	void printVertex(const Vertex& v) const
 	{
 		std::cout << std::endl;
-		index_map graph_indeces = get(vertex_index, g_container);
+		Index_Map graph_indeces = get(boost::vertex_index, g_container);
 		std::cout << "Printing vertex " << graph_indeces[v] << " label " << properties(v).label_ << " state " << properties(v).state_ << std::endl;
 		std::cout << "\n";
 		std::cout << "Out-edges: ";
-		out_edge_iter out_i, out_end;
+		Out_Edge_Iter out_i, out_end;
 		for (boost::tie(out_i, out_end) = out_edges(v, g_container); out_i != out_end; ++out_i)
 		{
 			Vertex src = source(*out_i, g_container), targ = target(*out_i, g_container);
@@ -257,7 +258,7 @@ public:
 		std::cout << std::endl;
 		std::cout << std::endl;
 		std::cout << "adjacent vertices: ";
-		adjacency_iter ai, ai_end;
+		Adjacency_Iter ai, ai_end;
 		for (boost::tie(ai, ai_end) = getAdjacentVertices(v);
 			ai != ai_end; ++ai)
 			std::cout << graph_indeces[*ai] << " ";
@@ -268,14 +269,14 @@ public:
 	{
 		std::cout << "Printing graph \n \n";
 		std::cout << "Vertex indeces \n \n";
-		std::pair<vertex_iter, vertex_iter> vp;
-		index_map graph_indeces = get(vertex_index, g_container);
+		std::pair<Vertex_Iter, Vertex_Iter> vp;
+		Index_Map graph_indeces = get(boost::vertex_index, g_container);
 		for (vp = vertices(g_container); vp.first != vp.second; ++vp.first)
 		{
 			std::cout << graph_indeces[*vp.first] << " ";
 		}
 		std::cout << "Edges \n \n";
-		edge_iter ei, ei_end;
+		Edge_Iter ei, ei_end;
 		for (boost::tie(ei, ei_end) = edges(g_container); ei != ei_end; ++ei)
 		{
 			std::cout << source(*ei, g_container) << "-" << target(*ei, g_container);
@@ -288,10 +289,10 @@ public:
 		
 	}
 
-	std::pair<const Vertex&, bool> getVertexAtIndex(vertex_index_t index) const
+	std::pair<const Vertex&, bool> getVertexAtIndex(boost::vertex_index_t index) const
 	{
-		std::pair<vertex_iter, vertex_iter> vp;
-		index_map graph_indeces = get(vertex_index, g_container);
+		std::pair<Vertex_Iter, Vertex_Iter> vp;
+		Index_Map graph_indeces = get(boost::vertex_index, g_container);
 		for (vp = vertices(g_container); vp.first != vp.second; ++vp.first)
 		{
 			if (graph_indeces[*vp.first] == index)
@@ -302,15 +303,15 @@ public:
 		return std::pair<const Vertex&, bool>(Vertex(), false);
 	}
 
-	bool vertexExistsAtIndex(vertex_index_t index)
+	bool vertexExistsAtIndex(boost::vertex_index_t index)
 	{
 		return getVertexAtIndex(index).second;
 	}
 
 	bool vertexExists(const Vertex& v)
 	{
-		std::pair<vertex_iter, vertex_iter> vp;
-		index_map graph_indeces = get(vertex_index, g_container);
+		std::pair<Vertex_Iter, Vertex_Iter> vp;
+		Index_Map graph_indeces = get(boost::vertex_index, g_container);
 		for (vp = vertices(g_container); vp.first != vp.second; ++vp.first)
 		{
 			if (graph_indeces[*vp.first] == graph_indeces[v])

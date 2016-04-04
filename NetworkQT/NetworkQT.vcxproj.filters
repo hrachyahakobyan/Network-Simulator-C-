@@ -293,6 +293,36 @@
     <ClCompile Include="CCGraphBuilder.cpp">
       <Filter>Source Files\Core\Graph\Builders</Filter>
     </ClCompile>
+    <ClCompile Include="BroadcastReceiveSchemeRadio.cpp">
+      <Filter>Source Files\Core\Broadcast\Receive</Filter>
+    </ClCompile>
+    <ClCompile Include="BroadcastSendSchemeRadio.cpp">
+      <Filter>Source Files\Core\Broadcast\Send</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomGraphBuilder.cpp">
+      <Filter>Source Files\Core\Graph\Builders</Filter>
+    </ClCompile>
+    <ClCompile Include="CleanUp.cpp">
+      <Filter>Source Files\Core\Auxillary</Filter>
+    </ClCompile>
+    <ClCompile Include="BipartiteGraphBuilder.cpp">
+      <Filter>Source Files\Core\Graph\Builders</Filter>
+    </ClCompile>
+    <ClCompile Include="PathGraphBuilder.cpp">
+      <Filter>Source Files\Core\Graph\Builders</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomTreeBuilder.cpp">
+      <Filter>Source Files\Core\Graph\Builders</Filter>
+    </ClCompile>
+    <ClCompile Include="DipperGraphBuilder.cpp">
+      <Filter>Source Files\Core\Graph\Builders</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomManager.cpp">
+      <Filter>Source Files\Core\Auxillary</Filter>
+    </ClCompile>
+    <ClCompile Include="FixedRanomTreeBuilder.cpp">
+      <Filter>Source Files\Core\Graph\Builders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -379,9 +409,6 @@
     <ClInclude Include="HNAGraphPropertyWriter.h">
       <Filter>Header Files\Core\Writers</Filter>
     </ClInclude>
-    <ClInclude Include="HNAVertexWriter.h">
-      <Filter>Header Files\Core\Writers</Filter>
-    </ClInclude>
     <ClInclude Include="HNAGraphWriter.h">
       <Filter>Header Files\Core\Writers</Filter>
     </ClInclude>
@@ -429,6 +456,39 @@
     </ClInclude>
     <ClInclude Include="CCGraphBuilder.h">
       <Filter>Header Files\Core\Graph\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="BroadcastReceiveSchemeRadio.h">
+      <Filter>Header Files\Core\Broadcast\Receive</Filter>
+    </ClInclude>
+    <ClInclude Include="BroadcastSendSchemeRadio.h">
+      <Filter>Header Files\Core\Broadcast\Send</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomGraphBuilder.h">
+      <Filter>Header Files\Core\Graph\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="CleanUp.h">
+      <Filter>Header Files\Core\Auxillary</Filter>
+    </ClInclude>
+    <ClInclude Include="BipartiteGraphBuilder.h">
+      <Filter>Header Files\Core\Graph\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="DipperGraphBuilder.h">
+      <Filter>Header Files\Core\Graph\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="PathGraphBuilder.h">
+      <Filter>Header Files\Core\Graph\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomTreeBuilder.h">
+      <Filter>Header Files\Core\Graph\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomManager.h">
+      <Filter>Header Files\Core\Auxillary</Filter>
+    </ClInclude>
+    <ClInclude Include="FixedRanomTreeBuilder.h">
+      <Filter>Header Files\Core\Graph\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="HNAVertexWriter.h">
+      <Filter>Header Files\Core\Writers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

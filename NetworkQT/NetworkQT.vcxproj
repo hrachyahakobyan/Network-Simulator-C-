@@ -53,7 +53,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
-      <AdditionalOptions>/Zm151 -DQT_NO_KEYWORDS -D_SCL_SECURE_NO_WARNINGS %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/Zm187 -DQT_NO_KEYWORDS -D_SCL_SECURE_NO_WARNINGS %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -84,12 +84,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BinomialTreeBuilder.cpp" />
+    <ClCompile Include="BipartiteGraphBuilder.cpp" />
     <ClCompile Include="BroadcastFinishScheme.cpp" />
     <ClCompile Include="BroadcastFinishSchemeFactory.cpp" />
     <ClCompile Include="BroadcastFinishSchemeM.cpp" />
     <ClCompile Include="BroadcastReceiveScheme.cpp" />
     <ClCompile Include="BroadcastReceiveSchemeFactory.cpp" />
     <ClCompile Include="BroadcastReceiveSchemeM.cpp" />
+    <ClCompile Include="BroadcastReceiveSchemeRadio.cpp" />
     <ClCompile Include="BroadcastScheme.cpp" />
     <ClCompile Include="BroadcastSelectView.cpp" />
     <ClCompile Include="BroadcastSendScheme.cpp" />
@@ -97,14 +99,19 @@
     <ClCompile Include="BroadcastSendSchemeM1.cpp" />
     <ClCompile Include="BroadcastSendSchemeM2.cpp" />
     <ClCompile Include="BroadcastSendSchemeM3.cpp" />
+    <ClCompile Include="BroadcastSendSchemeRadio.cpp" />
     <ClCompile Include="BroadcastSessionEditInputDialog.cpp" />
     <ClCompile Include="BroadcastSessionView.cpp" />
     <ClCompile Include="BroadcastSimulation.cpp" />
     <ClCompile Include="CCGraphBuilder.cpp" />
+    <ClCompile Include="CleanUp.cpp" />
     <ClCompile Include="CMDGraphRenderer.cpp" />
     <ClCompile Include="CompleteGraphBuilder.cpp" />
+    <ClCompile Include="CustomGraphBuilder.cpp" />
     <ClCompile Include="DefaultNotificationCenter.cpp" />
+    <ClCompile Include="DipperGraphBuilder.cpp" />
     <ClCompile Include="FileManager.cpp" />
+    <ClCompile Include="FixedRanomTreeBuilder.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_BroadcastSelectView.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -173,7 +180,10 @@
     <ClCompile Include="MultiInputDialog.cpp" />
     <ClCompile Include="networkqt.cpp" />
     <ClCompile Include="OptimalTreeBuilder.cpp" />
+    <ClCompile Include="PathGraphBuilder.cpp" />
     <ClCompile Include="RandomGraphBuilder.cpp" />
+    <ClCompile Include="RandomManager.cpp" />
+    <ClCompile Include="RandomTreeBuilder.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -184,15 +194,25 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinomialTreeBuilder.h" />
+    <ClInclude Include="BipartiteGraphBuilder.h" />
     <ClInclude Include="BroadcastFinishScheme.h" />
     <ClInclude Include="BroadcastFinishSchemeFactory.h" />
     <ClInclude Include="BroadcastFinishSchemeM.h" />
     <ClInclude Include="BroadcastReceiveScheme.h" />
     <ClInclude Include="BroadcastReceiveSchemeFactory.h" />
     <ClInclude Include="BroadcastReceiveSchemeM.h" />
+    <ClInclude Include="BroadcastReceiveSchemeRadio.h" />
     <ClInclude Include="BroadcastScheme.h" />
+    <ClInclude Include="BroadcastSendSchemeRadio.h" />
     <ClInclude Include="CCGraphBuilder.h" />
+    <ClInclude Include="CleanUp.h" />
+    <ClInclude Include="CustomGraphBuilder.h" />
+    <ClInclude Include="DipperGraphBuilder.h" />
+    <ClInclude Include="FixedRanomTreeBuilder.h" />
+    <ClInclude Include="PathGraphBuilder.h" />
     <ClInclude Include="RandomGraphBuilder.h" />
+    <ClInclude Include="RandomManager.h" />
+    <ClInclude Include="RandomTreeBuilder.h" />
     <ClInclude Include="TorusGraphBuilder.h" />
     <CustomBuild Include="BroadcastSelectView.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>

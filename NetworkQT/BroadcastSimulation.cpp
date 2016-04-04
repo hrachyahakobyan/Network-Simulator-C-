@@ -13,9 +13,9 @@ BroadcastSimulation::~BroadcastSimulation()
 bool BroadcastSimulation::tick(int count)
 {
 	assert(count > 0 && "ERROR: BroadcastAlgorithm: nonpositive tick");
-	typedef HNANodeBundle Message;
-	typedef map<Vertex, Message> s_m_map;
-	typedef map<Vertex, s_m_map> r_m_map;
+	typedef HNAGraph::HNANodeBundle Message;
+	typedef map<HNAGraph::Vertex, Message> s_m_map;
+	typedef map<HNAGraph::Vertex, s_m_map> r_m_map;
 	typedef s_m_map::iterator s_m_it;
 	typedef r_m_map::iterator r_m_it;
 
@@ -30,13 +30,13 @@ bool BroadcastSimulation::tick(int count)
 			return true;
 		}
 		(*graph_p_).properties().broadcast_time_++;
-		pair<vertex_iter, vertex_iter> vp;
+		pair<HNAGraph::Vertex_Iter, HNAGraph::Vertex_Iter> vp;
 		r_map.clear();
 		final_map.clear();
 		for (vp = boost::vertices((*graph_p_).g_container); vp.first != vp.second; ++vp.first)
 		{
 			s_map.clear();
-			Vertex cur_v = *vp.first;
+			HNAGraph::Vertex cur_v = *vp.first;
 			(*scheme_p_).send((*graph_p_), cur_v, s_map);
 			s_m_it s_it;
 			for (s_it = s_map.begin(); s_it != s_map.end(); ++s_it)
@@ -46,7 +46,7 @@ bool BroadcastSimulation::tick(int count)
 		}
 		for (vp = boost::vertices((*graph_p_).g_container); vp.first != vp.second; ++vp.first)
 		{
-			Vertex cur_v = *vp.first;
+			HNAGraph::Vertex cur_v = *vp.first;
 			Message m;
 			(*scheme_p_).receive((*graph_p_), cur_v, r_map[cur_v], m);
 			final_map[cur_v] = m;

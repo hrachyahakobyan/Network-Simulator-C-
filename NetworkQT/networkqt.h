@@ -20,13 +20,13 @@ private:
 	GraphSelectView* graphSelectView_;
 	BroadcastSelectView* broadcastSelectView_;
 	BroadcastSessionView* broadcastSessionView_;
-	GraphOptions g_op_;
+	GraphBuilder::GraphOptions g_op_;
 	BroadcastSchemeOptions s_op_;
 public Q_SLOTS:
 	void on_actionSimulation_triggered();
 	void on_actionExit_triggered();
 	void on_actionGraph_triggered();
-	void graphSelectViewFinished(int state, const GraphOptions& options, const boost::filesystem::path& image_path);
+	void graphSelectViewFinished(int state, const GraphBuilder::GraphOptions& options, const boost::filesystem::path& image_path);
 	void broadcastSchemeSelectViewFinished(int state, const BroadcastSchemeOptions& options);
 	void broadcastSessionViewDidFinish(int state);
 };

@@ -33,6 +33,10 @@ static const std::string GRAPH_COMPLETE = "Complete graph";
 static const std::string GRAPH_GRID = "Grid";
 static const std::string GRAPH_TORUS = "Torus";
 static const std::string GRAPH_CCC = "CCC";
+static const std::string GRAPH_BIPARTITE = "Bipartite";
+static const std::string GRAPH_DIPPER = "Dipper";
+static const std::string GRAPH_RAND_TREE = "Random Tree";
+static const std::string GRAPH_FIXED_RAND_TREE = "Fixed Random Tree";
 
 static const int GRAPH_BINOMIAL_MAX_HEIGHT = 10;
 static const int GRAPH_HYPER_MAX_DIM = 5;
@@ -51,22 +55,6 @@ static const std::map<int, std::string> DEFAULT_COLOR_MAP = { { 0, "white" }, { 
 static const std::vector<std::string> RENDER_ENGINES = { "dot", "neato", "sfdp", "fdp", "twopi", "circo", "osage" };
 // Render engines
 
-// Random
-
-inline int random_n(int a, int b)
-{
-	assert(a > -1 && "ERROR: random_n: negative a");
-	assert(b > -1 && "ERROR: random_n: negative b");
-	if (a < b)
-	{
-		a += b;
-		b = a - b;
-		a -= b;
-	}
-	return rand() % (a - b + 1) + b;
-}
-
-
 // BroadcastScheme
 
 static const int MAX_TICKS = 100;
@@ -74,5 +62,7 @@ static const int MAX_TICKS = 100;
 static const std::string SEND_SCHEME_M1 = "SendSchemeM1";
 static const std::string SEND_SCHEME_M2 = "SendSchemeM2";
 static const std::string SEND_SCHEME_M3 = "SendSchemeM3";
+static const std::string SEND_SCHEME_RADIO = "SendSchemeRadio";
+static const std::string RECEIVE_SCHEME_RADIO = "ReceiveScehemRadio";
 static const std::string RECEIVE_SCHEME_M = "ReceiveSchemeM";
 static const std::string FINISH_SCHEME_M = "FinishSchemeM";

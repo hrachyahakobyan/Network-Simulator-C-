@@ -16,6 +16,10 @@ GraphSelectView::GraphSelectView(QWidget *parent)
 	type_mapper_.insert(std::make_pair(7, GRAPH_KTREE));
 	type_mapper_.insert(std::make_pair(8, GRAPH_RANDOM));
 	type_mapper_.insert(std::make_pair(9, GRAPH_CCC));
+	type_mapper_.insert(std::make_pair(10, GRAPH_BIPARTITE));
+	type_mapper_.insert(std::make_pair(11, GRAPH_DIPPER));
+	type_mapper_.insert(std::make_pair(12, GRAPH_RAND_TREE));
+	type_mapper_.insert(std::make_pair(13, GRAPH_FIXED_RAND_TREE));
 }
 
 GraphSelectView::~GraphSelectView()
@@ -35,13 +39,13 @@ void GraphSelectView::on_graphTypeBox_currentIndexChanged(QString s)
 	if (index != 0)
 	{	
 		buildInputDialog(type_mapper_.at(index));
-		connect(dialog_, SIGNAL(finishedInput(int, const GraphOptions&)), this, SLOT(inputDialogFinished(int, const GraphOptions&)));
+		connect(dialog_, SIGNAL(finishedInput(int, const GraphBuilder::GraphOptions&)), this, SLOT(inputDialogFinished(int, const GraphBuilder::GraphOptions&)));
 		dialog_->exec();
 	}
 }
 
 
-void GraphSelectView::inputDialogFinished(int status, const GraphOptions& options)
+void GraphSelectView::inputDialogFinished(int status, const GraphBuilder::GraphOptions& options)
 {
 	if (status == QDialog::Accepted)
 	{
@@ -56,6 +60,7 @@ void GraphSelectView::inputDialogFinished(int status, const GraphOptions& option
 	}
 	delete dialog_;
 	dialog_ = 0;
+	ui.graphTypeBox->setCurrentIndex(0);
 }
 
 void GraphSelectView::on_okButton_clicked()
@@ -144,6 +149,22 @@ void GraphSelectView::buildInputDialog(const std::string& type)
 	else if (type.compare(GRAPH_CCC) == 0)
 	{
 		labels << "Dimension";
+	}
+	else if (type.compare(GRAPH_BIPARTITE) == 0)
+	{
+		labels << "M" << "N";
+	}
+	else if (type.compare(GRAPH_DIPPER) == 0)
+	{
+		labels << "M" << "N";
+	}
+	else if (type.compare(GRAPH_RAND_TREE) == 0)
+	{
+		labels << "Children" << "Height";
+	}
+	else if (type.compare(GRAPH_FIXED_RAND_TREE) == 0)
+	{
+		labels << "Vertices";
 	}
 	dialog_ = new GraphOptionsInputDialog(this, labels, type);
 	labels.clear();

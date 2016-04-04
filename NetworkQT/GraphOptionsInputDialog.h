@@ -1,8 +1,8 @@
 #ifndef GRAPHOPTIONSINPUTDIALOG_H
 #define GRAPHOPTIONSINPUTDIALOG_H
-
 #include "MultiInputDialog.h"
-#include "HNAGraphFactory.h"
+#include "GraphBuilder.h"
+
 class GraphOptionsInputDialog : public MultiInputDialog
 {
 	Q_OBJECT
@@ -14,14 +14,14 @@ public:
 	void accept();
 private:
 	std::string type_;
-	GraphOptions options_;
+	GraphBuilder::GraphOptions options_;
 protected:
 	bool validate();
 public Q_SLOTS:
 	void okButtonClicked();
 	void cancelButtonClicked();
 Q_SIGNALS:
-	void finishedInput(int status, const GraphOptions& options);
+	void finishedInput(int status, const GraphBuilder::GraphOptions& options);
 };
 
 #endif // GRAPHOPTIONSINPUTDIALOG_H

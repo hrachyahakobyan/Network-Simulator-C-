@@ -1,10 +1,6 @@
 #include "stdafx.h"
 #include "networkqt.h"
-#include "FileManager.h"
-#include "TimeManager.h"
-#include "GraphManager.h"
-#include "DefaultNotificationCenter.h"
-#include "HNAGraphFactory.h"
+#include "CleanUp.h"
 
 
 NetworkQT::NetworkQT(QWidget *parent)
@@ -13,22 +9,14 @@ NetworkQT::NetworkQT(QWidget *parent)
 	ui.setupUi(this);
 	graphSelectView_ = new GraphSelectView(this);
 	broadcastSelectView_ = new BroadcastSelectView(this);
-	connect(graphSelectView_, SIGNAL(finishedSelect(int, const GraphOptions&, const boost::filesystem::path&)), this, SLOT(graphSelectViewFinished(int, const GraphOptions&, const boost::filesystem::path&)));
+	connect(graphSelectView_, SIGNAL(finishedSelect(int, const GraphBuilder::GraphOptions&, const boost::filesystem::path&)), this, SLOT(graphSelectViewFinished(int, const GraphBuilder::GraphOptions&, const boost::filesystem::path&)));
 	connect(broadcastSelectView_, SIGNAL(broadcastDialogFinishedSelect(int, const BroadcastSchemeOptions&)), this, SLOT(broadcastSchemeSelectViewFinished(int, const BroadcastSchemeOptions&)));
 	this->setAttribute(Qt::WidgetAttribute::WA_DeleteOnClose);
 }
 
 NetworkQT::~NetworkQT()
 {
-	FileManager::release();
-	TimeManager::release();
-	GraphManager::release();
-	DefaultNotificationCenter::release();
-	HNAGraphFactory::release();
-	BroadcastFinishSchemeFactory::release();
-	BroadcastReceiveSchemeFactory::release();
-	BroadcastSendSchemeFactory::release();
-
+	CleanUp::cleanUp();
 	if (graphSelectView_ != 0)
 		delete graphSelectView_;
 	if (broadcastSelectView_ != 0)
@@ -58,7 +46,7 @@ void NetworkQT::on_actionExit_triggered()
 	QCoreApplication::exit();
 }
 
-void NetworkQT::graphSelectViewFinished(int state, const GraphOptions& options, const boost::filesystem::path& image_path)
+void NetworkQT::graphSelectViewFinished(int state, const GraphBuilder::GraphOptions& options, const boost::filesystem::path& image_path)
 {
 	qDebug() << "Graph Select view finished with state \n" << state << "\n";
 	if (state == QDialog::Accepted)

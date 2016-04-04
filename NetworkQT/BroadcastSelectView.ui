@@ -42,6 +42,11 @@
      <string>M3</string>
     </property>
    </item>
+   <item>
+    <property name="text">
+     <string>Radio</string>
+    </property>
+   </item>
   </widget>
   <widget class="QPushButton" name="okButton">
    <property name="geometry">

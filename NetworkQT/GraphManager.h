@@ -1,8 +1,7 @@
 #pragma once
 #include "HNAGraphWriter.h"
-#include "HNAGraphFactory.h"
+#include "GraphBuilder.h"
 #include "CMDGraphRenderer.h"
-#include "FileManager.h"
 
 class GraphManager
 {
@@ -23,7 +22,7 @@ public:
 		}
 	}
 
-	void graphImageWithOptions(const GraphOptions& options, boost::filesystem::path& image_path, boost::filesystem::path& folder_path);
+	void graphImageWithOptions(const GraphBuilder::GraphOptions& options, boost::filesystem::path& image_path, boost::filesystem::path& folder_path);
 	void saveGraphImage(const boost::filesystem::path& src_path, const boost::filesystem::path& dst_path);
 
 private:

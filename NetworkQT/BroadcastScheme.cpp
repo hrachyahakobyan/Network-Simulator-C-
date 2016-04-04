@@ -2,12 +2,12 @@
 #include "BroadcastScheme.h"
 
 
-void  BroadcastScheme::send(const HNAGraph& graph, const Vertex& node, std::map<Vertex, HNANodeBundle>& messages) const
+void  BroadcastScheme::send(const HNAGraph& graph, const HNAGraph::Vertex& node, std::map<HNAGraph::Vertex, HNAGraph::HNANodeBundle>& messages) const
 {
 	(*s_).send(graph, node, messages);
 }
 
-void BroadcastScheme::receive(const HNAGraph& graph, const Vertex& node, const std::map<Vertex,HNANodeBundle>& messages, HNANodeBundle& message) const
+void BroadcastScheme::receive(const HNAGraph& graph, const HNAGraph::Vertex& node, const std::map<HNAGraph::Vertex, HNAGraph::HNANodeBundle>& messages, HNAGraph::HNANodeBundle& message) const
 {
 	(*r_).receive(graph, node, messages, message);
 }

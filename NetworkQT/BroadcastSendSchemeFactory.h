@@ -2,6 +2,7 @@
 #include "BroadcastSendSchemeM1.h"
 #include "BroadcastSendSchemeM2.h"
 #include "BroadcastSendSchemeM3.h"
+#include "BroadcastSendSchemeRadio.h"
 
 class BroadcastSendSchemeFactory
 {
@@ -43,6 +44,7 @@ private:
 		Register<BroadcastSendSchemeM1>(SEND_SCHEME_M1);
 		Register<BroadcastSendSchemeM2>(SEND_SCHEME_M2);
 		Register<BroadcastSendSchemeM3>(SEND_SCHEME_M3);
+		Register<BroadcastSendSchemeRadio>(SEND_SCHEME_RADIO);
 	}
 	~BroadcastSendSchemeFactory()
 	{

@@ -2,11 +2,6 @@
 #include "GraphBuilder.h"
 class CCCGraphBuilder : public GraphBuilder
 {
-	typedef adjacency_list < setS, vecS, undirectedS,
-		property<vertex_properties_t, HNANodeBundle>,
-		property<edge_properties_t, HNAEdgeBundle>,
-		HNAGraphBundle
-	> Graph;
 public:
 	CCCGraphBuilder();
 	~CCCGraphBuilder();

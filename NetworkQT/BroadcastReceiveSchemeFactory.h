@@ -1,5 +1,6 @@
 #pragma once
 #include "BroadcastReceiveSchemeM.h"
+#include "BroadcastReceiveSchemeRadio.h"
 
 
 class BroadcastReceiveSchemeFactory
@@ -40,6 +41,7 @@ private:
 	BroadcastReceiveSchemeFactory()
 	{
 		Register<BroadcastReceiveSchemeM>(RECEIVE_SCHEME_M);
+		Register<BroadcastReceiveSchemeRadio>(RECEIVE_SCHEME_RADIO);
 	}
 	~BroadcastReceiveSchemeFactory()
 	{

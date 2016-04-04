@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>591</width>
-    <height>388</height>
+    <width>1144</width>
+    <height>810</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -75,22 +75,47 @@
      <string>Cube connected cycle</string>
     </property>
    </item>
+   <item>
+    <property name="text">
+     <string>Bipartite</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Dipper</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Random Tree</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Fixed Random Tree</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Custom</string>
+    </property>
+   </item>
   </widget>
   <widget class="QGraphicsView" name="graphicsView">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>40</y>
-     <width>571</width>
-     <height>311</height>
+     <width>1111</width>
+     <height>701</height>
     </rect>
    </property>
   </widget>
   <widget class="QPushButton" name="okButton">
    <property name="geometry">
     <rect>
-     <x>510</x>
-     <y>360</y>
+     <x>1050</x>
+     <y>760</y>
      <width>75</width>
      <height>23</height>
     </rect>

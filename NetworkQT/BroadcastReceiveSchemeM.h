@@ -7,7 +7,7 @@ class BroadcastReceiveSchemeM : public BroadcastReceiveScheme
 public:
 	BroadcastReceiveSchemeM();
 	~BroadcastReceiveSchemeM();
-	void receive(const HNAGraph& graph, const Vertex& node, const std::map<Vertex, HNANodeBundle>& messages, HNANodeBundle& message) const;
+	void receive(const HNAGraph& graph, const HNAGraph::Vertex& node, const std::map<HNAGraph::Vertex, HNAGraph::HNANodeBundle>& messages, HNAGraph::HNANodeBundle& message) const;
 	std::string description() const;
 };
 

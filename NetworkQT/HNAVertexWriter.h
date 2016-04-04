@@ -37,12 +37,12 @@ public:
 		color_map_ = color_map;
 	}
 
-	void set_v_prop(const vertex_params& v_params) 
+	void set_v_prop(const HNAGraph::Const_Vertex_Params& v_params)
 	{
 		v_params_ = v_params;
 	}
 
-	void operator()(std::ostream &out, const Vertex& v) const
+	void operator()(std::ostream &out, const HNAGraph::Vertex& v) const
 	{
 		if (options_.write_labels_ == false && options_.write_colors_ == false)
 			return;
@@ -61,7 +61,7 @@ public:
 
 private:
 	HNAVertexWriteOptions options_;
-	vertex_params v_params_;
+	HNAGraph::Const_Vertex_Params v_params_;
 	std::map<int, std::string> color_map_;
 	std::map<std::string, std::string> font_color_map_;
 };

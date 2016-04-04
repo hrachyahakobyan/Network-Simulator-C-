@@ -13,7 +13,7 @@ BroadcastFinishSchemeM::~BroadcastFinishSchemeM()
 
 bool BroadcastFinishSchemeM::broadcasting_finished(const HNAGraph& graph) const
 {
-	vertex_range_t vr = graph.getVertices();
+	HNAGraph::Vertex_Range vr = graph.getVertices();
 	for (; vr.first != vr.second; ++vr.first)
 	{
 		if (graph.properties(*(vr.first)).state_ == Two_State::uninformed)

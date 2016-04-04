@@ -120,7 +120,7 @@ bool GraphOptionsInputDialog::validate()
 		{
 			if (n > 0 && m > 0)
 			{
-				if ( n * m < GRAPH_KTREE_MAX_VERTICES)
+				if (n * m < GRAPH_KTREE_MAX_VERTICES)
 				{
 
 					return true;
@@ -148,6 +148,58 @@ bool GraphOptionsInputDialog::validate()
 			return false;
 		}
 	}
+	else if (type_.compare(GRAPH_BIPARTITE) == 0 || type_.compare(GRAPH_DIPPER) == 0)
+	{
+		if (inputs_map_.find("M") == inputs_map_.end() || inputs_map_.find("N") == inputs_map_.end())
+			return false;
+		QString m_string = inputs_map_["M"];
+		QString n_string = inputs_map_["N"];
+		bool b_m, b_n;
+		int m = m_string.toInt(&b_m);
+		int n = n_string.toInt(&b_n);
+		if (b_n && b_n)
+		{
+			if (n > 0 && m > 0)
+			{
+				return true;
+			}
+			return false;
+		}
+	}
+	else if (type_.compare(GRAPH_RAND_TREE) == 0)
+	{
+		if (inputs_map_.find("Children") == inputs_map_.end() || inputs_map_.find("Height") == inputs_map_.end())
+			return false;
+		QString c_string = inputs_map_["Children"];
+		QString h_string = inputs_map_["Height"];
+		bool b_c, b_h;
+		int c = c_string.toInt(&b_c);
+		int h = h_string.toInt(&b_h);
+		if (b_c && b_h)
+		{
+			if (c > 0 && h > 0)
+			{
+				return true;
+			}
+			return false;
+		}
+	}
+	else if (type_.compare(GRAPH_FIXED_RAND_TREE) == 0)
+	{
+		assert(inputs_map_.find("Vertices") != inputs_map_.end() && "ERROR: GraphOptionsInputDialog: Inputs do not contain required input");
+		QString v_string = inputs_map_["Vertices"];
+		bool b_v;
+		int vertices = v_string.toInt(&b_v);
+		if (b_v)
+		{
+			if (vertices > 0)
+			{
+				return true;
+			}
+			return false;
+		}
+		return false;
+	}
 	return false;
 }
 
@@ -170,6 +222,8 @@ void GraphOptionsInputDialog::okButtonClicked()
 		options_.n_ = inputs_map_["N"].toInt();
 	if (inputs_map_.find("Probability") != inputs_map_.end())
 		options_.p_ = double(inputs_map_["Probability"].toInt() / 100.0);
+	if (inputs_map_.find("Children") != inputs_map_.end())
+		options_.children_ = inputs_map_["Children"].toInt();
 	accept();
 }
 

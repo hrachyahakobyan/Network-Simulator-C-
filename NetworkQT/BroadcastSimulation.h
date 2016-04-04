@@ -62,7 +62,7 @@ public:
 		(*graph_p_).properties().broadcast_type_ = (*scheme_p_).description();
 	}
 	
-	static std::unique_ptr<BroadcastSimulation> simulation(const GraphOptions& g_options, const BroadcastSchemeOptions& s_options)
+	static std::unique_ptr<BroadcastSimulation> simulation(const GraphBuilder::GraphOptions& g_options, const BroadcastSchemeOptions& s_options)
 	{
 		graph_ptr gptr = HNAGraphFactory::sharedFactory()->getGraph(g_options);
 		scheme_p sptr = BroadcastScheme::scheme(s_options);

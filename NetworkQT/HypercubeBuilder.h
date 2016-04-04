@@ -2,18 +2,8 @@
 #include "HNAGraph.h"
 #include "GraphBuilder.h"
 
-using namespace boost;
-
 class HypercubeBuilder : public GraphBuilder
 {
-	typedef adjacency_list < setS, vecS, undirectedS,
-		property<vertex_properties_t, HNANodeBundle>,
-		property<edge_properties_t, HNAEdgeBundle>,
-		HNAGraphBundle
-	> Graph;
-	typedef  graph_traits<Graph>::vertex_descriptor Vertex;
-	typedef  property_map<Graph, vertex_index_t>::type IndexMap;
-	typedef  graph_traits<Graph>::vertex_iterator vertex_iter;
 public:
 	HypercubeBuilder()
 	{}
@@ -24,12 +14,12 @@ public:
 		int dims = options.dim_;
 		assert(dims > 0 && "Error: HypercubeBuilder: nonpositive dimensions");
 		std::unique_ptr<HNAGraph> gptr(new HNAGraph(int(std::pow(2, dims))));
-		Graph g = (*gptr).g_container;
-		IndexMap graph_indeces = get(vertex_index, g);
-		std::pair<vertex_iter, vertex_iter> vp;
+		HNAGraph::GraphContainer g = (*gptr).g_container;
+		HNAGraph::Index_Map graph_indeces = get(boost::vertex_index, g);
+		std::pair<HNAGraph::Vertex_Iter, HNAGraph::Vertex_Iter> vp;
 		for (vp = vertices(g); vp.first != vp.second; ++vp.first)
 		{
-			Vertex v = *vp.first;
+			HNAGraph::Vertex v = *vp.first;
 			int v_index = graph_indeces[v];
 			std::vector<int> neighbor_indices(dims, v_index);
 			for (int i = 0; i < dims; i++)
@@ -37,7 +27,7 @@ public:
 				neighbor_indices[i] ^= 1 << i;
 			}
 	
-			std::pair<vertex_iter, vertex_iter> vp2;
+			std::pair<HNAGraph::Vertex_Iter, HNAGraph::Vertex_Iter> vp2;
 			for (vp2 = vertices(g); vp2.first != vp2.second; ++vp2.first)
 			{
 				std::vector<int>::iterator it;

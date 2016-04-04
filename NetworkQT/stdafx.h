@@ -15,6 +15,7 @@
 #include <boost/random/linear_congruential.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/thread.hpp>
+#include <boost/graph/graphviz.hpp>
 
 
 

@@ -1,5 +1,9 @@
 #include "stdafx.h"
 #include "GraphManager.h"
+#include "FileManager.h"
+#include "HNAGraphFactory.h"
+#include "HNAGraph.h"
+
 GraphManager* GraphManager::_graphManager = 0;
 
 GraphManager::GraphManager() : rend_ptr_(new CMDGraphRenderer())
@@ -18,7 +22,7 @@ GraphManager::~GraphManager()
 }
 
 
-void GraphManager::graphImageWithOptions(const GraphOptions& options, boost::filesystem::path& image_path, boost::filesystem::path& f_path)
+void GraphManager::graphImageWithOptions(const GraphBuilder::GraphOptions& options, boost::filesystem::path& image_path, boost::filesystem::path& f_path)
 {
 	std::unique_ptr<HNAGraph> graph = HNAGraphFactory::sharedFactory()->getGraph(options);
 	boost::filesystem::path folder_path = FileManager::sharedManager()->graph_path();

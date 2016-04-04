@@ -2,18 +2,9 @@
 #include "HNAGraph.h"
 #include "GraphBuilder.h"
 
-using namespace boost;
 
 class KnodelBuilder : GraphBuilder
 {
-	typedef adjacency_list<setS, vecS, undirectedS,
-		property<vertex_properties_t, HNANodeBundle>,
-		property<edge_properties_t, HNAEdgeBundle>,
-		HNAGraphBundle
-	> Graph;
-	typedef  graph_traits<Graph>::vertex_descriptor Vertex;
-	typedef  property_map<Graph, vertex_index_t>::type IndexMap;
-	typedef  graph_traits<Graph>::vertex_iterator vertex_iter;
 public:
 	KnodelBuilder()
 	{}

@@ -20,7 +20,7 @@ public:
 		draw();
 	}
 
-	static std::unique_ptr<HNABroadcastSession> session(const GraphOptions& g_op, const BroadcastSchemeOptions& scheme_options)
+	static std::unique_ptr<HNABroadcastSession> session(const GraphBuilder::GraphOptions& g_op, const BroadcastSchemeOptions& scheme_options)
 	{
 		Sim_Ptr sim = BroadcastSimulation::simulation(g_op, scheme_options);
 		Write_Ptr write = HNAGraphWriter::defaultWrtier();

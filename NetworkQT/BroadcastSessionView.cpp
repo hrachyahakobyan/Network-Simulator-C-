@@ -57,6 +57,7 @@ void BroadcastSessionView::on_finishButton_clicked()
 		msg.setText("Failed to finish in 100 steps");
 		msg.exec();
 	}
+	draw((*session_).last());
 }
 
 void BroadcastSessionView::on_redrawButton_clicked()

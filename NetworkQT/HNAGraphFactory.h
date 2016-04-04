@@ -1,15 +1,5 @@
 #pragma once
-#include "BinomialTreeBuilder.h"
-#include "CompleteGraphBuilder.h"
-#include "KnodelBuilder.h"
-#include "KAryTreeBuilder.h"
-#include "HypercubeBuilder.h"
-#include "GridGraphBuilder.h"
-#include "TorusGraphBuilder.h"
-#include "RandomGraphBuilder.h"
-#include "CCGraphBuilder.h"
-#include "Constants.h"
-
+#include "GraphBuilder.h"
 class HNAGraphFactory
 {
 public:
@@ -30,7 +20,7 @@ public:
 		}
 	}
 
-	std::unique_ptr<HNAGraph> getGraph(const GraphOptions& options);
+	std::unique_ptr<HNAGraph> getGraph(const GraphBuilder::GraphOptions& options);
 
 private:
 	static HNAGraphFactory* graphFactory;

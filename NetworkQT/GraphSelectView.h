@@ -18,16 +18,16 @@ public:
 public Q_SLOTS:
 	void on_graphTypeBox_currentIndexChanged(QString s);
 	void on_okButton_clicked();
-	void inputDialogFinished(int status, const GraphOptions& options);
+	void inputDialogFinished(int status, const GraphBuilder::GraphOptions& options);
 Q_SIGNALS:
-	void finishedSelect(int state, const GraphOptions& options, const boost::filesystem::path& image_path);
+	void finishedSelect(int state, const GraphBuilder::GraphOptions& options, const boost::filesystem::path& image_path);
 private:
 	Ui::GraphSelectView ui;
 
 	boost::filesystem::path graph_path_;
 	boost::filesystem::path folder_path_;
 	std::map<int, std::string> type_mapper_;
-	GraphOptions options_;
+	GraphBuilder::GraphOptions options_;
 
 	QGraphicsScene* imageScene_;
 	QPixmap image_;

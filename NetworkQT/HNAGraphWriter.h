@@ -2,9 +2,6 @@
 #include "HNAGraphPropertyWriter.h"
 #include "HNAEdgeWriter.h"
 #include "HNAVertexWriter.h"
-#include <boost/filesystem.hpp>
-#include <boost/graph/graphviz.hpp>
-
 
 class HNAGraphWriter
 {

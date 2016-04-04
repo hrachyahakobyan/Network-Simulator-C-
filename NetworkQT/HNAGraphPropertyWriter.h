@@ -29,7 +29,7 @@ public:
 		return HNAGraphPropertyWriter(HNAGraphPropertyWriterOptions::defaultOptions());
 	}
 
-	void set_g_prop(const HNAGraphBundle& g_prop)
+	void set_g_prop(const HNAGraph::HNAGraphBundle& g_prop)
 	{
 		g_prop_ = g_prop;
 	}
@@ -91,7 +91,7 @@ public:
 	}
 private:
 	HNAGraphPropertyWriterOptions options_;
-	HNAGraphBundle g_prop_;
+	HNAGraph::HNAGraphBundle g_prop_;
 	int n_edges_;
 	int n_vertices_;
 };

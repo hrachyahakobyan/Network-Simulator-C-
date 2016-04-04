@@ -6,7 +6,7 @@ class BroadcastSendSchemeM1 : public BroadcastSendScheme
 public:
 	BroadcastSendSchemeM1();
 	~BroadcastSendSchemeM1();
-	void send(const HNAGraph& graph, const Vertex& node, std::map<Vertex, HNANodeBundle>& messages) const;
+	void send(const HNAGraph& graph, const HNAGraph::Vertex& node, std::map<HNAGraph::Vertex, HNAGraph::HNANodeBundle>& messages) const;
 	std::string description() const;
 };
 
