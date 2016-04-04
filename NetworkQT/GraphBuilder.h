@@ -6,7 +6,10 @@ class GraphBuilder
 public:
 	struct GraphOptions
 	{
-		std::string type_;
+		enum GraphType{Graph_Binomial, Graph_Bipartite, Graph_CCC, Graph_Complete, Graph_Custom, Graph_Dipper, 
+					   Graph_FixedRandom, Graph_Grid, Graph_Hypercube, Graph_KTree, Graph_Knodel, Graph_Path,
+					   Graph_Random, Graph_RandomTree, Graph_Torus};
+		GraphType type_;
 		int n_vertices_;
 		int n_edges_;
 		int dim_;
@@ -18,6 +21,7 @@ public:
 		double p_;
 		std::string path_;
 	};
+
 public:
 	GraphBuilder();
 	virtual ~GraphBuilder();

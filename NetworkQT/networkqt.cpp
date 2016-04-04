@@ -51,7 +51,6 @@ void NetworkQT::graphSelectViewFinished(int state, const GraphBuilder::GraphOpti
 	qDebug() << "Graph Select view finished with state \n" << state << "\n";
 	if (state == QDialog::Accepted)
 	{
-		qDebug() << "type " << options.type_.c_str() << "\n";
 		qDebug() << "vertices " << options.n_vertices_ << "\n";
 		qDebug() << "height " << options.height_ << "\n";
 		qDebug() << "dimension " << options.dim_ << "\n";

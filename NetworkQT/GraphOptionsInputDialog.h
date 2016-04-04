@@ -8,12 +8,12 @@ class GraphOptionsInputDialog : public MultiInputDialog
 	Q_OBJECT
 
 public:
-	GraphOptionsInputDialog(QWidget *parent, QList<QString> labels, const std::string& type);
+	GraphOptionsInputDialog(QWidget *parent, QList<QString> labels, GraphBuilder::GraphOptions::GraphType type);
 	~GraphOptionsInputDialog();
 	void reject();
 	void accept();
 private:
-	std::string type_;
+	GraphBuilder::GraphOptions::GraphType type_;
 	GraphBuilder::GraphOptions options_;
 protected:
 	bool validate();

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "GraphOptionsInputDialog.h"
 
-GraphOptionsInputDialog::GraphOptionsInputDialog(QWidget *parent, QList<QString> labels, const std::string& type)
+GraphOptionsInputDialog::GraphOptionsInputDialog(QWidget *parent, QList<QString> labels, GraphBuilder::GraphOptions::GraphType type)
 	: MultiInputDialog(parent, labels), type_(type)
 {
 	for each (QLineEdit* line in lines_)
@@ -17,7 +17,7 @@ GraphOptionsInputDialog::~GraphOptionsInputDialog()
 
 bool GraphOptionsInputDialog::validate()
 {
-	if (type_.compare(GRAPH_BINOMIAL) == 0)
+	if (type_ == GraphBuilder::GraphOptions::GraphType::Graph_Binomial)
 	{
 		assert(inputs_map_.find("Height") != inputs_map_.end() && "ERROR: GraphOptionsInputDialog: Inputs do not contain required input");
 		QString h_string = inputs_map_["Height"];
@@ -31,7 +31,7 @@ bool GraphOptionsInputDialog::validate()
 		}
 		return false;
 	}
-	else if (type_.compare(GRAPH_COMPLETE) == 0)
+	else if (type_ == GraphBuilder::GraphOptions::GraphType::Graph_Complete)
 	{
 		assert(inputs_map_.find("Vertices") != inputs_map_.end() && "ERROR: GraphOptionsInputDialog: Inputs do not contain required input");
 		QString v_string = inputs_map_["Vertices"];
@@ -48,7 +48,8 @@ bool GraphOptionsInputDialog::validate()
 		}
 		return false;
 	}
-	else if (type_.compare(GRAPH_HYPER) == 0 || type_.compare(GRAPH_CCC) == 0)
+	else if (type_ == GraphBuilder::GraphOptions::GraphType::Graph_Hypercube || 
+			 type_ == GraphBuilder::GraphOptions::GraphType::Graph_CCC)
 	{
 		assert(inputs_map_.find("Dimension") != inputs_map_.end() && "ERROR: GraphOptionsInputDialog: Inputs do not contain required input");
 		QString d_string = inputs_map_["Dimension"];
@@ -64,7 +65,7 @@ bool GraphOptionsInputDialog::validate()
 		}
 		return false;
 	}
-	else if (type_.compare(GRAPH_KNODEL) == 0)
+	else if (type_ == GraphBuilder::GraphOptions::GraphType::Graph_Knodel)
 	{
 		assert(inputs_map_.find("Vertices") != inputs_map_.end() && "ERROR: GraphOptionsInputDialog: Inputs do not contain required input");
 		QString v_string = inputs_map_["Vertices"];
@@ -81,7 +82,7 @@ bool GraphOptionsInputDialog::validate()
 		}
 		return false;
 	}
-	else if (type_.compare(GRAPH_KTREE) == 0)
+	else if (type_ == GraphBuilder::GraphOptions::GraphType::Graph_Knodel)
 	{
 		if (inputs_map_.find("Height") == inputs_map_.end() || inputs_map_.find("K") == inputs_map_.end())
 			return false;
@@ -107,7 +108,8 @@ bool GraphOptionsInputDialog::validate()
 			return false;
 		}
 	}
-	else if (type_.compare(GRAPH_GRID) == 0 || type_.compare(GRAPH_TORUS) == 0)
+	else if (type_ == GraphBuilder::GraphOptions::GraphType::Graph_Torus || 
+			 type_ == GraphBuilder::GraphOptions::GraphType::Graph_Grid)
 	{
 		if (inputs_map_.find("N") == inputs_map_.end() || inputs_map_.find("M") == inputs_map_.end())
 			return false;
@@ -130,7 +132,7 @@ bool GraphOptionsInputDialog::validate()
 			return false;
 		}
 	}
-	else if (type_.compare(GRAPH_RANDOM) == 0)
+	else if (type_ == GraphBuilder::GraphOptions::GraphType::Graph_Random)
 	{
 		if (inputs_map_.find("Probability") == inputs_map_.end() || inputs_map_.find("Vertices") == inputs_map_.end())
 			return false;
@@ -148,7 +150,8 @@ bool GraphOptionsInputDialog::validate()
 			return false;
 		}
 	}
-	else if (type_.compare(GRAPH_BIPARTITE) == 0 || type_.compare(GRAPH_DIPPER) == 0)
+	else if (type_ == GraphBuilder::GraphOptions::GraphType::Graph_Bipartite || 
+			 type_ == GraphBuilder::GraphOptions::GraphType::Graph_Dipper)
 	{
 		if (inputs_map_.find("M") == inputs_map_.end() || inputs_map_.find("N") == inputs_map_.end())
 			return false;
@@ -166,7 +169,7 @@ bool GraphOptionsInputDialog::validate()
 			return false;
 		}
 	}
-	else if (type_.compare(GRAPH_RAND_TREE) == 0)
+	else if (type_ == GraphBuilder::GraphOptions::GraphType::Graph_RandomTree)
 	{
 		if (inputs_map_.find("Children") == inputs_map_.end() || inputs_map_.find("Height") == inputs_map_.end())
 			return false;
@@ -184,7 +187,7 @@ bool GraphOptionsInputDialog::validate()
 			return false;
 		}
 	}
-	else if (type_.compare(GRAPH_FIXED_RAND_TREE) == 0)
+	else if (type_ == GraphBuilder::GraphOptions::GraphType::Graph_FixedRandom)
 	{
 		assert(inputs_map_.find("Vertices") != inputs_map_.end() && "ERROR: GraphOptionsInputDialog: Inputs do not contain required input");
 		QString v_string = inputs_map_["Vertices"];

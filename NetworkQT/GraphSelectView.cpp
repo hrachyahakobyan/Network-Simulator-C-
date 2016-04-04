@@ -7,19 +7,19 @@ GraphSelectView::GraphSelectView(QWidget *parent)
 	ui.setupUi(this);
 	ui.okButton->setDisabled(true);
 	imageScene_ = new QGraphicsScene(this);
-	type_mapper_.insert(std::make_pair(1, GRAPH_COMPLETE));
-	type_mapper_.insert(std::make_pair(2, GRAPH_HYPER));
-	type_mapper_.insert(std::make_pair(3, GRAPH_KNODEL));
-	type_mapper_.insert(std::make_pair(4, GRAPH_GRID));
-	type_mapper_.insert(std::make_pair(5, GRAPH_TORUS));
-	type_mapper_.insert(std::make_pair(6, GRAPH_BINOMIAL));
-	type_mapper_.insert(std::make_pair(7, GRAPH_KTREE));
-	type_mapper_.insert(std::make_pair(8, GRAPH_RANDOM));
-	type_mapper_.insert(std::make_pair(9, GRAPH_CCC));
-	type_mapper_.insert(std::make_pair(10, GRAPH_BIPARTITE));
-	type_mapper_.insert(std::make_pair(11, GRAPH_DIPPER));
-	type_mapper_.insert(std::make_pair(12, GRAPH_RAND_TREE));
-	type_mapper_.insert(std::make_pair(13, GRAPH_FIXED_RAND_TREE));
+	type_mapper_.insert(std::make_pair(1, GraphBuilder::GraphOptions::GraphType::Graph_Complete));
+	type_mapper_.insert(std::make_pair(2, GraphBuilder::GraphOptions::GraphType::Graph_Hypercube));
+	type_mapper_.insert(std::make_pair(3, GraphBuilder::GraphOptions::GraphType::Graph_Knodel));
+	type_mapper_.insert(std::make_pair(4, GraphBuilder::GraphOptions::GraphType::Graph_Grid));
+	type_mapper_.insert(std::make_pair(5, GraphBuilder::GraphOptions::GraphType::Graph_Torus));
+	type_mapper_.insert(std::make_pair(6, GraphBuilder::GraphOptions::GraphType::Graph_Binomial));
+	type_mapper_.insert(std::make_pair(7, GraphBuilder::GraphOptions::GraphType::Graph_KTree));
+	type_mapper_.insert(std::make_pair(8, GraphBuilder::GraphOptions::GraphType::Graph_Random));
+	type_mapper_.insert(std::make_pair(9, GraphBuilder::GraphOptions::GraphType::Graph_CCC));
+	type_mapper_.insert(std::make_pair(10, GraphBuilder::GraphOptions::GraphType::Graph_Bipartite));
+	type_mapper_.insert(std::make_pair(11, GraphBuilder::GraphOptions::GraphType::Graph_Dipper));
+	type_mapper_.insert(std::make_pair(12, GraphBuilder::GraphOptions::GraphType::Graph_RandomTree));
+	type_mapper_.insert(std::make_pair(13, GraphBuilder::GraphOptions::GraphType::Graph_FixedRandom));
 }
 
 GraphSelectView::~GraphSelectView()
@@ -107,62 +107,62 @@ void GraphSelectView::accept()
 	Q_EMIT finishedSelect(QDialog::Accepted, options_, graph_path_);
 }
 
-void GraphSelectView::buildInputDialog(const std::string& type)
+void GraphSelectView::buildInputDialog(GraphBuilder::GraphOptions::GraphType type)
 {
 	QList<QString> labels;
-	if (type.compare(GRAPH_BINOMIAL) == 0)
+	if (type == GraphBuilder::GraphOptions::GraphType::Graph_Binomial)
 	{
 		labels << "Height";
 	}
-	else if (type.compare(GRAPH_COMPLETE) == 0)
+	else if (type == GraphBuilder::GraphOptions::GraphType::Graph_Complete)
 	{
 		labels << "Vertices";
 	}
-	else if (type.compare(GRAPH_HYPER) == 0)
+	else if (type == GraphBuilder::GraphOptions::GraphType::Graph_Hypercube)
 	{
 		labels << "Dimension";
 	}
-	else if (type.compare(GRAPH_KNODEL) == 0)
+	else if (type == GraphBuilder::GraphOptions::GraphType::Graph_Knodel)
 	{
 		labels << "Vertices";
 	}
-	else if (type.compare(GRAPH_KTREE) == 0)
+	else if (type == GraphBuilder::GraphOptions::GraphType::Graph_KTree)
 	{
 		labels << "Height";
 		labels << "K";
 	}
-	else if (type.compare(GRAPH_GRID) == 0)
+	else if (type == GraphBuilder::GraphOptions::GraphType::Graph_Grid)
 	{
 		labels << "N";
 		labels << "M";
 	}
-	else if (type.compare(GRAPH_TORUS) == 0)
+	else if (type == GraphBuilder::GraphOptions::GraphType::Graph_Torus)
 	{
 		labels << "N";
 		labels << "M";
 	}
-	else if (type.compare(GRAPH_RANDOM) == 0)
+	else if (type == GraphBuilder::GraphOptions::GraphType::Graph_Random)
 	{
 		labels << "Probability";
 		labels << "Vertices";
 	}
-	else if (type.compare(GRAPH_CCC) == 0)
+	else if (type == GraphBuilder::GraphOptions::GraphType::Graph_CCC)
 	{
 		labels << "Dimension";
 	}
-	else if (type.compare(GRAPH_BIPARTITE) == 0)
+	else if (type == GraphBuilder::GraphOptions::GraphType::Graph_Bipartite)
 	{
 		labels << "M" << "N";
 	}
-	else if (type.compare(GRAPH_DIPPER) == 0)
+	else if (type == GraphBuilder::GraphOptions::GraphType::Graph_Dipper)
 	{
 		labels << "M" << "N";
 	}
-	else if (type.compare(GRAPH_RAND_TREE) == 0)
+	else if (type == GraphBuilder::GraphOptions::GraphType::Graph_RandomTree)
 	{
 		labels << "Children" << "Height";
 	}
-	else if (type.compare(GRAPH_FIXED_RAND_TREE) == 0)
+	else if (type == GraphBuilder::GraphOptions::GraphType::Graph_FixedRandom)
 	{
 		labels << "Vertices";
 	}

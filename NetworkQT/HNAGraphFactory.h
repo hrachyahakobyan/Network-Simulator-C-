@@ -26,6 +26,6 @@ private:
 	static HNAGraphFactory* graphFactory;
 	HNAGraphFactory();
 	~HNAGraphFactory();
-	std::map<std::string, std::unique_ptr<GraphBuilder>> builders_;
+	std::map<GraphBuilder::GraphOptions::GraphType, std::unique_ptr<GraphBuilder>> builders_;
 };
 

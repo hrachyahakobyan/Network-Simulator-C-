@@ -26,14 +26,14 @@ private:
 
 	boost::filesystem::path graph_path_;
 	boost::filesystem::path folder_path_;
-	std::map<int, std::string> type_mapper_;
+	std::map<int, GraphBuilder::GraphOptions::GraphType> type_mapper_;
 	GraphBuilder::GraphOptions options_;
 
 	QGraphicsScene* imageScene_;
 	QPixmap image_;
 	GraphOptionsInputDialog* dialog_;
 
-	void buildInputDialog(const std::string& type);
+	void buildInputDialog(GraphBuilder::GraphOptions::GraphType type);
 };
 
 #endif // GRAPHSELECTVIEW_H
