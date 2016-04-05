@@ -323,6 +323,9 @@
     <ClCompile Include="FixedRanomTreeBuilder.cpp">
       <Filter>Source Files\Core\Graph\Builders</Filter>
     </ClCompile>
+    <ClCompile Include="GraphBuilderCliqueOfTrees.cpp">
+      <Filter>Source Files\Core\Graph\Builders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -489,6 +492,9 @@
     </ClInclude>
     <ClInclude Include="HNAVertexWriter.h">
       <Filter>Header Files\Core\Writers</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphBuilderCliqueOfTrees.h">
+      <Filter>Header Files\Core\Graph\Builders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

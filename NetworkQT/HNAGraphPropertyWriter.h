@@ -36,6 +36,7 @@ public:
 
 	void operator () (std::ostream& os) const
 	{
+		os << "node[fixedsize=true, shape=circle]\n";
 		if (options_.w_edges_ == false && options_.w_nodes_ == false && options_.w_type_ == false)
 			return;
 		os << "label = \"";
@@ -73,7 +74,7 @@ public:
 		title.append("\"");
 		os << title;
 
-		os << "fontsize=";
+		os << "\nfontsize=";
 		os << std::to_string(options_.font_size_);
 		os << "\n";
 

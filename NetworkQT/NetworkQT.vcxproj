@@ -161,6 +161,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="GraphBuilder.cpp" />
+    <ClCompile Include="GraphBuilderCliqueOfTrees.cpp" />
     <ClCompile Include="GraphManager.cpp" />
     <ClCompile Include="GraphOptionsInputDialog.cpp" />
     <ClCompile Include="GraphRenderer.cpp" />
@@ -209,6 +210,7 @@
     <ClInclude Include="CustomGraphBuilder.h" />
     <ClInclude Include="DipperGraphBuilder.h" />
     <ClInclude Include="FixedRanomTreeBuilder.h" />
+    <ClInclude Include="GraphBuilderCliqueOfTrees.h" />
     <ClInclude Include="PathGraphBuilder.h" />
     <ClInclude Include="RandomGraphBuilder.h" />
     <ClInclude Include="RandomManager.h" />

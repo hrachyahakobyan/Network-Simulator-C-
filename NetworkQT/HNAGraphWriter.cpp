@@ -10,6 +10,7 @@ std::unique_ptr<HNAGraphWriter> HNAGraphWriter::defaultWrtier()
 
 boost::filesystem::path HNAGraphWriter::writeGraph(const HNAGraph& graph, const boost::filesystem::path& path, const std::string& name) 
 {
+	v_.set_deg_map(graph.deg_map());
 	v_.set_v_prop(graph.v_params());
 	g_.set_g_prop(graph.properties());
 	g_.edges() = graph.getEdgeCount();

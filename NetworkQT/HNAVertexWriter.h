@@ -3,6 +3,9 @@
 #include "Constants.h"
 #include "HNAGraph.h"
 
+#define MIN_NODE_SIZE 0.4
+#define EXTRA_NODE_SIZE 0.4
+
 struct HNAVertexWriteOptions
 {
 	bool write_labels_;
@@ -42,6 +45,12 @@ public:
 		v_params_ = v_params;
 	}
 
+	void set_deg_map(const HNAGraph::Degree_Map& deg_map)
+	{
+		deg_map_ = deg_map;
+		getMinMax();
+	}
+
 	void operator()(std::ostream &out, const HNAGraph::Vertex& v) const
 	{
 		if (options_.write_labels_ == false && options_.write_colors_ == false)
@@ -56,13 +65,36 @@ public:
 			if (v_params_[v].state_ > - 1)
 				out << "style=filled, " << "fillcolor=\"" << color_map_.at(v_params_[v].state_) << "\", fontcolor=\"" << font_color_map_.at(color_map_.at(v_params_[v].state_)) << "\"";
 		}
+		if (deg_map_.empty() == false)
+		{
+			double size = MIN_NODE_SIZE + EXTRA_NODE_SIZE * double(deg_map_.at(v)) / minmax_.second;
+			out << ", width=" << std::to_string(size);
+		}
 		out << "]";
 	}
+
 
 private:
 	HNAVertexWriteOptions options_;
 	HNAGraph::Const_Vertex_Params v_params_;
+	HNAGraph::Degree_Map deg_map_;
+	std::pair<int, int> minmax_;
 	std::map<int, std::string> color_map_;
 	std::map<std::string, std::string> font_color_map_;
+	void getMinMax()
+	{
+		int min = INT_MAX;
+		int max = -1;
+		std::map<HNAGraph::Vertex, int>::iterator it;
+		for (it = deg_map_.begin(); it != deg_map_.end(); ++it)
+		{
+			if ((*it).second > max)
+				max = (*it).second;
+			if ((*it).second < min)
+				min = (*it).second;
+		}
+		minmax_.first = min;
+		minmax_.second = max;
+	}
 };
 

@@ -54,6 +54,7 @@ public:
 	typedef std::pair<Out_Edge_Iter, Out_Edge_Iter> Out_Edge_Range;
 	typedef std::pair<Vertex_Iter, Vertex_Iter> Vertex_Range;
 	typedef std::pair<Edge_Iter, Edge_Iter> Edge_Range;
+	typedef std::map<Vertex, int> Degree_Map;
 
 public:
 
@@ -195,6 +196,16 @@ public:
 		return get(boost::vertex_index, g_container);
 	}
 
+	Degree_Map deg_map() const
+	{
+		Degree_Map map;
+		Vertex_Range vp = boost::vertices(g_container);
+		for (; vp.first != vp.second; ++vp.first)
+		{
+			map.insert(std::make_pair(*vp.first, getVertexDegree(*vp.first)));
+		}
+		return map;
+	}
 
 	Const_Vertex_Params v_params() const
 	{
