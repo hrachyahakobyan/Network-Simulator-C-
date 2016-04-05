@@ -54,7 +54,6 @@ void NetworkQT::graphSelectViewFinished(int state, const GraphBuilder::GraphOpti
 		qDebug() << "vertices " << options.n_vertices_ << "\n";
 		qDebug() << "height " << options.height_ << "\n";
 		qDebug() << "dimension " << options.dim_ << "\n";
-		qDebug() << "k " << options.k_ << "\n";
 		g_op_ = options;
 		if (graphSelectView_->shouldSave_ == false)
 		{

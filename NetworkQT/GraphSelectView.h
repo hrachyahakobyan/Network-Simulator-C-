@@ -4,6 +4,7 @@
 #include "ui_GraphSelectView.h"
 #include "GraphManager.h"
 #include "GraphOptionsInputDialog.h"
+#include "MultiSpinboxDialog.h"
 
 class GraphSelectView : public QDialog
 {
@@ -18,7 +19,7 @@ public:
 public Q_SLOTS:
 	void on_graphTypeBox_currentIndexChanged(QString s);
 	void on_okButton_clicked();
-	void inputDialogFinished(int status, const GraphBuilder::GraphOptions& options);
+	void spinDialogDidFinish(int status, const QMap<QString, int>& input);
 Q_SIGNALS:
 	void finishedSelect(int state, const GraphBuilder::GraphOptions& options, const boost::filesystem::path& image_path);
 private:
@@ -26,14 +27,17 @@ private:
 
 	boost::filesystem::path graph_path_;
 	boost::filesystem::path folder_path_;
-	std::map<int, GraphBuilder::GraphOptions::GraphType> type_mapper_;
 	GraphBuilder::GraphOptions options_;
 
 	QGraphicsScene* imageScene_;
 	QPixmap image_;
 	GraphOptionsInputDialog* dialog_;
+	MultiSpinboxDialog* spinDialog_;
+	QMap<int, QPair<GraphBuilder::GraphOptions::GraphType, QList<QString>>> inputMap_;
+	QMap<GraphBuilder::GraphOptions::GraphType, QList<QPair<QString, QPair<int, int>>>> spinBoxMap_;
 
-	void buildInputDialog(GraphBuilder::GraphOptions::GraphType type);
+	void buildSpinDialog(GraphBuilder::GraphOptions::GraphType type);
+	void parseInput(const QMap<QString, int>& input, GraphBuilder::GraphOptions& options);
 };
 
 #endif // GRAPHSELECTVIEW_H

@@ -326,6 +326,15 @@
     <ClCompile Include="GraphBuilderCliqueOfTrees.cpp">
       <Filter>Source Files\Core\Graph\Builders</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MultiSpinboxDialog.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MultiSpinboxDialog.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiSpinboxDialog.cpp">
+      <Filter>Source Files\QT</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -532,6 +541,9 @@
       <Filter>Header Files\QT</Filter>
     </CustomBuild>
     <CustomBuild Include="BroadcastSessionEditInputDialog.h">
+      <Filter>Header Files\QT</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MultiSpinboxDialog.h">
       <Filter>Header Files\QT</Filter>
     </CustomBuild>
   </ItemGroup>

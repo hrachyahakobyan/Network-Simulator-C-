@@ -17,7 +17,8 @@ GraphOptionsInputDialog::~GraphOptionsInputDialog()
 
 bool GraphOptionsInputDialog::validate()
 {
-	if (type_ == GraphBuilder::GraphOptions::GraphType::Graph_Binomial)
+	return true;
+	/*if (type_ == GraphBuilder::GraphOptions::GraphType::Graph_Binomial)
 	{
 		assert(inputs_map_.find("Height") != inputs_map_.end() && "ERROR: GraphOptionsInputDialog: Inputs do not contain required input");
 		QString h_string = inputs_map_["Height"];
@@ -203,7 +204,7 @@ bool GraphOptionsInputDialog::validate()
 		}
 		return false;
 	}
-	return false;
+	return false;*/
 }
 
 // Slots

@@ -13,7 +13,9 @@ public:
 	std::unique_ptr<HNAGraph> getGraph(const GraphOptions& options)
 	{
 		int n = options.n_vertices_;
-		assert(n % 2 != 1 && "ERROR: KnodelBuilder: n must be even");
+		assert(n > 0 && "ERROR: KnodelBuilder: n must be positive");
+		if (n % 2 == 1)
+			n++;
 		int max_deg = int(floor(log2(n)));
 		std::unique_ptr<HNAGraph>  gptr(new HNAGraph(n));
 		for (int s = 1; s <= max_deg; s++)

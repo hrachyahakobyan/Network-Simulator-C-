@@ -18,7 +18,7 @@ public:
 		int m_;
 		int n_;
 		int children_;
-		double p_;
+		int p_;
 		std::string path_;
 	};
 

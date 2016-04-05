@@ -7,19 +7,47 @@ GraphSelectView::GraphSelectView(QWidget *parent)
 	ui.setupUi(this);
 	ui.okButton->setDisabled(true);
 	imageScene_ = new QGraphicsScene(this);
-	type_mapper_.insert(std::make_pair(1, GraphBuilder::GraphOptions::GraphType::Graph_Complete));
-	type_mapper_.insert(std::make_pair(2, GraphBuilder::GraphOptions::GraphType::Graph_Hypercube));
-	type_mapper_.insert(std::make_pair(3, GraphBuilder::GraphOptions::GraphType::Graph_Knodel));
-	type_mapper_.insert(std::make_pair(4, GraphBuilder::GraphOptions::GraphType::Graph_Grid));
-	type_mapper_.insert(std::make_pair(5, GraphBuilder::GraphOptions::GraphType::Graph_Torus));
-	type_mapper_.insert(std::make_pair(6, GraphBuilder::GraphOptions::GraphType::Graph_Binomial));
-	type_mapper_.insert(std::make_pair(7, GraphBuilder::GraphOptions::GraphType::Graph_KTree));
-	type_mapper_.insert(std::make_pair(8, GraphBuilder::GraphOptions::GraphType::Graph_Random));
-	type_mapper_.insert(std::make_pair(9, GraphBuilder::GraphOptions::GraphType::Graph_CCC));
-	type_mapper_.insert(std::make_pair(10, GraphBuilder::GraphOptions::GraphType::Graph_Bipartite));
-	type_mapper_.insert(std::make_pair(11, GraphBuilder::GraphOptions::GraphType::Graph_Dipper));
-	type_mapper_.insert(std::make_pair(12, GraphBuilder::GraphOptions::GraphType::Graph_RandomTree));
-	type_mapper_.insert(std::make_pair(13, GraphBuilder::GraphOptions::GraphType::Graph_FixedRandom));
+
+	inputMap_.insert(1, qMakePair(GraphBuilder::GraphOptions::GraphType::Graph_Complete, QList<QString>({"Vertices"})));
+	inputMap_.insert(2, qMakePair(GraphBuilder::GraphOptions::GraphType::Graph_Hypercube, QList<QString>({ "Dimension" })));
+	inputMap_.insert(3, qMakePair(GraphBuilder::GraphOptions::GraphType::Graph_Knodel, QList<QString>({ "Vertices" })));
+	inputMap_.insert(4, qMakePair(GraphBuilder::GraphOptions::GraphType::Graph_Grid, QList<QString>({ "M", "N" })));
+	inputMap_.insert(5, qMakePair(GraphBuilder::GraphOptions::GraphType::Graph_Torus, QList<QString>({ "M", "N" })));
+	inputMap_.insert(6, qMakePair(GraphBuilder::GraphOptions::GraphType::Graph_Binomial, QList<QString>({ "Height" })));
+	inputMap_.insert(7, qMakePair(GraphBuilder::GraphOptions::GraphType::Graph_KTree, QList<QString>({ "Height", "K" })));
+	inputMap_.insert(8, qMakePair(GraphBuilder::GraphOptions::GraphType::Graph_Random, QList<QString>({ "Vertices", "Probability" })));
+	inputMap_.insert(9, qMakePair(GraphBuilder::GraphOptions::GraphType::Graph_CCC, QList<QString>({ "Dimension" })));
+	inputMap_.insert(10, qMakePair(GraphBuilder::GraphOptions::GraphType::Graph_Bipartite, QList<QString>({ "M", "N" })));
+	inputMap_.insert(11, qMakePair(GraphBuilder::GraphOptions::GraphType::Graph_Dipper, QList<QString>({ "M", "N" })));
+	inputMap_.insert(12, qMakePair(GraphBuilder::GraphOptions::GraphType::Graph_RandomTree, QList<QString>({ "Height", "Children" })));
+	inputMap_.insert(13, qMakePair(GraphBuilder::GraphOptions::GraphType::Graph_FixedRandom, QList<QString>({ "Vertices" })));
+
+	spinBoxMap_.insert(GraphBuilder::GraphOptions::GraphType::Graph_Complete, QList<QPair<QString, QPair<int, int>>>(
+	{qMakePair(QString("Vertices"), qMakePair(1, 20))}));
+	spinBoxMap_.insert(GraphBuilder::GraphOptions::GraphType::Graph_Hypercube, QList<QPair<QString, QPair<int, int>>>(
+	{ qMakePair(QString("Dimension"), qMakePair(1, 7)) }));
+	spinBoxMap_.insert(GraphBuilder::GraphOptions::GraphType::Graph_Knodel, QList<QPair<QString, QPair<int, int>>>(
+	{ qMakePair(QString("Vertices"), qMakePair(1, 20)) }));
+	spinBoxMap_.insert(GraphBuilder::GraphOptions::GraphType::Graph_Grid, QList<QPair<QString, QPair<int, int>>>(
+	{ qMakePair(QString("M"), qMakePair(1, 20)), qMakePair(QString("N"), qMakePair(1, 20)) }));
+	spinBoxMap_.insert(GraphBuilder::GraphOptions::GraphType::Graph_Torus, QList<QPair<QString, QPair<int, int>>>(
+	{ qMakePair(QString("M"), qMakePair(1, 20)), qMakePair(QString("N"), qMakePair(1, 20)) }));
+	spinBoxMap_.insert(GraphBuilder::GraphOptions::GraphType::Graph_Binomial, QList<QPair<QString, QPair<int, int>>>(
+	{ qMakePair(QString("Height"), qMakePair(1, 10))}));
+	spinBoxMap_.insert(GraphBuilder::GraphOptions::GraphType::Graph_KTree, QList<QPair<QString, QPair<int, int>>>(
+	{ qMakePair(QString("Height"), qMakePair(1, 5)), qMakePair(QString("K"), qMakePair(1, 5)) }));
+	spinBoxMap_.insert(GraphBuilder::GraphOptions::GraphType::Graph_Random, QList<QPair<QString, QPair<int, int>>>(
+	{ qMakePair(QString("Vertices"), qMakePair(1, 200)), qMakePair(QString("Probability"), qMakePair(1, 100)) }));
+	spinBoxMap_.insert(GraphBuilder::GraphOptions::GraphType::Graph_CCC, QList<QPair<QString, QPair<int, int>>>(
+	{ qMakePair(QString("Dimension"), qMakePair(1, 7)) }));
+	spinBoxMap_.insert(GraphBuilder::GraphOptions::GraphType::Graph_Bipartite, QList<QPair<QString, QPair<int, int>>>(
+	{ qMakePair(QString("M"), qMakePair(1, 20)), qMakePair(QString("N"), qMakePair(1, 20)) }));
+	spinBoxMap_.insert(GraphBuilder::GraphOptions::GraphType::Graph_Dipper, QList<QPair<QString, QPair<int, int>>>(
+	{ qMakePair(QString("M"), qMakePair(1, 20)), qMakePair(QString("N"), qMakePair(1, 20)) }));
+	spinBoxMap_.insert(GraphBuilder::GraphOptions::GraphType::Graph_RandomTree, QList<QPair<QString, QPair<int, int>>>(
+	{ qMakePair(QString("Height"), qMakePair(1, 5)), qMakePair(QString("Children"), qMakePair(1, 5)) }));
+	spinBoxMap_.insert(GraphBuilder::GraphOptions::GraphType::Graph_FixedRandom, QList<QPair<QString, QPair<int, int>>>(
+	{ qMakePair(QString("Vertices"), qMakePair(1, 200)) }));
 }
 
 GraphSelectView::~GraphSelectView()
@@ -28,6 +56,8 @@ GraphSelectView::~GraphSelectView()
 	delete imageScene_;
 	if (dialog_ != 0)
 		delete dialog_;
+	if (spinDialog_ != 0)
+		delete spinDialog_;
 }
 
 void GraphSelectView::on_graphTypeBox_currentIndexChanged(QString s)
@@ -38,18 +68,20 @@ void GraphSelectView::on_graphTypeBox_currentIndexChanged(QString s)
 	int index = ui.graphTypeBox->currentIndex();
 	if (index != 0)
 	{	
-		buildInputDialog(type_mapper_.at(index));
-		connect(dialog_, SIGNAL(finishedInput(int, const GraphBuilder::GraphOptions&)), this, SLOT(inputDialogFinished(int, const GraphBuilder::GraphOptions&)));
-		dialog_->exec();
+		buildSpinDialog(inputMap_[index].first);
+		connect(spinDialog_, SIGNAL(multiSpinboxDialogDidFinish(int, const QMap<QString, int>&)), this, SLOT(spinDialogDidFinish(int, const QMap<QString, int>&)));
+		spinDialog_->exec();
 	}
 }
 
 
-void GraphSelectView::inputDialogFinished(int status, const GraphBuilder::GraphOptions& options)
+void GraphSelectView::spinDialogDidFinish(int status, const QMap<QString, int>& input)
 {
+	qDebug() << " Spin dialog finished with state " << status << "\n";
 	if (status == QDialog::Accepted)
 	{
-		options_ = options;
+		parseInput(input, options_);
+		options_.type_ = inputMap_[ui.graphTypeBox->currentIndex()].first;
 		GraphManager::sharedManager()->graphImageWithOptions(options_, graph_path_, folder_path_);
 		image_.load(graph_path_.string().c_str());
 		imageScene_->clear();
@@ -58,8 +90,8 @@ void GraphSelectView::inputDialogFinished(int status, const GraphBuilder::GraphO
 		ui.graphicsView->setScene(imageScene_);
 		ui.okButton->setEnabled(true);
 	}
-	delete dialog_;
-	dialog_ = 0;
+	delete spinDialog_;
+	spinDialog_ = 0;
 	ui.graphTypeBox->setCurrentIndex(0);
 }
 
@@ -107,65 +139,29 @@ void GraphSelectView::accept()
 	Q_EMIT finishedSelect(QDialog::Accepted, options_, graph_path_);
 }
 
-void GraphSelectView::buildInputDialog(GraphBuilder::GraphOptions::GraphType type)
+
+void GraphSelectView::buildSpinDialog(GraphBuilder::GraphOptions::GraphType type)
 {
-	QList<QString> labels;
-	if (type == GraphBuilder::GraphOptions::GraphType::Graph_Binomial)
-	{
-		labels << "Height";
-	}
-	else if (type == GraphBuilder::GraphOptions::GraphType::Graph_Complete)
-	{
-		labels << "Vertices";
-	}
-	else if (type == GraphBuilder::GraphOptions::GraphType::Graph_Hypercube)
-	{
-		labels << "Dimension";
-	}
-	else if (type == GraphBuilder::GraphOptions::GraphType::Graph_Knodel)
-	{
-		labels << "Vertices";
-	}
-	else if (type == GraphBuilder::GraphOptions::GraphType::Graph_KTree)
-	{
-		labels << "Height";
-		labels << "K";
-	}
-	else if (type == GraphBuilder::GraphOptions::GraphType::Graph_Grid)
-	{
-		labels << "N";
-		labels << "M";
-	}
-	else if (type == GraphBuilder::GraphOptions::GraphType::Graph_Torus)
-	{
-		labels << "N";
-		labels << "M";
-	}
-	else if (type == GraphBuilder::GraphOptions::GraphType::Graph_Random)
-	{
-		labels << "Probability";
-		labels << "Vertices";
-	}
-	else if (type == GraphBuilder::GraphOptions::GraphType::Graph_CCC)
-	{
-		labels << "Dimension";
-	}
-	else if (type == GraphBuilder::GraphOptions::GraphType::Graph_Bipartite)
-	{
-		labels << "M" << "N";
-	}
-	else if (type == GraphBuilder::GraphOptions::GraphType::Graph_Dipper)
-	{
-		labels << "M" << "N";
-	}
-	else if (type == GraphBuilder::GraphOptions::GraphType::Graph_RandomTree)
-	{
-		labels << "Children" << "Height";
-	}
-	else if (type == GraphBuilder::GraphOptions::GraphType::Graph_FixedRandom)
-	{
-		labels << "Vertices";
-	}
-	dialog_ = new GraphOptionsInputDialog(this, labels, type);
-	labels.clear();
+	spinDialog_ = new MultiSpinboxDialog(this, spinBoxMap_[type]);
 }
+
+void GraphSelectView::parseInput(const QMap<QString, int>& inputs_map_, GraphBuilder::GraphOptions& options)
+{
+	if (inputs_map_.find("Height") != inputs_map_.end())
+		options_.height_ = inputs_map_["Height"];
+	if (inputs_map_.find("K") != inputs_map_.end())
+		options_.k_ = inputs_map_["K"];
+	if (inputs_map_.find("Vertices") != inputs_map_.end())
+		options_.n_vertices_ = inputs_map_["Vertices"];
+	if (inputs_map_.find("Dimension") != inputs_map_.end())
+		options_.dim_ = inputs_map_["Dimension"];
+	if (inputs_map_.find("M") != inputs_map_.end())
+		options_.m_ = inputs_map_["M"];
+	if (inputs_map_.find("N") != inputs_map_.end())
+		options_.n_ = inputs_map_["N"];
+	if (inputs_map_.find("Probability") != inputs_map_.end())
+		options_.p_ = inputs_map_["Probability"];
+	if (inputs_map_.find("Children") != inputs_map_.end())
+		options_.children_ = inputs_map_["Children"];
+}
+
