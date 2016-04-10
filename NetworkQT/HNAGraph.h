@@ -73,7 +73,17 @@ public:
 
 	HNAGraph(const HNAGraph& g) :
 		g_container(g.g_container)
-	{}
+	{
+		std::cout << "Copy constructor \n";
+	}
+
+	/* operators */
+	HNAGraph& operator=(const HNAGraph &rhs)
+	{
+		g_container = rhs.g_container;
+		std::cout << "Copy assignment \n";
+		return *this;
+	}
 
 	virtual ~HNAGraph()
 	{
@@ -200,11 +210,24 @@ public:
 	{
 		Degree_Map map;
 		Vertex_Range vp = boost::vertices(g_container);
+		boost::degree_property_map<GraphContainer> d = boost::make_degree_map(g_container);
 		for (; vp.first != vp.second; ++vp.first)
 		{
-			map.insert(std::make_pair(*vp.first, getVertexDegree(*vp.first)));
+			map.insert(std::make_pair(*vp.first, d[*vp.first]));
 		}
 		return map;
+	}
+
+	int deg_sum() const
+	{
+		int sum = 0;
+		Vertex_Range vp = boost::vertices(g_container);
+		boost::degree_property_map<GraphContainer> d = boost::make_degree_map(g_container);
+		for (; vp.first != vp.second; ++vp.first)
+		{
+			sum += d[*vp.first];
+		}
+		return sum;
 	}
 
 	Const_Vertex_Params v_params() const
@@ -222,6 +245,28 @@ public:
 	Vertex_Range getVertices() const
 	{
 		return vertices(g_container);
+	}
+
+	std::set<Vertex> getVerticesSet() const
+	{
+		std::set<Vertex> set;
+		Vertex_Range vp = getVertices();
+		for (vp; vp.first != vp.second; ++vp.first)
+		{
+			set.insert(*vp.first);
+		}
+		return set;
+	}
+
+	std::vector<Vertex> getVerticesVector() const
+	{
+		std::vector<Vertex> vec;
+		Vertex_Range vp = getVertices();
+		for (vp; vp.first != vp.second; ++vp.first)
+		{
+			vec.push_back(*vp.first);
+		}
+		return vec;
 	}
 
 	Adjacency_Range getAdjacentVertices(const Vertex& v) const
@@ -333,12 +378,7 @@ public:
 		return false;
 	}
 
-	/* operators */
-	HNAGraph& operator=(const HNAGraph &rhs)
-	{
-		g_container = rhs.g_container;
-		return *this;
-	}
+
 
 private:
 	GraphContainer g_container;

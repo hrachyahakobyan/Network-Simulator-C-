@@ -335,6 +335,9 @@
     <ClCompile Include="MultiSpinboxDialog.cpp">
       <Filter>Source Files\QT</Filter>
     </ClCompile>
+    <ClCompile Include="ScaleFreeRandomGraphBuilder.cpp">
+      <Filter>Source Files\Core\Graph\Builders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -503,6 +506,9 @@
       <Filter>Header Files\Core\Writers</Filter>
     </ClInclude>
     <ClInclude Include="GraphBuilderCliqueOfTrees.h">
+      <Filter>Header Files\Core\Graph\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="ScaleFreeRandomGraphBuilder.h">
       <Filter>Header Files\Core\Graph\Builders</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "RandomManager.h"
 #include <time.h>
+#define EPSILON 0.0001
 
 RandomManager* RandomManager::sharedRandomManager = NULL;
 
@@ -34,6 +35,24 @@ std::vector<int> RandomManager::random(int a, int b, int n)
 	return vec;
 }
 
+int RandomManager::random_index(std::vector<double> p)
+{
+	if (p.size() < 2)
+		return 0;
+	std::vector<double> intervals(p.size(), p[0]);
+	for (int i = 1; i < p.size(); i++)
+	{
+		intervals[i] = intervals[i - 1] + p[i];
+	}
+	assert(eq(intervals[p.size() - 1],1) && "ERROR: RandomManager: p do not sum to 1");
+	double r = ((double)rand() / RAND_MAX);
+	for (int i = 0; i < intervals.size(); i++)
+	{
+		if ( leq(r,intervals[i]))
+			return i;
+	}
+	return 0;
+}
 
 std::vector<int> RandomManager::pruefer(int n)
 {
@@ -41,12 +60,28 @@ std::vector<int> RandomManager::pruefer(int n)
 	return random(1, n, n - 2);
 }
 			
+bool RandomManager::event(double p)
+{
+	assert(p >= 0 && p <= 1 && "ERROR: RandomManager: invalid probability");
+	double r = ((double)rand() / RAND_MAX);
+	return bool(r <= p);
+}
 			
 			
-			
-			
-			
-			
+bool RandomManager::leq(double a, double b)
+{
+	return (a < b || eq(a, b));
+}
+
+bool RandomManager::eq(double a, double b)
+{
+	return std::abs(a - b) < EPSILON;
+}
+
+bool RandomManager::beq(double a, double b)
+{
+	return (a > b || eq(a, b));
+}
 			
 			
 			

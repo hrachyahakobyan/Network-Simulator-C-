@@ -192,6 +192,7 @@
     <ClCompile Include="RandomGraphBuilder.cpp" />
     <ClCompile Include="RandomManager.cpp" />
     <ClCompile Include="RandomTreeBuilder.cpp" />
+    <ClCompile Include="ScaleFreeRandomGraphBuilder.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -232,6 +233,7 @@
     <ClInclude Include="RandomGraphBuilder.h" />
     <ClInclude Include="RandomManager.h" />
     <ClInclude Include="RandomTreeBuilder.h" />
+    <ClInclude Include="ScaleFreeRandomGraphBuilder.h" />
     <ClInclude Include="TorusGraphBuilder.h" />
     <CustomBuild Include="BroadcastSelectView.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>

@@ -97,6 +97,11 @@
    </item>
    <item>
     <property name="text">
+     <string>Scale Free Random Graph</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
      <string>Custom</string>
     </property>
    </item>

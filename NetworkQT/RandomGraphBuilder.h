@@ -19,7 +19,7 @@ public:
 		std::unique_ptr<HNAGraph> gptr(new HNAGraph());
 		(*gptr).g_container = g;
 		(*gptr).properties().type_ = "Random";
-		return gptr;
+		return std::move(gptr);
 	}
 };
 

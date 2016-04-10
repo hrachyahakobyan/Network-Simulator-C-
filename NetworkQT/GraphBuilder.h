@@ -8,7 +8,7 @@ public:
 	{
 		enum GraphType{Graph_Binomial, Graph_Bipartite, Graph_CCC, Graph_Complete, Graph_Custom, Graph_Dipper, 
 					   Graph_FixedRandom, Graph_Grid, Graph_Hypercube, Graph_KTree, Graph_Knodel, Graph_Path,
-					   Graph_Random, Graph_RandomTree, Graph_Torus};
+					   Graph_Random, Graph_RandomTree, Graph_Torus, Graph_ScaleFreeRandom};
 		GraphType type_;
 		int n_vertices_;
 		int n_edges_;

@@ -6,6 +6,7 @@ MultiInputDialog::MultiInputDialog(QWidget *parent)
 {
 
 }
+
 MultiInputDialog::MultiInputDialog(QWidget* parent, QList<QString> labels, QString title)
 	: QDialog(parent)
 {

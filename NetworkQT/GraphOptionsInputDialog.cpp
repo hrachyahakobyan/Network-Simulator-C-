@@ -6,7 +6,7 @@ GraphOptionsInputDialog::GraphOptionsInputDialog(QWidget *parent, QList<QString>
 {
 	for each (QLineEdit* line in lines_)
 	{
-		line->setValidator(new QIntValidator(1, 200, this));
+		line->setValidator(new QIntValidator(1, 6000, this));
 	}
 }
 
