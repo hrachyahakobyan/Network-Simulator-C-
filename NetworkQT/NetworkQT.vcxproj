@@ -110,6 +110,11 @@
     <ClCompile Include="CustomGraphBuilder.cpp" />
     <ClCompile Include="DefaultNotificationCenter.cpp" />
     <ClCompile Include="DipperGraphBuilder.cpp" />
+    <ClCompile Include="Disease.cpp" />
+    <ClCompile Include="DiseaseFactory.cpp" />
+    <ClCompile Include="DiseaseSession.cpp" />
+    <ClCompile Include="DiseaseSimulation.cpp" />
+    <ClCompile Include="DiseaseSimulationSIR.cpp" />
     <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="FixedRanomTreeBuilder.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_BroadcastSelectView.cpp">
@@ -193,6 +198,8 @@
     <ClCompile Include="RandomManager.cpp" />
     <ClCompile Include="RandomTreeBuilder.cpp" />
     <ClCompile Include="ScaleFreeRandomGraphBuilder.cpp" />
+    <ClCompile Include="Session.cpp" />
+    <ClCompile Include="Simulation.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -217,6 +224,11 @@
     <ClInclude Include="CleanUp.h" />
     <ClInclude Include="CustomGraphBuilder.h" />
     <ClInclude Include="DipperGraphBuilder.h" />
+    <ClInclude Include="Disease.h" />
+    <ClInclude Include="DiseaseFactory.h" />
+    <ClInclude Include="DiseaseSession.h" />
+    <ClInclude Include="DiseaseSimulation.h" />
+    <ClInclude Include="DiseaseSimulationSIR.h" />
     <ClInclude Include="FixedRanomTreeBuilder.h" />
     <ClInclude Include="GraphBuilderCliqueOfTrees.h" />
     <CustomBuild Include="MultiSpinboxDialog.h">
@@ -234,6 +246,8 @@
     <ClInclude Include="RandomManager.h" />
     <ClInclude Include="RandomTreeBuilder.h" />
     <ClInclude Include="ScaleFreeRandomGraphBuilder.h" />
+    <ClInclude Include="Session.h" />
+    <ClInclude Include="Simulation.h" />
     <ClInclude Include="TorusGraphBuilder.h" />
     <CustomBuild Include="BroadcastSelectView.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>

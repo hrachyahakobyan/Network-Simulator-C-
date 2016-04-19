@@ -2,7 +2,7 @@
 #include "BroadcastScheme.h"
 
 
-void  BroadcastScheme::send(const HNAGraph& graph, const HNAGraph::Vertex& node, std::map<HNAGraph::Vertex, HNAGraph::HNANodeBundle>& messages) const
+void BroadcastScheme::send(const HNAGraph& graph, const HNAGraph::Vertex& node, std::map<HNAGraph::Vertex, HNAGraph::HNANodeBundle>& messages) const
 {
 	(*s_).send(graph, node, messages);
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include "GraphBuilder.h"
 #include "RandomManager.h"
+#include "FixedRanomTreeBuilder.h"
 
 class ScaleFreeRandomGraphBuilder : public GraphBuilder
 {
@@ -16,7 +17,10 @@ public:
 		// number of edges for each new vertex
 		int k = options.k_;
 		assert(n > 0 && m > 0 && k > 0 && "ERROR:ScaleFreeRandomGraphBuilder: invalid parameters");
-		std::unique_ptr<HNAGraph> gptr(new HNAGraph(m));
+		FixedRanomTreeBuilder tb;
+		GraphBuilder::GraphOptions op;
+		op.n_vertices_ = m;
+		std::unique_ptr<HNAGraph> gptr = tb.getGraph(op);
 		RandomManager* rand = RandomManager::sharedManager();
 		for (HNAGraph::Vertex v = m; v < n + m; v++)
 		{

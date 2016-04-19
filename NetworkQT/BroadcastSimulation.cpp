@@ -84,12 +84,6 @@ bool BroadcastSimulation::finished() const
 }
 
 
-const HNAGraph& BroadcastSimulation::state() const
-{
-	return (*graph_p_);
-}
-
-
 void BroadcastSimulation::edit(const GraphEditAction& edit)
 {
 	switch (edit.type_)
@@ -129,7 +123,6 @@ void BroadcastSimulation::add_vertex()
 	(*graph_p_).AddVertex();
 }
 
-
 void BroadcastSimulation::add_edge(int source, int target)
 {
 	(*graph_p_).AddEdge(source, target);
@@ -144,7 +137,6 @@ void BroadcastSimulation::delete_vertex(int vertex)
 {
 	(*graph_p_).RemoveVertex(vertex);
 }
-
 
 void BroadcastSimulation::set_state(int vertex, int state)
 {

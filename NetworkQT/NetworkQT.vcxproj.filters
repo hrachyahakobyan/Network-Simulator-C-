@@ -54,23 +54,14 @@
     <Filter Include="Header Files\Core\Rendering">
       <UniqueIdentifier>{c2490844-cf9f-49a1-98c6-773d037d7cbc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Core\Session">
-      <UniqueIdentifier>{1016c6da-d7be-4df5-a446-564627cee98b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Core\Writers">
       <UniqueIdentifier>{de117f77-a542-4786-a9bf-142ef6ef110a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Core\Broadcast">
-      <UniqueIdentifier>{9a035f35-55cc-407f-9e50-42368bad2fb0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Core\Graph">
       <UniqueIdentifier>{17ccede2-3314-4ea7-9312-873c9876c92f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Core\Auxillary">
       <UniqueIdentifier>{bbee14c4-aa52-477c-b115-4ac17ba86b67}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Core\Broadcast">
-      <UniqueIdentifier>{a7da9d32-4335-4f12-a344-9446b4548adc}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Core\Writers">
       <UniqueIdentifier>{6e98d762-663c-47ce-8adb-c0d081129010}</UniqueIdentifier>
@@ -81,29 +72,47 @@
     <Filter Include="Source Files\Core\Rendering">
       <UniqueIdentifier>{2e028784-201a-4135-975f-b1ccb2f42cde}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Core\Broadcast\Finish">
-      <UniqueIdentifier>{caf2703e-15b6-4af1-99cd-4329418104b5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Core\Broadcast\Send">
-      <UniqueIdentifier>{b4919422-9fce-478b-adb9-55c2aedbaed1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Core\Broadcast\Receive">
-      <UniqueIdentifier>{556ac0d6-27b0-4988-bfe2-7938c2ca302a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Core\Graph\Builders">
       <UniqueIdentifier>{b6dfcce2-073f-4bb7-803b-58a081924145}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Core\Graph\Builders">
       <UniqueIdentifier>{00104d14-3ee5-479a-a496-f66af58350a1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Core\Broadcast\Send">
+    <Filter Include="Header Files\Core\Simulations">
+      <UniqueIdentifier>{e170c1cb-6836-4e9e-8dba-c19396945e6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\Simulations\Broadcast">
+      <UniqueIdentifier>{9a035f35-55cc-407f-9e50-42368bad2fb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\Simulations\Broadcast\Finish">
+      <UniqueIdentifier>{caf2703e-15b6-4af1-99cd-4329418104b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\Simulations\Broadcast\Send">
+      <UniqueIdentifier>{b4919422-9fce-478b-adb9-55c2aedbaed1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\Simulations\Broadcast\Receive">
+      <UniqueIdentifier>{556ac0d6-27b0-4988-bfe2-7938c2ca302a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\Simulations\Disease">
+      <UniqueIdentifier>{1585538d-c8d3-4571-9e4f-93e86a61ba23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Simulations">
+      <UniqueIdentifier>{2a218dcc-944a-4137-8317-14e5de5b70cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Simulations\Broadcast">
+      <UniqueIdentifier>{a7da9d32-4335-4f12-a344-9446b4548adc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Simulations\Broadcast\Send">
       <UniqueIdentifier>{0c13bf47-f9d5-47d3-b46f-a6fa3859817e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Core\Broadcast\Receive">
+    <Filter Include="Source Files\Core\Simulations\Broadcast\Receive">
       <UniqueIdentifier>{567f6802-99cc-45b8-89ec-29f99250e29c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Core\Broadcast\Finish">
+    <Filter Include="Source Files\Core\Simulations\Broadcast\Finish">
       <UniqueIdentifier>{9f596721-d4a5-4a3e-be13-d356fb2341e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Simulations\Disease">
+      <UniqueIdentifier>{4b556510-9667-4714-bacd-58cb96366346}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -129,43 +138,43 @@
       <Filter>Source Files\Core\Graph\Builders</Filter>
     </ClCompile>
     <ClCompile Include="BroadcastFinishScheme.cpp">
-      <Filter>Source Files\Core\Broadcast\Finish</Filter>
+      <Filter>Source Files\Core\Simulations\Broadcast\Finish</Filter>
     </ClCompile>
     <ClCompile Include="BroadcastFinishSchemeM.cpp">
-      <Filter>Source Files\Core\Broadcast\Finish</Filter>
+      <Filter>Source Files\Core\Simulations\Broadcast\Finish</Filter>
     </ClCompile>
     <ClCompile Include="BroadcastFinishSchemeFactory.cpp">
-      <Filter>Source Files\Core\Broadcast\Finish</Filter>
+      <Filter>Source Files\Core\Simulations\Broadcast\Finish</Filter>
     </ClCompile>
     <ClCompile Include="BroadcastReceiveSchemeM.cpp">
-      <Filter>Source Files\Core\Broadcast\Receive</Filter>
+      <Filter>Source Files\Core\Simulations\Broadcast\Receive</Filter>
     </ClCompile>
     <ClCompile Include="BroadcastReceiveScheme.cpp">
-      <Filter>Source Files\Core\Broadcast\Receive</Filter>
+      <Filter>Source Files\Core\Simulations\Broadcast\Receive</Filter>
     </ClCompile>
     <ClCompile Include="BroadcastReceiveSchemeFactory.cpp">
-      <Filter>Source Files\Core\Broadcast\Receive</Filter>
+      <Filter>Source Files\Core\Simulations\Broadcast\Receive</Filter>
     </ClCompile>
     <ClCompile Include="BroadcastScheme.cpp">
-      <Filter>Source Files\Core\Broadcast</Filter>
+      <Filter>Source Files\Core\Simulations\Broadcast</Filter>
     </ClCompile>
     <ClCompile Include="BroadcastSendSchemeM3.cpp">
-      <Filter>Source Files\Core\Broadcast\Send</Filter>
+      <Filter>Source Files\Core\Simulations\Broadcast\Send</Filter>
     </ClCompile>
     <ClCompile Include="BroadcastSendScheme.cpp">
-      <Filter>Source Files\Core\Broadcast\Send</Filter>
+      <Filter>Source Files\Core\Simulations\Broadcast\Send</Filter>
     </ClCompile>
     <ClCompile Include="BroadcastSendSchemeFactory.cpp">
-      <Filter>Source Files\Core\Broadcast\Send</Filter>
+      <Filter>Source Files\Core\Simulations\Broadcast\Send</Filter>
     </ClCompile>
     <ClCompile Include="BroadcastSendSchemeM1.cpp">
-      <Filter>Source Files\Core\Broadcast\Send</Filter>
+      <Filter>Source Files\Core\Simulations\Broadcast\Send</Filter>
     </ClCompile>
     <ClCompile Include="BroadcastSendSchemeM2.cpp">
-      <Filter>Source Files\Core\Broadcast\Send</Filter>
+      <Filter>Source Files\Core\Simulations\Broadcast\Send</Filter>
     </ClCompile>
     <ClCompile Include="BroadcastSimulation.cpp">
-      <Filter>Source Files\Core\Broadcast</Filter>
+      <Filter>Source Files\Core\Simulations\Broadcast</Filter>
     </ClCompile>
     <ClCompile Include="CMDGraphRenderer.cpp">
       <Filter>Source Files\Core\Rendering</Filter>
@@ -186,7 +195,7 @@
       <Filter>Source Files\Core\Rendering</Filter>
     </ClCompile>
     <ClCompile Include="HNABroadcastSession.cpp">
-      <Filter>Source Files\Core\Broadcast</Filter>
+      <Filter>Source Files\Core\Simulations\Broadcast</Filter>
     </ClCompile>
     <ClCompile Include="HNAGraph.cpp">
       <Filter>Source Files\Core\Graph</Filter>
@@ -294,10 +303,10 @@
       <Filter>Source Files\Core\Graph\Builders</Filter>
     </ClCompile>
     <ClCompile Include="BroadcastReceiveSchemeRadio.cpp">
-      <Filter>Source Files\Core\Broadcast\Receive</Filter>
+      <Filter>Source Files\Core\Simulations\Broadcast\Receive</Filter>
     </ClCompile>
     <ClCompile Include="BroadcastSendSchemeRadio.cpp">
-      <Filter>Source Files\Core\Broadcast\Send</Filter>
+      <Filter>Source Files\Core\Simulations\Broadcast\Send</Filter>
     </ClCompile>
     <ClCompile Include="CustomGraphBuilder.cpp">
       <Filter>Source Files\Core\Graph\Builders</Filter>
@@ -338,6 +347,27 @@
     <ClCompile Include="ScaleFreeRandomGraphBuilder.cpp">
       <Filter>Source Files\Core\Graph\Builders</Filter>
     </ClCompile>
+    <ClCompile Include="Disease.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Simulation.cpp">
+      <Filter>Source Files\Core\Simulations</Filter>
+    </ClCompile>
+    <ClCompile Include="DiseaseSimulation.cpp">
+      <Filter>Source Files\Core\Simulations\Disease</Filter>
+    </ClCompile>
+    <ClCompile Include="DiseaseSimulationSIR.cpp">
+      <Filter>Source Files\Core\Simulations\Disease</Filter>
+    </ClCompile>
+    <ClCompile Include="Session.cpp">
+      <Filter>Source Files\Core\Simulations</Filter>
+    </ClCompile>
+    <ClCompile Include="DiseaseSession.cpp">
+      <Filter>Source Files\Core\Simulations\Disease</Filter>
+    </ClCompile>
+    <ClCompile Include="DiseaseFactory.cpp">
+      <Filter>Source Files\Core\Simulations\Disease</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -350,46 +380,46 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="BroadcastFinishSchemeM.h">
-      <Filter>Header Files\Core\Broadcast\Finish</Filter>
+      <Filter>Header Files\Core\Simulations\Broadcast\Finish</Filter>
     </ClInclude>
     <ClInclude Include="BroadcastFinishScheme.h">
-      <Filter>Header Files\Core\Broadcast\Finish</Filter>
+      <Filter>Header Files\Core\Simulations\Broadcast\Finish</Filter>
     </ClInclude>
     <ClInclude Include="BroadcastFinishSchemeFactory.h">
-      <Filter>Header Files\Core\Broadcast\Finish</Filter>
+      <Filter>Header Files\Core\Simulations\Broadcast\Finish</Filter>
     </ClInclude>
     <ClInclude Include="BroadcastReceiveSchemeM.h">
-      <Filter>Header Files\Core\Broadcast\Receive</Filter>
+      <Filter>Header Files\Core\Simulations\Broadcast\Receive</Filter>
     </ClInclude>
     <ClInclude Include="BroadcastReceiveScheme.h">
-      <Filter>Header Files\Core\Broadcast\Receive</Filter>
+      <Filter>Header Files\Core\Simulations\Broadcast\Receive</Filter>
     </ClInclude>
     <ClInclude Include="BroadcastReceiveSchemeFactory.h">
-      <Filter>Header Files\Core\Broadcast\Receive</Filter>
+      <Filter>Header Files\Core\Simulations\Broadcast\Receive</Filter>
     </ClInclude>
     <ClInclude Include="BroadcastSendSchemeM2.h">
-      <Filter>Header Files\Core\Broadcast\Send</Filter>
+      <Filter>Header Files\Core\Simulations\Broadcast\Send</Filter>
     </ClInclude>
     <ClInclude Include="BroadcastSendSchemeM3.h">
-      <Filter>Header Files\Core\Broadcast\Send</Filter>
+      <Filter>Header Files\Core\Simulations\Broadcast\Send</Filter>
     </ClInclude>
     <ClInclude Include="BroadcastSendScheme.h">
-      <Filter>Header Files\Core\Broadcast\Send</Filter>
+      <Filter>Header Files\Core\Simulations\Broadcast\Send</Filter>
     </ClInclude>
     <ClInclude Include="BroadcastSendSchemeFactory.h">
-      <Filter>Header Files\Core\Broadcast\Send</Filter>
+      <Filter>Header Files\Core\Simulations\Broadcast\Send</Filter>
     </ClInclude>
     <ClInclude Include="BroadcastSendSchemeM1.h">
-      <Filter>Header Files\Core\Broadcast\Send</Filter>
+      <Filter>Header Files\Core\Simulations\Broadcast\Send</Filter>
     </ClInclude>
     <ClInclude Include="BinomialTreeBuilder.h">
       <Filter>Header Files\Core\Graph\Builders</Filter>
     </ClInclude>
     <ClInclude Include="BroadcastScheme.h">
-      <Filter>Header Files\Core\Broadcast</Filter>
+      <Filter>Header Files\Core\Simulations\Broadcast</Filter>
     </ClInclude>
     <ClInclude Include="BroadcastSimulation.h">
-      <Filter>Header Files\Core\Broadcast</Filter>
+      <Filter>Header Files\Core\Simulations\Broadcast</Filter>
     </ClInclude>
     <ClInclude Include="CMDGraphRenderer.h">
       <Filter>Header Files\Core\Rendering</Filter>
@@ -408,9 +438,6 @@
     </ClInclude>
     <ClInclude Include="GraphRenderer.h">
       <Filter>Header Files\Core\Rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="HNABroadcastSession.h">
-      <Filter>Header Files\Core\Session</Filter>
     </ClInclude>
     <ClInclude Include="HNAEdgeWriter.h">
       <Filter>Header Files\Core\Writers</Filter>
@@ -473,10 +500,10 @@
       <Filter>Header Files\Core\Graph\Builders</Filter>
     </ClInclude>
     <ClInclude Include="BroadcastReceiveSchemeRadio.h">
-      <Filter>Header Files\Core\Broadcast\Receive</Filter>
+      <Filter>Header Files\Core\Simulations\Broadcast\Receive</Filter>
     </ClInclude>
     <ClInclude Include="BroadcastSendSchemeRadio.h">
-      <Filter>Header Files\Core\Broadcast\Send</Filter>
+      <Filter>Header Files\Core\Simulations\Broadcast\Send</Filter>
     </ClInclude>
     <ClInclude Include="CustomGraphBuilder.h">
       <Filter>Header Files\Core\Graph\Builders</Filter>
@@ -510,6 +537,30 @@
     </ClInclude>
     <ClInclude Include="ScaleFreeRandomGraphBuilder.h">
       <Filter>Header Files\Core\Graph\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="Disease.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HNABroadcastSession.h">
+      <Filter>Header Files\Core\Simulations\Broadcast</Filter>
+    </ClInclude>
+    <ClInclude Include="Simulation.h">
+      <Filter>Header Files\Core\Simulations</Filter>
+    </ClInclude>
+    <ClInclude Include="DiseaseSimulation.h">
+      <Filter>Header Files\Core\Simulations\Disease</Filter>
+    </ClInclude>
+    <ClInclude Include="DiseaseSimulationSIR.h">
+      <Filter>Header Files\Core\Simulations\Disease</Filter>
+    </ClInclude>
+    <ClInclude Include="Session.h">
+      <Filter>Header Files\Core\Simulations</Filter>
+    </ClInclude>
+    <ClInclude Include="DiseaseSession.h">
+      <Filter>Header Files\Core\Simulations\Disease</Filter>
+    </ClInclude>
+    <ClInclude Include="DiseaseFactory.h">
+      <Filter>Header Files\Core\Simulations\Disease</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
