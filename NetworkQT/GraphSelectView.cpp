@@ -124,21 +124,21 @@ void GraphSelectView::on_okButton_clicked()
 
 void GraphSelectView::reject()
 {
-	QDialog::reject();
 	imageScene_->clear();
 	imageScene_->setSceneRect(0, 0, 0, 0);
 	ui.okButton->setEnabled(false);
 	ui.graphTypeBox->setCurrentIndex(0);
+	QDialog::reject();
 	Q_EMIT finishedSelect(QDialog::Rejected, options_, graph_path_);
 }
 
 void GraphSelectView::accept()
 {
-	QDialog::accept();
 	imageScene_->clear();
 	imageScene_->setSceneRect(0, 0, 0, 0);
 	ui.okButton->setEnabled(false);
 	ui.graphTypeBox->setCurrentIndex(0);
+	QDialog::accept();
 	Q_EMIT finishedSelect(QDialog::Accepted, options_, graph_path_);
 }
 

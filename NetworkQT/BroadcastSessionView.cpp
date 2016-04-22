@@ -9,7 +9,7 @@ BroadcastSessionView::BroadcastSessionView(QWidget *parent)
 	imageScene_ = new QGraphicsScene(this);
 }
 
-BroadcastSessionView::BroadcastSessionView(QWidget* parent, std::unique_ptr<HNABroadcastSession> session)
+BroadcastSessionView::BroadcastSessionView(QWidget* parent, std::unique_ptr<Session> session)
 	: QDialog(parent), session_(std::move(session)), editDialog_(0)
 {
 	ui.setupUi(this);

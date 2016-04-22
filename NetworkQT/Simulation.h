@@ -59,9 +59,9 @@ public:
 	Simulation(graph_ptr g) : graph_p_(std::move(g)){};
 	virtual ~Simulation();
 	virtual bool tick(int count = 1) = 0;
-	virtual bool finish(int max_ticks = MAX_TICKS) = 0;
 	virtual bool finished() const = 0;
-	virtual void edit(const GraphEditAction& edit) = 0;
+	virtual bool finish(int max_ticks = MAX_TICKS);
+	virtual void edit(const GraphEditAction& edit);
 	virtual const HNAGraph& state() const;
 protected:
 	graph_ptr graph_p_;

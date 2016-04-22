@@ -40,8 +40,15 @@
      <property name="title">
       <string>New</string>
      </property>
-     <addaction name="actionSimulation"/>
+     <widget class="QMenu" name="menuSimulation_2">
+      <property name="title">
+       <string>Simulation</string>
+      </property>
+      <addaction name="actionBroadcasting"/>
+      <addaction name="actionDiseaseModel"/>
+     </widget>
      <addaction name="actionGraph"/>
+     <addaction name="menuSimulation_2"/>
     </widget>
     <addaction name="menuNew"/>
     <addaction name="actionExit"/>
@@ -61,11 +68,6 @@
     <string>Exit</string>
    </property>
   </action>
-  <action name="actionSimulation">
-   <property name="text">
-    <string>Simulation</string>
-   </property>
-  </action>
   <action name="actionGraph">
    <property name="text">
     <string>Graph</string>
@@ -79,6 +81,16 @@
   <action name="actionBroadcast_Schemes">
    <property name="text">
     <string>Broadcast Schemes</string>
+   </property>
+  </action>
+  <action name="actionBroadcasting">
+   <property name="text">
+    <string>Broadcasting</string>
+   </property>
+  </action>
+  <action name="actionDiseaseModel">
+   <property name="text">
+    <string>Disease model</string>
    </property>
   </action>
  </widget>

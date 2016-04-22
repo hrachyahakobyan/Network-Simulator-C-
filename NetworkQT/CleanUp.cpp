@@ -9,6 +9,7 @@
 #include "BroadcastReceiveSchemeFactory.h"
 #include "BroadcastSendSchemeFactory.h"
 #include "RandomManager.h"
+#include "DiseaseFactory.h"
 
 
 CleanUp::CleanUp()
@@ -32,4 +33,5 @@ void CleanUp::cleanUp()
 	BroadcastReceiveSchemeFactory::release();
 	BroadcastSendSchemeFactory::release();
 	RandomManager::release();
+	DiseaseFactory::release();
 }

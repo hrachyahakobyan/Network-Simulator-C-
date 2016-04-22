@@ -1,16 +1,21 @@
 #include "stdafx.h"
 #include "networkqt.h"
 #include "CleanUp.h"
+#include "DiseaseFactory.h"
 
 
 NetworkQT::NetworkQT(QWidget *parent)
-	: QMainWindow(parent), broadcastSessionView_(0), broadcastSelectView_(0), graphSelectView_(0)
+	: QMainWindow(parent), broadcastSessionView_(0),
+	  broadcastSelectView_(0), graphSelectView_(0),
+	  diseaseSelectView_(0)
 {
 	ui.setupUi(this);
 	graphSelectView_ = new GraphSelectView(this);
 	broadcastSelectView_ = new BroadcastSelectView(this);
+	diseaseSelectView_ = new DiseaseSelectView(this);
 	connect(graphSelectView_, SIGNAL(finishedSelect(int, const GraphBuilder::GraphOptions&, const boost::filesystem::path&)), this, SLOT(graphSelectViewFinished(int, const GraphBuilder::GraphOptions&, const boost::filesystem::path&)));
 	connect(broadcastSelectView_, SIGNAL(broadcastDialogFinishedSelect(int, const BroadcastSchemeOptions&)), this, SLOT(broadcastSchemeSelectViewFinished(int, const BroadcastSchemeOptions&)));
+	connect(diseaseSelectView_, SIGNAL(diseaseSelectViewFinished(int, const DiseaseSimulation::DiseaseOptions&)), this, SLOT(diseaseSelectViewDidFinish(int, const DiseaseSimulation::DiseaseOptions&)));
 	this->setAttribute(Qt::WidgetAttribute::WA_DeleteOnClose);
 }
 
@@ -23,15 +28,23 @@ NetworkQT::~NetworkQT()
 		delete broadcastSelectView_;
 	if (broadcastSessionView_ != 0)
 		delete broadcastSessionView_;
+	if (diseaseSelectView_ != 0)
+		delete diseaseSelectView_;
 }
 
-void NetworkQT::on_actionSimulation_triggered()
+void NetworkQT::on_actionBroadcasting_triggered()
 {
-	qDebug() << "Action simulation \n";
+	qDebug() << "Action Broadcasting \n";
 	graphSelectView_->shouldSave_ = false;
 	graphSelectView_->exec();
 }
 
+
+void NetworkQT::on_actionDiseaseModel_triggered()
+{ 
+	qDebug() << "Action disease model \n";
+	diseaseSelectView_->exec();
+}
 
 void NetworkQT::on_actionGraph_triggered()
 {
@@ -80,4 +93,13 @@ void NetworkQT::broadcastSessionViewDidFinish(int state)
 	qDebug() << "Session view finished \n";
 	delete broadcastSessionView_;
 	broadcastSessionView_ = 0;
+}
+
+void NetworkQT::diseaseSelectViewDidFinish(int state, const DiseaseSimulation::DiseaseOptions& options)
+{
+	qDebug() << "DiseaseSelectView did finish with state " << state << "\n";
+	if (state == QDialog::Accepted)
+	{
+
+	}
 }

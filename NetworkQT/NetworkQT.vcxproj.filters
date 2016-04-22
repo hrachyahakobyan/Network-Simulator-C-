@@ -347,9 +347,6 @@
     <ClCompile Include="ScaleFreeRandomGraphBuilder.cpp">
       <Filter>Source Files\Core\Graph\Builders</Filter>
     </ClCompile>
-    <ClCompile Include="Disease.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Simulation.cpp">
       <Filter>Source Files\Core\Simulations</Filter>
     </ClCompile>
@@ -367,6 +364,24 @@
     </ClCompile>
     <ClCompile Include="DiseaseFactory.cpp">
       <Filter>Source Files\Core\Simulations\Disease</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_DiseaseSelectView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_DiseaseSelectView.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="DiseaseSelectView.cpp">
+      <Filter>Source Files\QT</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_DiseaseParamSelectView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_DiseaseParamSelectView.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="DiseaseParamSelectView.cpp">
+      <Filter>Source Files\QT</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -538,9 +553,6 @@
     <ClInclude Include="ScaleFreeRandomGraphBuilder.h">
       <Filter>Header Files\Core\Graph\Builders</Filter>
     </ClInclude>
-    <ClInclude Include="Disease.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="HNABroadcastSession.h">
       <Filter>Header Files\Core\Simulations\Broadcast</Filter>
     </ClInclude>
@@ -561,6 +573,12 @@
     </ClInclude>
     <ClInclude Include="DiseaseFactory.h">
       <Filter>Header Files\Core\Simulations\Disease</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_DiseaseSelectView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_DiseaseParamSelectView.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -601,6 +619,18 @@
       <Filter>Header Files\QT</Filter>
     </CustomBuild>
     <CustomBuild Include="MultiSpinboxDialog.h">
+      <Filter>Header Files\QT</Filter>
+    </CustomBuild>
+    <CustomBuild Include="DiseaseSelectView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="DiseaseSelectView.h">
+      <Filter>Header Files\QT</Filter>
+    </CustomBuild>
+    <CustomBuild Include="DiseaseParamSelectView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="DiseaseParamSelectView.h">
       <Filter>Header Files\QT</Filter>
     </CustomBuild>
   </ItemGroup>

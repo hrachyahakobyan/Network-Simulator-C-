@@ -9,7 +9,6 @@ namespace boost
 	BOOST_INSTALL_PROPERTY(edge, properties);
 }
 
-
 class HNAGraph
 {
 	/* Bundles */
@@ -19,6 +18,8 @@ public:
 		std::string label_;
 		int state_;
 		std::set<int> informers_;
+		
+		int inf_preiod_;
 		HNANodeBundle() : state_(0){};
 	};
 

@@ -23,10 +23,7 @@ public:
 
 	~BroadcastSimulation();
 	bool tick(int count = 1);
-	bool finish(int max_ticks = MAX_TICKS);
 	bool finished() const;
-	void edit(const GraphEditAction& edit);
-
 
 private:
 	scheme_p scheme_p_;

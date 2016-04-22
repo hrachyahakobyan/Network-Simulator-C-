@@ -62,60 +62,9 @@ bool BroadcastSimulation::tick(int count)
 }
 
 
-bool BroadcastSimulation::finish(int max_ticks)
-{
-	assert(max_ticks > 0 && "ERROR: BroadcastAlgorithm: nonpositive max_ticks");
-	while (!tick(1) && max_ticks >= 0)
-	{
-		max_ticks--;
-		if (max_ticks < 0)
-		{
-			cout << "Broadcasting could not be finished with " << max_ticks << " ticks \n";
-			return false;
-		}
-	}
-	return true;
-}
-
-
 bool BroadcastSimulation::finished() const
 {
 	return (*scheme_p_).broadcasting_finished((*graph_p_));
-}
-
-
-void BroadcastSimulation::edit(const GraphEditAction& edit)
-{
-	switch (edit.type_)
-	{
-		case GraphEditAction::EditType::AddEdge:
-		{
-			add_edge(edit.src_, edit.targ_);
-		}
-		break;
-		case GraphEditAction::EditType::AddVertex:
-		{
-			add_vertex();
-			if (edit.state_ > 0)
-				set_state((*graph_p_).getVertexCount() - 1, edit.state_);
-		}
-		break;
-		case GraphEditAction::EditType::DeleteEdge:
-		{
-			delete_edge(edit.src_, edit.targ_);
-		}
-		break;
-		case GraphEditAction::EditType::DeleteVertex:
-		{
-			delete_vertex(edit.v_);
-		}
-		break;
-		case GraphEditAction::EditType::SetState:
-		{
-			set_state(edit.v_, edit.state_);
-		}
-		break;
-	}
 }
 
 void BroadcastSimulation::add_vertex()
