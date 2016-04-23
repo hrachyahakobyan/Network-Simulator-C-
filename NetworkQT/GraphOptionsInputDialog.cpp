@@ -228,6 +228,8 @@ void GraphOptionsInputDialog::okButtonClicked()
 		options_.p_ = double(inputs_map_["Probability"].toInt() / 100.0);
 	if (inputs_map_.find("Children") != inputs_map_.end())
 		options_.children_ = inputs_map_["Children"].toInt();
+	if (inputs_map_.find("B") != inputs_map_.end())
+		options_.b_ = inputs_map_["B"].toDouble() / 100;
 	accept();
 }
 
@@ -245,7 +247,7 @@ void GraphOptionsInputDialog::reject()
 
 void GraphOptionsInputDialog::accept()
 {
-	QDialog::reject();
+	QDialog::accept();
 	Q_EMIT finishedInput(QDialog::Accepted, options_);
 }
 

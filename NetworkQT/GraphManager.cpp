@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "GraphManager.h"
-#include "FileManager.h"
 #include "HNAGraphFactory.h"
-#include "HNAGraph.h"
 
 GraphManager* GraphManager::_graphManager = 0;
 

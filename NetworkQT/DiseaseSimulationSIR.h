@@ -3,15 +3,19 @@
 class DiseaseSimulationSIR : public DiseaseSimulation
 {
 public:
-	DiseaseSimulationSIR(const GraphBuilder::GraphOptions& g_options, const DiseaseSimulation::DiseaseOptions& options);
+	 DiseaseSimulationSIR(const GraphBuilder::GraphOptions& g_options, const DiseaseSimulation::DiseaseOptions& options);
 	~DiseaseSimulationSIR();
 	virtual bool tick(int count = 1);
 	virtual bool finished() const;
-private:
-	void send(const HNAGraph::Vertex& sender, std::map<HNAGraph::Vertex, HNAGraph::HNANodeBundle>& messages) ;
-	void receive(const HNAGraph::Vertex& node, const std::map<HNAGraph::Vertex, HNAGraph::HNANodeBundle>& messages) ;
-	
-private:
+	virtual void edit(const GraphEditAction& edit);
+	virtual std::string description() const;
+protected:
+	virtual void send(const HNAGraph::Vertex& sender, std::map<HNAGraph::Vertex, HNAGraph::HNANodeBundle>& messages) ;
+	virtual void receive(const HNAGraph::Vertex& node, const std::map<HNAGraph::Vertex, HNAGraph::HNANodeBundle>& messages) ;
+protected:
 	enum SIR_States{Suspectible, Infected, Recovered};
+protected:
+	void updateData();
+	virtual void initializeData();
 };
 

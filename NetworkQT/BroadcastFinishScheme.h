@@ -1,5 +1,5 @@
 #pragma once
-#include "HNAGraph.h"
+
 class BroadcastFinishScheme
 {
 public:

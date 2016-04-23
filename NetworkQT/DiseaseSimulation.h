@@ -9,6 +9,7 @@ public:
 		ModelType type;
 		double inf_rate_;
 		int inf_period_;
+		int imm_period_;
 	};
 public:
 	DiseaseSimulation();
@@ -19,5 +20,9 @@ public:
 protected:
 	const double inf_rate_;
 	const int inf_period_;
+protected:
+	virtual void updateData() = 0;
+	virtual void send(const HNAGraph::Vertex& sender, std::map<HNAGraph::Vertex, HNAGraph::HNANodeBundle>& messages) = 0;
+	virtual void receive(const HNAGraph::Vertex& node, const std::map<HNAGraph::Vertex, HNAGraph::HNANodeBundle>& messages) = 0;
 };
 

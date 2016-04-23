@@ -1,8 +1,6 @@
 #ifndef MULTIINPUTDIALOG_H
 #define MULTIINPUTDIALOG_H
 
-#include <QDialog>
-
 class MultiInputDialog : public QDialog
 {
 	Q_OBJECT

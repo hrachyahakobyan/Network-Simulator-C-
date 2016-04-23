@@ -1,7 +1,6 @@
 #ifndef DISEASESELECTVIEW_H
 #define DISEASESELECTVIEW_H
 
-#include <QDialog>
 #include "ui_DiseaseSelectView.h"
 #include "DiseaseSimulation.h"
 #include "DiseaseParamSelectView.h"

@@ -1,6 +1,5 @@
 #pragma once
-#include "GraphBuilder.h"
-#include "RandomManager.h"
+
 #include "FixedRanomTreeBuilder.h"
 
 class ScaleFreeRandomGraphBuilder : public GraphBuilder

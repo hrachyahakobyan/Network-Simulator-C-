@@ -22,6 +22,7 @@ GraphSelectView::GraphSelectView(QWidget *parent)
 	inputMap_.insert(12, qMakePair(GraphBuilder::GraphOptions::GraphType::Graph_RandomTree, QList<QString>({ "Height", "Children" })));
 	inputMap_.insert(13, qMakePair(GraphBuilder::GraphOptions::GraphType::Graph_FixedRandom, QList<QString>({ "Vertices" })));
 	inputMap_.insert(14, qMakePair(GraphBuilder::GraphOptions::GraphType::Graph_ScaleFreeRandom, QList<QString>({ "New Vertices", "Kernel", "Edges" })));
+	inputMap_.insert(15, qMakePair(GraphBuilder::GraphOptions::GraphType::Graph_SmallWorld, QList<QString>({ "Vertices", "K", "B" })));
 
 	spinBoxMap_.insert(GraphBuilder::GraphOptions::GraphType::Graph_Complete, QList<QPair<QString, QPair<int, int>>>(
 	{qMakePair(QString("Vertices"), qMakePair(1, 20))}));
@@ -51,6 +52,9 @@ GraphSelectView::GraphSelectView(QWidget *parent)
 	{ qMakePair(QString("Vertices"), qMakePair(1, 200)) }));
 	spinBoxMap_.insert(GraphBuilder::GraphOptions::GraphType::Graph_ScaleFreeRandom, QList<QPair<QString, QPair<int, int>>>(
 	{ qMakePair(QString("New Vertices"), qMakePair(1, 1000)), qMakePair(QString("Kernel"), qMakePair(1, 1000)), qMakePair(QString("Edges"), qMakePair(1, 1000))}));
+	spinBoxMap_.insert(GraphBuilder::GraphOptions::GraphType::Graph_SmallWorld, QList<QPair<QString, QPair<int, int>>>(
+	{ qMakePair(QString("Vertices"), qMakePair(1, 1000)), qMakePair(QString("K"), qMakePair(1, 1000)), qMakePair(QString("B"), qMakePair(1, 100)) }));
+
 }
 
 GraphSelectView::~GraphSelectView()
@@ -172,5 +176,7 @@ void GraphSelectView::parseInput(const QMap<QString, int>& inputs_map_, GraphBui
 		options_.m_ = inputs_map_["Kernel"];
 	if (inputs_map_.find("Edges") != inputs_map_.end())
 		options_.k_ = inputs_map_["Edges"];
+	if (inputs_map_.find("B") != inputs_map_.end())
+		options_.b_ = double(inputs_map_["B"]) / 100;
 }
 

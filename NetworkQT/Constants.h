@@ -47,12 +47,12 @@ static const int GRAPH_KTREE_MAX_VERTICES = 150;
 // Enums
 
 enum Two_State {uninformed, informed};
-
+enum Color{White, Black, Red, Blue, Green};
 
 // Default color map
 
 static const std::map<int, std::string> DEFAULT_COLOR_MAP = { { 0, "white" }, { 1, "black" }, { 2, "red" }, { 3, "blue" }, { 4, "green" } };
-static const std::vector<std::string> RENDER_ENGINES = { "dot", "neato", "sfdp", "fdp", "twopi", "circo", "osage" };
+static const std::vector<std::string> RENDER_ENGINES = { "sfdp", "dot", "neato", "fdp", "twopi", "circo", "osage" };
 // Render engines
 
 // BroadcastScheme

@@ -4,3 +4,4 @@
 DiseaseSession::~DiseaseSession()
 {
 }
+

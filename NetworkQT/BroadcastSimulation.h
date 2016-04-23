@@ -11,6 +11,8 @@ public:
 	BroadcastSimulation(graph_ptr g, scheme_p p) : Simulation(std::move(g)), scheme_p_(std::move(p))
 	{
 		(*graph_p_).properties().broadcast_type_ = (*scheme_p_).description();
+		initializeData();
+		updateData();
 	}
 	
 	static std::unique_ptr<BroadcastSimulation> simulation(const GraphBuilder::GraphOptions& g_options, const BroadcastSchemeOptions& s_options)
@@ -24,14 +26,17 @@ public:
 	~BroadcastSimulation();
 	bool tick(int count = 1);
 	bool finished() const;
+	std::string description() const;
 
 private:
 	scheme_p scheme_p_;
-private:
+protected:
 	 void add_vertex();
 	 void delete_vertex(int vertex);
 	 void add_edge(int source, int target);
 	 void delete_edge(int source, int target);
 	 void set_state(int vertex, int state);
+	 void updateData();
+	 void initializeData();
 };
 

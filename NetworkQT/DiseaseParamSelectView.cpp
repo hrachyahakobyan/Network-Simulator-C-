@@ -8,10 +8,11 @@ DiseaseParamSelectView::DiseaseParamSelectView(QWidget *parent)
 	ui.infectionPeriodSpinbox->setMinimum(1);
 	ui.infectionRateSpinbox->setMinimum(0);
 	ui.infectionRateSpinbox->setMaximum(1);
+	ui.immunityPeriodSpinbox->setMinimum(0);
 
 	connect(ui.infectionPeriodSpinbox, SIGNAL(valueChanged(const QString&)), this, SLOT(onInfectionPeriodSpinboxValueChanged(const QString&)));
 	connect(ui.infectionRateSpinbox, SIGNAL(valueChanged(const QString&)), this, SLOT(onInfectionRateSpinboxValueChanged(const QString&)));
-	connect(ui.immunityRateSpinbox, SIGNAL(valueChanged(const QString&)), this, SLOT(onImmunityRateSpinboxValueChanged(const QString&)));
+	connect(ui.immunityPeriodSpinbox, SIGNAL(valueChanged(const QString&)), this, SLOT(onImmunityPeriodSpinboxValueChanged(const QString&)));
 }
 
 DiseaseParamSelectView::~DiseaseParamSelectView()
@@ -23,7 +24,7 @@ void DiseaseParamSelectView::updateParams(const QMap<Parameters, bool>& paramsMa
 {
 	ui.infectionPeriodSpinbox->setEnabled(paramsMap[Parameters::InfectionPeriod]);
 	ui.infectionRateSpinbox->setEnabled(paramsMap[Parameters::InfectionRate]);
-	ui.immunityRateSpinbox->setEnabled(paramsMap[Parameters::ImmunityRate]);
+	ui.immunityPeriodSpinbox->setEnabled(paramsMap[Parameters::ImmunityPeriod]);
 	initialize();
 }
 
@@ -31,14 +32,14 @@ void DiseaseParamSelectView::initialize()
 {
 	ui.infectionPeriodSpinbox->setValue(ui.infectionPeriodSpinbox->minimum());
 	ui.infectionRateSpinbox->setValue(ui.infectionRateSpinbox->minimum());
-	ui.immunityRateSpinbox->setValue(ui.immunityRateSpinbox->minimum());
+	ui.immunityPeriodSpinbox->setValue(ui.immunityPeriodSpinbox->minimum());
 }
 
 void DiseaseParamSelectView::reset()
 {
 	ui.infectionPeriodSpinbox->setEnabled(false);
 	ui.infectionRateSpinbox->setEnabled(false);
-	ui.immunityRateSpinbox->setEnabled(false);
+	ui.immunityPeriodSpinbox->setEnabled(false);
 	options_.clear();
 	initialize();
 }
@@ -73,7 +74,7 @@ void DiseaseParamSelectView::onInfectionPeriodSpinboxValueChanged(const QString&
 	options_[Parameters::InfectionPeriod] = ui.infectionPeriodSpinbox->value();
 }
 
-void DiseaseParamSelectView::onImmunityRateSpinboxValueChanged(const QString& text)
+void DiseaseParamSelectView::onImmunityPeriodSpinboxValueChanged(const QString& text)
 {
-	options_[Parameters::ImmunityRate] = ui.immunityRateSpinbox->value();
+	options_[Parameters::ImmunityPeriod] = ui.immunityPeriodSpinbox->value();
 }

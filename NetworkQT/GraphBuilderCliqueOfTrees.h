@@ -1,5 +1,5 @@
 #pragma once
-#include "GraphBuilder.h"
+
 #include "CompleteGraphBuilder.h"
 #include "FixedRanomTreeBuilder.h"
 class GraphBuilderCliqueOfTrees : public GraphBuilder

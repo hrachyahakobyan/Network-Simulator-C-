@@ -42,13 +42,19 @@ void DiseaseSelectView::on_nextButton_clicked()
 	switch (options_.type)
 	{
 	case M::SIR:
-		params[P::ImmunityRate] = false;
+		params[P::ImmunityPeriod] = false;
 		params[P::InfectionPeriod] = true;
 		params[P::InfectionRate] = true;
 		break;
 	case M::SIS:
+		params[P::ImmunityPeriod] = false;
+		params[P::InfectionPeriod] = true;
+		params[P::InfectionRate] = true;
 		break;
 	case M::SIRS:
+		params[P::ImmunityPeriod] = true;
+		params[P::InfectionPeriod] = true;
+		params[P::InfectionRate] = true;
 		break;
 	}
 	paramSelectView_->updateParams(params);
@@ -79,7 +85,7 @@ void DiseaseSelectView::on_diseaseParamSelectViewFinished(int state, const QMap<
 	{
 		options_.inf_period_ = params[DiseaseParamSelectView::Parameters::InfectionPeriod];
 		options_.inf_rate_ = params[DiseaseParamSelectView::Parameters::InfectionRate];
-		//options_. = params[DiseaseParamSelectView::Parameters::ImmunityRate];
+		options_.imm_period_ = params[DiseaseParamSelectView::Parameters::ImmunityPeriod];
 		accept();
 	}
 }

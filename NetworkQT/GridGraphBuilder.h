@@ -1,5 +1,5 @@
 #pragma once
-#include "GraphBuilder.h"
+
 class GridGraphBuilder : public GraphBuilder
 {
 public:

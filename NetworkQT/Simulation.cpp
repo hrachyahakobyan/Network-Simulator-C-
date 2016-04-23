@@ -9,6 +9,7 @@ Simulation::Simulation()
 
 Simulation::~Simulation()
 {
+	graph_p_.reset();
 }
 
 const HNAGraph& Simulation::state() const
@@ -65,4 +66,21 @@ void Simulation::edit(const GraphEditAction& edit)
 	}
 	break;
 	}
+}
+
+std::map<std::string, std::pair<Color, std::vector<int>>> Simulation::data()
+{
+	return data_;
+}
+
+
+void Simulation::reset()
+{
+	/*Reset vertex states*/
+	HNAGraph::Vertex_Range vp = (*graph_p_).getVertices();
+	for (; vp.first != vp.second; ++vp.first)
+	{
+		(*graph_p_).properties(*vp.first).state_ = 0;
+	}
+	initializeData();
 }

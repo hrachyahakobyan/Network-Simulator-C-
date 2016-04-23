@@ -10,6 +10,11 @@ BroadcastSimulation::~BroadcastSimulation()
 }
 
 
+std::string BroadcastSimulation::description() const
+{
+	return (*scheme_p_).description();
+}
+
 bool BroadcastSimulation::tick(int count)
 {
 	assert(count > 0 && "ERROR: BroadcastAlgorithm: nonpositive tick");
@@ -57,6 +62,7 @@ bool BroadcastSimulation::tick(int count)
 		{
 			(*graph_p_).properties((*final_it).first) = (*final_it).second;
 		}
+		updateData();
 	}
 	return false;
 }
@@ -67,30 +73,30 @@ bool BroadcastSimulation::finished() const
 	return (*scheme_p_).broadcasting_finished((*graph_p_));
 }
 
-void BroadcastSimulation::add_vertex()
+
+void BroadcastSimulation::updateData()
 {
-	(*graph_p_).AddVertex();
+	int informed = 0;
+	int uninformed = 0;
+	HNAGraph::Vertex_Range vp;
+	for (vp = (*graph_p_).getVertices(); vp.first != vp.second; ++vp.first)
+	{
+		int state = (*graph_p_).properties(*vp.first).state_;
+		if (state == Two_State::informed)
+		{
+			informed++;
+		}
+		else
+		{
+			uninformed++;
+		}
+	}
+	data_["Informed"].second.push_back(informed);
+	data_["Uninformed"].second.push_back(uninformed);
 }
 
-void BroadcastSimulation::add_edge(int source, int target)
+void BroadcastSimulation::initializeData()
 {
-	(*graph_p_).AddEdge(source, target);
-}
-
-void BroadcastSimulation::delete_edge(int source, int target)
-{
-	(*graph_p_).RemoveEdge(source, target);
-}
-
-void BroadcastSimulation::delete_vertex(int vertex)
-{
-	(*graph_p_).RemoveVertex(vertex);
-}
-
-void BroadcastSimulation::set_state(int vertex, int state)
-{
-	assert(vertex > -1 && "ERROR: BroadcastSimulation: set_state: negative vertex index");
-	assert(state > -1 && "ERROR: BroadcastSimulation: set_state: negative state");
-	(*graph_p_).properties(vertex).state_ = state;
-	std::cout << "new state  " << (*graph_p_).properties(vertex).state_ << std::endl;
+	data_["Informed"] = std::make_pair(Color::Black, std::vector<int>());
+	data_["Uninformed"] = std::make_pair(Color::Blue, std::vector<int>());
 }

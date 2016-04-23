@@ -1,5 +1,7 @@
 #pragma once
 #include "DiseaseSimulationSIR.h"
+#include "DiseaseSimulationSIS.h"
+#include "DiseaseSimulationSIRS.h"
 #include "HNAGraphFactory.h"
 
 class DiseaseFactory
