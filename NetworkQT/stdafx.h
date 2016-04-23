@@ -17,13 +17,23 @@
 #include <boost/thread.hpp>
 #include <boost/graph/graphviz.hpp>
 
-
 #include <QtWidgets>
 #include <qtextstream.h>
 #include <qdebug.h>
-
 
 #include <iostream>
 #include <stdio.h>
 #include <tchar.h>
 #include <set>
+
+#include "HNAGraph.h"
+/*Singletons*/
+#include "CleanUp.h"
+#include "FileManager.h"
+#include "RandomManager.h"
+#include "TimeManager.h"
+#include "GraphManager.h"
+#include "DefaultNotificationCenter.h"
+
+/*Builders*/
+#include "GraphBuilder.h"
