@@ -1,6 +1,5 @@
 #pragma once
 #include <fstream>
-#include "HNAGraph.h"
 
 
 struct HNAGraphPropertyWriterOptions
@@ -61,13 +60,13 @@ public:
 		}
 		if (options_.w_br_type_ == true)
 		{
-			title.append("Broadcasting ");
+			title.append("Model ");
 			title.append(g_prop_.broadcast_type_);
 			title.append("\n");
 		}
 		if (options_.w_br_time_ == true)
 		{
-			title.append("Broadcast time ");
+			title.append("Time ");
 			title.append(std::to_string(g_prop_.broadcast_time_));
 			title.append("\n");
 		}

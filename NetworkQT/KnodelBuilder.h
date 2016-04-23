@@ -1,7 +1,4 @@
 #pragma once
-#include "HNAGraph.h"
-#include "GraphBuilder.h"
-
 
 class KnodelBuilder : GraphBuilder
 {

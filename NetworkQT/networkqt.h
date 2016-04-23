@@ -4,8 +4,8 @@
 #include "ui_networkqt.h"
 #include "GraphSelectView.h"
 #include "BroadcastSelectView.h"
-#include "HNABroadcastSession.h"
-#include "BroadcastSessionView.h"
+#include "DiseaseSelectView.h"
+#include "SessionView.h"
 
 class NetworkQT : public QMainWindow
 {
@@ -19,16 +19,22 @@ private:
 	Ui::NetworkQTClass ui;
 	GraphSelectView* graphSelectView_;
 	BroadcastSelectView* broadcastSelectView_;
-	BroadcastSessionView* broadcastSessionView_;
+	SessionView* sessionView_;
+	DiseaseSelectView* diseaseSelectView_;
 	GraphBuilder::GraphOptions g_op_;
+	DiseaseSimulation::DiseaseOptions d_op_;
 	BroadcastSchemeOptions s_op_;
+	enum Simulation{Broadcast, Disease};
+	Simulation sim_;
 public Q_SLOTS:
-	void on_actionSimulation_triggered();
+	void on_actionBroadcasting_triggered();
+	void on_actionDiseaseModel_triggered();
 	void on_actionExit_triggered();
 	void on_actionGraph_triggered();
 	void graphSelectViewFinished(int state, const GraphBuilder::GraphOptions& options, const boost::filesystem::path& image_path);
 	void broadcastSchemeSelectViewFinished(int state, const BroadcastSchemeOptions& options);
-	void broadcastSessionViewDidFinish(int state);
+	void sessionViewDidFinish(int state);
+	void diseaseSelectViewDidFinish(int state, const DiseaseSimulation::DiseaseOptions& options);
 };
 
 #endif // NETWORKQT_H

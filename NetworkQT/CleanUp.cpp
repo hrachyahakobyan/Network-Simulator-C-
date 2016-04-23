@@ -1,14 +1,10 @@
 #include "stdafx.h"
 #include "CleanUp.h"
-#include "FileManager.h"
-#include "TimeManager.h"
-#include "GraphManager.h"
-#include "DefaultNotificationCenter.h"
 #include "HNAGraphFactory.h"
 #include "BroadcastFinishSchemeFactory.h"
 #include "BroadcastReceiveSchemeFactory.h"
 #include "BroadcastSendSchemeFactory.h"
-#include "RandomManager.h"
+#include "DiseaseFactory.h"
 
 
 CleanUp::CleanUp()
@@ -32,4 +28,5 @@ void CleanUp::cleanUp()
 	BroadcastReceiveSchemeFactory::release();
 	BroadcastSendSchemeFactory::release();
 	RandomManager::release();
+	DiseaseFactory::release();
 }

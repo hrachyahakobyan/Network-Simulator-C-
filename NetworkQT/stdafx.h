@@ -18,7 +18,6 @@
 #include <boost/graph/graphviz.hpp>
 
 
-
 #include <QtWidgets>
 #include <qtextstream.h>
 #include <qdebug.h>

@@ -14,6 +14,7 @@
 #include "RandomTreeBuilder.h"
 #include "FixedRanomTreeBuilder.h"
 #include "ScaleFreeRandomGraphBuilder.h"
+#include "SmallWorldGraphBuilder.h"
 
 HNAGraphFactory *HNAGraphFactory::graphFactory = 0;
 
@@ -33,6 +34,7 @@ HNAGraphFactory::HNAGraphFactory()
 	builders_.insert(std::make_pair(GraphBuilder::GraphOptions::GraphType::Graph_RandomTree, std::unique_ptr<GraphBuilder>(new RandomTreeBuilder)));
 	builders_.insert(std::make_pair(GraphBuilder::GraphOptions::GraphType::Graph_FixedRandom, std::unique_ptr<GraphBuilder>(new FixedRanomTreeBuilder)));
 	builders_.insert(std::make_pair(GraphBuilder::GraphOptions::GraphType::Graph_ScaleFreeRandom, std::unique_ptr<GraphBuilder>(new ScaleFreeRandomGraphBuilder)));
+	builders_.insert(std::make_pair(GraphBuilder::GraphOptions::GraphType::Graph_SmallWorld, std::unique_ptr<GraphBuilder>(new SmallWorldGraphBuilder)));
 }
 
 

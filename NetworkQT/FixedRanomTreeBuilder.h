@@ -1,6 +1,4 @@
 #pragma once
-#include "GraphBuilder.h"
-#include "RandomManager.h"
 
 class FixedRanomTreeBuilder : public GraphBuilder
 {

@@ -1,8 +1,6 @@
 #ifndef MULTIINPUTDIALOG_H
 #define MULTIINPUTDIALOG_H
 
-#include <QDialog>
-
 class MultiInputDialog : public QDialog
 {
 	Q_OBJECT
@@ -20,7 +18,7 @@ protected:
 	QMap<int, QString> lines_map_;
 	QMap<QString, QString> inputs_map_;
 public Q_SLOTS:
-	 virtual void  lineTextChanged(const QString& s);
+	 virtual void lineTextChanged(const QString& s);
 	 virtual void okButtonClicked();
 	 virtual void cancelButtonClicked();
 protected:

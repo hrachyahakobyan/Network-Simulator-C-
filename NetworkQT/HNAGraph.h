@@ -9,7 +9,6 @@ namespace boost
 	BOOST_INSTALL_PROPERTY(edge, properties);
 }
 
-
 class HNAGraph
 {
 	/* Bundles */
@@ -19,6 +18,9 @@ public:
 		std::string label_;
 		int state_;
 		std::set<int> informers_;
+		
+		int inf_preiod_;
+		int imm_period_;
 		HNANodeBundle() : state_(0){};
 	};
 
@@ -345,25 +347,6 @@ public:
 		
 	}
 
-	std::pair<const Vertex&, bool> getVertexAtIndex(boost::vertex_index_t index) const
-	{
-		std::pair<Vertex_Iter, Vertex_Iter> vp;
-		Index_Map graph_indeces = get(boost::vertex_index, g_container);
-		for (vp = vertices(g_container); vp.first != vp.second; ++vp.first)
-		{
-			if (graph_indeces[*vp.first] == index)
-			{
-				return std::pair<const Vertex&, bool>(*vp.first, true);
-			}
-		}
-		return std::pair<const Vertex&, bool>(Vertex(), false);
-	}
-
-	bool vertexExistsAtIndex(boost::vertex_index_t index)
-	{
-		return getVertexAtIndex(index).second;
-	}
-
 	bool vertexExists(const Vertex& v)
 	{
 		std::pair<Vertex_Iter, Vertex_Iter> vp;
@@ -378,6 +361,10 @@ public:
 		return false;
 	}
 
+	bool edgeExists(const Vertex& v1, const Vertex& v2)
+	{
+		return boost::edge(v1, v2, g_container).second;
+	}
 
 
 private:

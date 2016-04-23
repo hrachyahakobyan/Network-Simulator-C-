@@ -59,11 +59,18 @@ public:
 	Simulation(graph_ptr g) : graph_p_(std::move(g)){};
 	virtual ~Simulation();
 	virtual bool tick(int count = 1) = 0;
-	virtual bool finish(int max_ticks = MAX_TICKS) = 0;
 	virtual bool finished() const = 0;
-	virtual void edit(const GraphEditAction& edit) = 0;
+	virtual std::string description() const = 0;
+	virtual std::map<std::string, std::pair<Color, std::vector<int>>> data();
+	virtual bool finish(int max_ticks = MAX_TICKS);
+	virtual void edit(const GraphEditAction& edit);
 	virtual const HNAGraph& state() const;
+	virtual void reset();
 protected:
 	graph_ptr graph_p_;
+	std::map<std::string, std::pair<Color, std::vector<int>>> data_;
+protected:
+	virtual void updateData() = 0;
+	virtual void initializeData() = 0;
 };
 

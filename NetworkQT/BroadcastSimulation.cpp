@@ -10,6 +10,11 @@ BroadcastSimulation::~BroadcastSimulation()
 }
 
 
+std::string BroadcastSimulation::description() const
+{
+	return (*scheme_p_).description();
+}
+
 bool BroadcastSimulation::tick(int count)
 {
 	assert(count > 0 && "ERROR: BroadcastAlgorithm: nonpositive tick");
@@ -57,24 +62,9 @@ bool BroadcastSimulation::tick(int count)
 		{
 			(*graph_p_).properties((*final_it).first) = (*final_it).second;
 		}
+		updateData();
 	}
 	return false;
-}
-
-
-bool BroadcastSimulation::finish(int max_ticks)
-{
-	assert(max_ticks > 0 && "ERROR: BroadcastAlgorithm: nonpositive max_ticks");
-	while (!tick(1) && max_ticks >= 0)
-	{
-		max_ticks--;
-		if (max_ticks < 0)
-		{
-			cout << "Broadcasting could not be finished with " << max_ticks << " ticks \n";
-			return false;
-		}
-	}
-	return true;
 }
 
 
@@ -84,64 +74,29 @@ bool BroadcastSimulation::finished() const
 }
 
 
-void BroadcastSimulation::edit(const GraphEditAction& edit)
+void BroadcastSimulation::updateData()
 {
-	switch (edit.type_)
+	int informed = 0;
+	int uninformed = 0;
+	HNAGraph::Vertex_Range vp;
+	for (vp = (*graph_p_).getVertices(); vp.first != vp.second; ++vp.first)
 	{
-		case GraphEditAction::EditType::AddEdge:
+		int state = (*graph_p_).properties(*vp.first).state_;
+		if (state == Two_State::informed)
 		{
-			add_edge(edit.src_, edit.targ_);
+			informed++;
 		}
-		break;
-		case GraphEditAction::EditType::AddVertex:
+		else
 		{
-			add_vertex();
-			if (edit.state_ > 0)
-				set_state((*graph_p_).getVertexCount() - 1, edit.state_);
+			uninformed++;
 		}
-		break;
-		case GraphEditAction::EditType::DeleteEdge:
-		{
-			delete_edge(edit.src_, edit.targ_);
-		}
-		break;
-		case GraphEditAction::EditType::DeleteVertex:
-		{
-			delete_vertex(edit.v_);
-		}
-		break;
-		case GraphEditAction::EditType::SetState:
-		{
-			set_state(edit.v_, edit.state_);
-		}
-		break;
 	}
+	data_["Informed"].second.push_back(informed);
+	data_["Uninformed"].second.push_back(uninformed);
 }
 
-void BroadcastSimulation::add_vertex()
+void BroadcastSimulation::initializeData()
 {
-	(*graph_p_).AddVertex();
-}
-
-void BroadcastSimulation::add_edge(int source, int target)
-{
-	(*graph_p_).AddEdge(source, target);
-}
-
-void BroadcastSimulation::delete_edge(int source, int target)
-{
-	(*graph_p_).RemoveEdge(source, target);
-}
-
-void BroadcastSimulation::delete_vertex(int vertex)
-{
-	(*graph_p_).RemoveVertex(vertex);
-}
-
-void BroadcastSimulation::set_state(int vertex, int state)
-{
-	assert(vertex > -1 && "ERROR: BroadcastSimulation: set_state: negative vertex index");
-	assert(state > -1 && "ERROR: BroadcastSimulation: set_state: negative state");
-	(*graph_p_).properties(vertex).state_ = state;
-	std::cout << "new state  " << (*graph_p_).properties(vertex).state_ << std::endl;
+	data_["Informed"] = std::make_pair(Color::Black, std::vector<int>());
+	data_["Uninformed"] = std::make_pair(Color::Blue, std::vector<int>());
 }

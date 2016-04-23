@@ -20,9 +20,7 @@ bool BroadcastScheme::broadcasting_finished(const HNAGraph& graph) const
 std::string BroadcastScheme::description() const
 {
 	std::string desc;
-	desc.append("Sending Scheme = ");
+	desc.append("Scheme = ");
 	desc.append((*s_).description());
-	desc.append(", Receiving Scheme = ");
-	desc.append((*r_).description());
 	return desc;
 }

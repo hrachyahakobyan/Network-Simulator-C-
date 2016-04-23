@@ -66,9 +66,6 @@
     <Filter Include="Source Files\Core\Writers">
       <UniqueIdentifier>{6e98d762-663c-47ce-8adb-c0d081129010}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Core\Session">
-      <UniqueIdentifier>{675140a0-2982-4c53-ade4-baf686e1905d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Core\Rendering">
       <UniqueIdentifier>{2e028784-201a-4135-975f-b1ccb2f42cde}</UniqueIdentifier>
     </Filter>
@@ -113,6 +110,9 @@
     </Filter>
     <Filter Include="Source Files\Core\Simulations\Disease">
       <UniqueIdentifier>{4b556510-9667-4714-bacd-58cb96366346}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Simulations\Session">
+      <UniqueIdentifier>{675140a0-2982-4c53-ade4-baf686e1905d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -347,9 +347,6 @@
     <ClCompile Include="ScaleFreeRandomGraphBuilder.cpp">
       <Filter>Source Files\Core\Graph\Builders</Filter>
     </ClCompile>
-    <ClCompile Include="Disease.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Simulation.cpp">
       <Filter>Source Files\Core\Simulations</Filter>
     </ClCompile>
@@ -359,14 +356,59 @@
     <ClCompile Include="DiseaseSimulationSIR.cpp">
       <Filter>Source Files\Core\Simulations\Disease</Filter>
     </ClCompile>
-    <ClCompile Include="Session.cpp">
-      <Filter>Source Files\Core\Simulations</Filter>
-    </ClCompile>
     <ClCompile Include="DiseaseSession.cpp">
       <Filter>Source Files\Core\Simulations\Disease</Filter>
     </ClCompile>
     <ClCompile Include="DiseaseFactory.cpp">
       <Filter>Source Files\Core\Simulations\Disease</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_DiseaseSelectView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_DiseaseSelectView.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="DiseaseSelectView.cpp">
+      <Filter>Source Files\QT</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_DiseaseParamSelectView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_DiseaseParamSelectView.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="DiseaseParamSelectView.cpp">
+      <Filter>Source Files\QT</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_SessionView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_SessionView.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="SessionView.cpp">
+      <Filter>Source Files\QT</Filter>
+    </ClCompile>
+    <ClCompile Include="DiseaseSimulationSIS.cpp">
+      <Filter>Source Files\Core\Simulations\Disease</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_qcustomplot.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_qcustomplot.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="qcustomplot.cpp">
+      <Filter>Source Files\QT</Filter>
+    </ClCompile>
+    <ClCompile Include="Session.cpp">
+      <Filter>Source Files\Core\Simulations\Session</Filter>
+    </ClCompile>
+    <ClCompile Include="DiseaseSimulationSIRS.cpp">
+      <Filter>Source Files\Core\Simulations\Disease</Filter>
+    </ClCompile>
+    <ClCompile Include="SmallWorldGraphBuilder.cpp">
+      <Filter>Source Files\Core\Graph\Builders</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -538,9 +580,6 @@
     <ClInclude Include="ScaleFreeRandomGraphBuilder.h">
       <Filter>Header Files\Core\Graph\Builders</Filter>
     </ClInclude>
-    <ClInclude Include="Disease.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="HNABroadcastSession.h">
       <Filter>Header Files\Core\Simulations\Broadcast</Filter>
     </ClInclude>
@@ -561,6 +600,24 @@
     </ClInclude>
     <ClInclude Include="DiseaseFactory.h">
       <Filter>Header Files\Core\Simulations\Disease</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_DiseaseSelectView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_DiseaseParamSelectView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_SessionView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DiseaseSimulationSIS.h">
+      <Filter>Header Files\Core\Simulations\Disease</Filter>
+    </ClInclude>
+    <ClInclude Include="DiseaseSimulationSIRS.h">
+      <Filter>Header Files\Core\Simulations\Disease</Filter>
+    </ClInclude>
+    <ClInclude Include="SmallWorldGraphBuilder.h">
+      <Filter>Header Files\Core\Graph\Builders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -601,6 +658,27 @@
       <Filter>Header Files\QT</Filter>
     </CustomBuild>
     <CustomBuild Include="MultiSpinboxDialog.h">
+      <Filter>Header Files\QT</Filter>
+    </CustomBuild>
+    <CustomBuild Include="DiseaseSelectView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="DiseaseSelectView.h">
+      <Filter>Header Files\QT</Filter>
+    </CustomBuild>
+    <CustomBuild Include="DiseaseParamSelectView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="DiseaseParamSelectView.h">
+      <Filter>Header Files\QT</Filter>
+    </CustomBuild>
+    <CustomBuild Include="SessionView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="SessionView.h">
+      <Filter>Header Files\QT</Filter>
+    </CustomBuild>
+    <CustomBuild Include="qcustomplot.h">
       <Filter>Header Files\QT</Filter>
     </CustomBuild>
   </ItemGroup>

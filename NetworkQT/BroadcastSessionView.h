@@ -1,23 +1,22 @@
 #ifndef BROADCASTSESSIONVIEW_H
 #define BROADCASTSESSIONVIEW_H
 
-#include <QDialog>
 #include "ui_BroadcastSessionView.h"
-#include "HNABroadcastSession.h"
+#include "Session.h"
 #include "BroadcastSessionEditInputDialog.h"
 
 class BroadcastSessionView : public QDialog
 {
 	Q_OBJECT
-		typedef std::unique_ptr<HNABroadcastSession> Session;
+		typedef std::unique_ptr<Session> Session_Ptr;
 public:
 	BroadcastSessionView(QWidget *parent = 0);
-	BroadcastSessionView(QWidget* parent, std::unique_ptr<HNABroadcastSession> session);
+	BroadcastSessionView(QWidget* parent, std::unique_ptr<Session> session);
 	~BroadcastSessionView();
 	void accept();
 	void reject();
 private:
-	Session session_;
+	Session_Ptr session_;
 	QPixmap image_;
 	QGraphicsScene* imageScene_;
 	BroadcastSessionEditInputDialog* editDialog_;

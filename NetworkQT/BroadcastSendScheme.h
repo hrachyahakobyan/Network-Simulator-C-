@@ -1,6 +1,4 @@
 #pragma once
-#include "HNAGraph.h"
-
 class BroadcastSendScheme
 {
 public:

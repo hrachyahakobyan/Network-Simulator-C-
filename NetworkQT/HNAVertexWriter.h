@@ -1,7 +1,5 @@
 #pragma once
 #include <fstream>
-#include "Constants.h"
-#include "HNAGraph.h"
 
 #define MIN_NODE_SIZE 0.4
 #define EXTRA_NODE_SIZE 0.4
@@ -67,7 +65,7 @@ public:
 		}
 		if (deg_map_.empty() == false)
 		{
-			double size = MIN_NODE_SIZE + EXTRA_NODE_SIZE * double(deg_map_.at(v)) / minmax_.second;
+			double size = MIN_NODE_SIZE + EXTRA_NODE_SIZE * double(deg_map_.at(v)) / (minmax_.second > 0 ? minmax_.second : 1);
 			out << ", width=" << std::to_string(size);
 		}
 		out << "]";

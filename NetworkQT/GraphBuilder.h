@@ -1,5 +1,4 @@
 #pragma once
-#include "HNAGraph.h"
 
 class GraphBuilder
 {
@@ -8,7 +7,7 @@ public:
 	{
 		enum GraphType{Graph_Binomial, Graph_Bipartite, Graph_CCC, Graph_Complete, Graph_Custom, Graph_Dipper, 
 					   Graph_FixedRandom, Graph_Grid, Graph_Hypercube, Graph_KTree, Graph_Knodel, Graph_Path,
-					   Graph_Random, Graph_RandomTree, Graph_Torus, Graph_ScaleFreeRandom};
+					   Graph_Random, Graph_RandomTree, Graph_Torus, Graph_ScaleFreeRandom, Graph_SmallWorld};
 		GraphType type_;
 		int n_vertices_;
 		int n_edges_;
@@ -19,6 +18,7 @@ public:
 		int n_;
 		int children_;
 		int p_;
+		double b_;
 		std::string path_;
 	};
 

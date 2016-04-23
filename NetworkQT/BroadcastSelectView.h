@@ -1,7 +1,6 @@
 #ifndef BROADCASTSELECTVIEW_H
 #define BROADCASTSELECTVIEW_H
 
-#include <QDialog>
 #include "ui_BroadcastSelectView.h"
 #include "BroadcastScheme.h"
 

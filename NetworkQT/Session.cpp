@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Session.h"
-#include "FileManager.h"
 
 
 Session::Session(Sim_Ptr sim_ptr, Write_Ptr write_ptr, Rend_Ptr rend_ptr) : sim_ptr_(std::move(sim_ptr)),
@@ -16,6 +15,11 @@ Session::~Session()
 	sim_ptr_.reset();
 	rend_ptr_.reset();
 	write_ptr_.reset();
+}
+
+std::string Session::description() const
+{
+	return (*sim_ptr_).description();
 }
 
 bool Session::tick(int count)
@@ -108,4 +112,18 @@ void Session::save(const boost::filesystem::path& dest)
 	p.append(date.c_str());
 	FileManager::sharedManager()->copy_dir(sim_path_, p);
 
+}
+
+std::map<std::string, std::pair<Color, std::vector<int>>> Session::data()
+{
+	return (*sim_ptr_).data();
+}
+
+void Session::reset()
+{
+	(*sim_ptr_).reset();
+	cur_index_ = 0;
+	img_paths_.clear();
+	FileManager::sharedManager()->clear_dir(sim_path_);
+	draw();
 }

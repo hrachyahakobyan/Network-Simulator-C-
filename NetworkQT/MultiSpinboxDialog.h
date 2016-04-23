@@ -1,7 +1,6 @@
 #ifndef MULTISPINBOXDIALOG_H
 #define MULTISPINBOXDIALOG_H
 
-#include <QDialog>
 
 class MultiSpinboxDialog : public QDialog
 {

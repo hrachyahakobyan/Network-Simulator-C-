@@ -14,6 +14,7 @@ public:
 	Session(Sim_Ptr sim_ptr, Write_Ptr write_ptr, Rend_Ptr rend_ptr);
 	virtual ~Session();
 public:
+	virtual std::string description() const;
 	virtual bool tick(int tick = 1);
 	virtual bool finish();
 	virtual void edit(const GraphEditAction& edit);
@@ -22,6 +23,8 @@ public:
 	virtual boost::filesystem::path last();
 	virtual boost::filesystem::path previous();
 	virtual boost::filesystem::path next();
+	virtual std::map<std::string, std::pair<Color, std::vector<int>>> data();
+	virtual void reset();
 protected:
 	Sim_Ptr sim_ptr_;
 	Write_Ptr write_ptr_;
