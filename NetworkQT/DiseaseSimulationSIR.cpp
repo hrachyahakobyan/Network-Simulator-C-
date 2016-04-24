@@ -14,14 +14,28 @@ DiseaseSimulationSIR::~DiseaseSimulationSIR()
 {
 }
 
+
 std::string DiseaseSimulationSIR::description() const
 {
 	std::string desc("SIR");
 	desc.append(". Infection rate = ");
-	desc.append(std::to_string(inf_rate_));
-	desc.append(". Infection period = ");
-	desc.append(std::to_string(inf_period_));
+	desc.append(std::to_string(options_.inf_rate_));
+	if (options_.infType_ == Options::InfectionType::Fixed)
+	{
+		desc.append(". Infection period = ");
+		desc.append(std::to_string(options_.inf_period_));
+	}
+	else
+	{
+		desc.append(". Recovery rate = ");
+		desc.append(std::to_string(options_.rec_rate_));
+	}
 	return desc;
+}
+
+std::map<std::string, int> DiseaseSimulationSIR::allowedStates() const
+{
+	return std::map<std::string, int>({ { "Susceptible" , 0}, { "Infected" , 1}, {"Recovered", 2} });
 }
 
 bool DiseaseSimulationSIR::tick(int count)
@@ -65,21 +79,41 @@ bool DiseaseSimulationSIR::tick(int count)
 			receive(cur_v, r_map[cur_v]);
 		}
 		/* Iterate over infected */
-		for (vp = (*graph_p_).getVertices(); vp.first != vp.second; ++vp.first)
+		iterate();
+		updateData();
+	}
+	return false;
+}
+
+
+void DiseaseSimulationSIR::iterate()
+{
+	typedef HNAGraph::Vertex Vertex;
+	typedef HNAGraph::HNANodeBundle Message;
+	HNAGraph::Vertex_Range vp;
+	for (vp = (*graph_p_).getVertices(); vp.first != vp.second; ++vp.first)
+	{
+		Vertex cur_v = *vp.first;
+		Message* prop = &((*graph_p_).properties(cur_v));
+		if (prop->state_ == SIR_States::Infected)
 		{
-			Vertex cur_v = *vp.first;
-			Message* prop = &((*graph_p_).properties(cur_v));
-			if (prop->state_ == SIR_States::Infected)
+			if (options_.infType_ == Options::InfectionType::Fixed)
 			{
 				if (prop->inf_preiod_ == 0)
 					(*graph_p_).properties(cur_v).state_ = SIR_States::Recovered;
 				else
 					(*graph_p_).properties(cur_v).inf_preiod_ -= 1;
 			}
+			else
+			{
+				bool changeState = RandomManager::sharedManager()->event(options_.rec_rate_);
+				if (changeState)
+				{
+					(*graph_p_).properties(cur_v).state_ = SIR_States::Recovered;
+				}
+			}
 		}
-		updateData();
 	}
-	return false;
 }
 
 bool DiseaseSimulationSIR::finished() const
@@ -107,12 +141,13 @@ void DiseaseSimulationSIR::send(const HNAGraph::Vertex& sender, std::map<HNAGrap
 		HNAGraph::HNANodeBundle cur_v_prop = (*graph_p_).properties(cur_v);
 		if (cur_v_prop.state_ == SIR_States::Suspectible)
 		{
-			bool infect = RandomManager::sharedManager()->event(inf_rate_);
+			bool infect = RandomManager::sharedManager()->event(options_.inf_rate_);
 			if (infect)
 			{
 				HNAGraph::HNANodeBundle message;
 				message.state_ = SIR_States::Infected;
-				message.inf_preiod_ = inf_period_;
+				if (options_.infType_ == Options::InfectionType::Fixed)
+					message.inf_preiod_ = options_.inf_period_;
 				messages.insert(std::make_pair(cur_v, message));
 			}
 		}
@@ -130,7 +165,8 @@ void DiseaseSimulationSIR::receive(const HNAGraph::Vertex& node, const std::map<
 		if (m->state_ == SIR_States::Infected)
 		{
 			(*graph_p_).properties(node).state_ = SIR_States::Infected;
-			(*graph_p_).properties(node).inf_preiod_ = m->inf_preiod_;
+			if (options_.infType_ == Options::InfectionType::Fixed)
+				(*graph_p_).properties(node).inf_preiod_ = m->inf_preiod_;
 			break;
 		}
 	}
@@ -141,16 +177,16 @@ void DiseaseSimulationSIR::edit(const GraphEditAction& edit)
 	Simulation::edit(edit);
 	if (edit.type_ == GraphEditAction::EditType::AddVertex)
 	{
-		if (edit.state_ == SIR_States::Infected)
+		if (edit.state_ == SIR_States::Infected && options_.infType_ == Options::InfectionType::Fixed)
 		{
-			(*graph_p_).properties((*graph_p_).getVertexCount() - 1).inf_preiod_ = inf_period_;
+			(*graph_p_).properties((*graph_p_).getVertexCount() - 1).inf_preiod_ = options_.inf_period_;
 		}
 	}
 	else if (edit.type_ == GraphEditAction::EditType::SetState)
 	{
 		if (edit.state_ == SIR_States::Infected)
 		{
-			(*graph_p_).properties(edit.v_).inf_preiod_ = inf_period_;
+			(*graph_p_).properties(edit.v_).inf_preiod_ = options_.inf_period_;
 		}
 	}
 }

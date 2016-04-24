@@ -410,6 +410,15 @@
     <ClCompile Include="SmallWorldGraphBuilder.cpp">
       <Filter>Source Files\Core\Graph\Builders</Filter>
     </ClCompile>
+    <ClCompile Include="ShuffleExchangeBuilder.cpp">
+      <Filter>Source Files\Core\Graph\Builders</Filter>
+    </ClCompile>
+    <ClCompile Include="ButterflyGraphBuilder.cpp">
+      <Filter>Source Files\Core\Graph\Builders</Filter>
+    </ClCompile>
+    <ClCompile Include="DeBruinBuilder.cpp">
+      <Filter>Source Files\Core\Graph\Builders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -617,6 +626,15 @@
       <Filter>Header Files\Core\Simulations\Disease</Filter>
     </ClInclude>
     <ClInclude Include="SmallWorldGraphBuilder.h">
+      <Filter>Header Files\Core\Graph\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="ButterflyGraphBuilder.h">
+      <Filter>Header Files\Core\Graph\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="ShuffleExchangeBuilder.h">
+      <Filter>Header Files\Core\Graph\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="DeBruinBuilder.h">
       <Filter>Header Files\Core\Graph\Builders</Filter>
     </ClInclude>
   </ItemGroup>

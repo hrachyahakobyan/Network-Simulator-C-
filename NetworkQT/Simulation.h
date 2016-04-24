@@ -61,11 +61,14 @@ public:
 	virtual bool tick(int count = 1) = 0;
 	virtual bool finished() const = 0;
 	virtual std::string description() const = 0;
+	virtual std::map<std::string, int> allowedStates() const = 0;
 	virtual std::map<std::string, std::pair<Color, std::vector<int>>> data();
 	virtual bool finish(int max_ticks = MAX_TICKS);
 	virtual void edit(const GraphEditAction& edit);
 	virtual const HNAGraph& state() const;
 	virtual void reset();
+	virtual int edgeCount() const;
+	virtual int vertexCount() const;
 protected:
 	graph_ptr graph_p_;
 	std::map<std::string, std::pair<Color, std::vector<int>>> data_;

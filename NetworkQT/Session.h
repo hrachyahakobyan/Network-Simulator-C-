@@ -15,6 +15,9 @@ public:
 	virtual ~Session();
 public:
 	virtual std::string description() const;
+	virtual std::map<std::string, int> allowedStates() const;
+	virtual int edgeCount() const;
+	virtual int vertexCount() const;
 	virtual bool tick(int tick = 1);
 	virtual bool finish();
 	virtual void edit(const GraphEditAction& edit);
@@ -25,6 +28,7 @@ public:
 	virtual boost::filesystem::path next();
 	virtual std::map<std::string, std::pair<Color, std::vector<int>>> data();
 	virtual void reset();
+	bool shouldRender;
 protected:
 	Sim_Ptr sim_ptr_;
 	Write_Ptr write_ptr_;

@@ -18,7 +18,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>101</width>
+     <width>161</width>
      <height>22</height>
     </rect>
    </property>
@@ -103,6 +103,21 @@
    <item>
     <property name="text">
      <string>Small World</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Butterfly</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Shuffle Exchange</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>DeBruin</string>
     </property>
    </item>
   </widget>

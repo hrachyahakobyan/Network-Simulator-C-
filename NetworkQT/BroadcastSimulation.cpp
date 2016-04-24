@@ -15,6 +15,11 @@ std::string BroadcastSimulation::description() const
 	return (*scheme_p_).description();
 }
 
+std::map<std::string, int> BroadcastSimulation::allowedStates() const
+{
+	return std::map<std::string, int>({ {"Uninformed", 0}, {"Informed", 1} });
+}
+
 bool BroadcastSimulation::tick(int count)
 {
 	assert(count > 0 && "ERROR: BroadcastAlgorithm: nonpositive tick");

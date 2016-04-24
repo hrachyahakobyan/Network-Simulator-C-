@@ -67,6 +67,13 @@ public:
 				}
 			}
 		}
+		std::string type("Small world. N = ");
+		type.append(std::to_string(n));
+		type.append(". K = ");
+		type.append(std::to_string(k));
+		type.append(". B = ");
+		type.append(std::to_string(b));
+		(*gptr).properties().type_ = type;
 		return gptr;
 	}
 };

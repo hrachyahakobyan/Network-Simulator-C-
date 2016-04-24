@@ -5,14 +5,22 @@ DiseaseParamSelectView::DiseaseParamSelectView(QWidget *parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
+
 	ui.infectionPeriodSpinbox->setMinimum(1);
 	ui.infectionRateSpinbox->setMinimum(0);
 	ui.infectionRateSpinbox->setMaximum(1);
-	ui.immunityPeriodSpinbox->setMinimum(0);
+	ui.immunityPeriodSpinbox->setMinimum(1);
+	ui.recoveryRateSpinbox->setMinimum(0);
+	ui.recoveryRateSpinbox->setMaximum(1);
+	ui.immunityLossRateSpinbox->setMinimum(0);
+	ui.immunityLossRateSpinbox->setMaximum(1);
 
 	connect(ui.infectionPeriodSpinbox, SIGNAL(valueChanged(const QString&)), this, SLOT(onInfectionPeriodSpinboxValueChanged(const QString&)));
 	connect(ui.infectionRateSpinbox, SIGNAL(valueChanged(const QString&)), this, SLOT(onInfectionRateSpinboxValueChanged(const QString&)));
 	connect(ui.immunityPeriodSpinbox, SIGNAL(valueChanged(const QString&)), this, SLOT(onImmunityPeriodSpinboxValueChanged(const QString&)));
+	connect(ui.immunityLossRateSpinbox, SIGNAL(valueChanged(const QString&)), this, SLOT(onImmunityLossRateSpinbox(const QString&)));
+	connect(ui.recoveryRateSpinbox, SIGNAL(valueChanged(const QString&)), this, SLOT(onRecoveryRateSpinbox(const QString&)));
+
 }
 
 DiseaseParamSelectView::~DiseaseParamSelectView()
@@ -20,12 +28,19 @@ DiseaseParamSelectView::~DiseaseParamSelectView()
 	ui.setupUi(this);
 }
 
-void DiseaseParamSelectView::updateParams(const QMap<Parameters, bool>& paramsMap)
+
+void DiseaseParamSelectView::hideImmunity(bool hide)
 {
-	ui.infectionPeriodSpinbox->setEnabled(paramsMap[Parameters::InfectionPeriod]);
-	ui.infectionRateSpinbox->setEnabled(paramsMap[Parameters::InfectionRate]);
-	ui.immunityPeriodSpinbox->setEnabled(paramsMap[Parameters::ImmunityPeriod]);
-	initialize();
+	ui.immunityLossRateButton->setEnabled(!hide);
+	ui.immunityLossRateSpinbox->setEnabled(!hide);
+	ui.immunityPeriodButton->setEnabled(!hide);
+	ui.immunityPeriodSpinbox->setEnabled(!hide);
+}
+
+void DiseaseParamSelectView::updateModelType(DiseaseSimulation::ModelType type)
+{
+	options_.type = type;
+	reset();
 }
 
 void DiseaseParamSelectView::initialize()
@@ -33,29 +48,40 @@ void DiseaseParamSelectView::initialize()
 	ui.infectionPeriodSpinbox->setValue(ui.infectionPeriodSpinbox->minimum());
 	ui.infectionRateSpinbox->setValue(ui.infectionRateSpinbox->minimum());
 	ui.immunityPeriodSpinbox->setValue(ui.immunityPeriodSpinbox->minimum());
+	ui.immunityLossRateSpinbox->setValue(ui.immunityLossRateSpinbox->minimum());
+	ui.recoveryRateSpinbox->setValue(ui.recoveryRateSpinbox->minimum());
+	options_.rec_rate_ = ui.recoveryRateSpinbox->value();
+	options_.inf_rate_ = ui.infectionRateSpinbox->value();
+	options_.imm_period_ = ui.immunityPeriodSpinbox->value();
+	options_.imm_loss_rate_ = ui.immunityLossRateSpinbox->value();
+	options_.inf_period_ = ui.infectionPeriodSpinbox->value();
 }
 
 void DiseaseParamSelectView::reset()
 {
-	ui.infectionPeriodSpinbox->setEnabled(false);
-	ui.infectionRateSpinbox->setEnabled(false);
-	ui.immunityPeriodSpinbox->setEnabled(false);
-	options_.clear();
+	if (options_.type != DiseaseSimulation::ModelType::SIRS)
+		hideImmunity(true);
+	else
+		hideImmunity(false);
+	ui.infectionPeriodButton->setChecked(false);
+	ui.immunityLossRateButton->setChecked(false);
+	ui.immunityPeriodButton->setChecked(false);
+	ui.recoveryRateButton->setChecked(false);
 	initialize();
 }
 
 void DiseaseParamSelectView::accept()
 {
 	QDialog::accept();
-	Q_EMIT diseaseParamSelectViewFinished(QDialog::Accepted, options_);
-	reset();
+	DiseaseSimulation::DiseaseOptions copy(options_);
+	Q_EMIT diseaseParamSelectViewFinished(QDialog::Accepted, copy);
 }
 
 void DiseaseParamSelectView::reject()
 {
 	QDialog::reject();
-	Q_EMIT diseaseParamSelectViewFinished(QDialog::Rejected, options_);
-	reset();
+	DiseaseSimulation::DiseaseOptions copy(options_);
+	Q_EMIT diseaseParamSelectViewFinished(QDialog::Rejected, copy);
 }
 
 void DiseaseParamSelectView::on_okButton_clicked()
@@ -64,17 +90,64 @@ void DiseaseParamSelectView::on_okButton_clicked()
 	accept();
 }
 
+
+void DiseaseParamSelectView::on_infectionPeriodButton_stateChanged(int s)
+{
+	if (s == Qt::CheckState::Checked)
+	{
+		options_.infType_ = DiseaseSimulation::DiseaseOptions::InfectionType::Fixed;
+		ui.recoveryRateButton->setChecked(false);
+	}
+}
+
+void DiseaseParamSelectView::on_recoveryRateButton_stateChanged(int s)
+{
+	if (s == Qt::CheckState::Checked)
+	{
+		options_.infType_ = DiseaseSimulation::DiseaseOptions::InfectionType::Probabilistic;
+		ui.infectionPeriodButton->setChecked(false);
+	}
+}
+
+void DiseaseParamSelectView::on_immunityPeriodButton_stateChanged(int s)
+{
+	if (s == Qt::CheckState::Checked)
+	{
+		options_.imType_ = DiseaseSimulation::DiseaseOptions::ImmunityType::Fixed;
+		ui.immunityLossRateButton->setChecked(false);
+	}
+}
+
+void DiseaseParamSelectView::on_immunityLossRateButton_stateChanged(int s)
+{
+	if (s == Qt::CheckState::Checked)
+	{
+		options_.imType_ = DiseaseSimulation::DiseaseOptions::ImmunityType::Probabilistic;
+		ui.immunityPeriodButton->setChecked(false);
+	}
+}
+
+void DiseaseParamSelectView::onImmunityLossRateSpinbox(const QString& text)
+{
+	options_.imm_loss_rate_ = ui.immunityLossRateSpinbox->value();
+}
+
+void DiseaseParamSelectView::onRecoveryRateSpinbox(const QString& text)
+{
+	options_.rec_rate_ = ui.recoveryRateSpinbox->value();
+}
+
 void DiseaseParamSelectView::onInfectionRateSpinboxValueChanged(const QString& text)
 {
-	options_[Parameters::InfectionRate] = ui.infectionRateSpinbox->value();
+	options_.inf_rate_ = ui.infectionRateSpinbox->value();
 }
 
 void DiseaseParamSelectView::onInfectionPeriodSpinboxValueChanged(const QString& text)
 {
-	options_[Parameters::InfectionPeriod] = ui.infectionPeriodSpinbox->value();
+	options_.inf_period_ = ui.infectionPeriodSpinbox->value();
 }
 
 void DiseaseParamSelectView::onImmunityPeriodSpinboxValueChanged(const QString& text)
 {
-	options_[Parameters::ImmunityPeriod] = ui.immunityPeriodSpinbox->value();
+	options_.imm_period_ = ui.immunityPeriodSpinbox->value();
 }

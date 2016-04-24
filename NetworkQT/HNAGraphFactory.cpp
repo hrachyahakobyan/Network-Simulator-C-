@@ -15,6 +15,9 @@
 #include "FixedRanomTreeBuilder.h"
 #include "ScaleFreeRandomGraphBuilder.h"
 #include "SmallWorldGraphBuilder.h"
+#include "ButterflyGraphBuilder.h"
+#include "ShuffleExchangeBuilder.h"
+#include "DeBruinBuilder.h"
 
 HNAGraphFactory *HNAGraphFactory::graphFactory = 0;
 
@@ -35,6 +38,10 @@ HNAGraphFactory::HNAGraphFactory()
 	builders_.insert(std::make_pair(GraphBuilder::GraphOptions::GraphType::Graph_FixedRandom, std::unique_ptr<GraphBuilder>(new FixedRanomTreeBuilder)));
 	builders_.insert(std::make_pair(GraphBuilder::GraphOptions::GraphType::Graph_ScaleFreeRandom, std::unique_ptr<GraphBuilder>(new ScaleFreeRandomGraphBuilder)));
 	builders_.insert(std::make_pair(GraphBuilder::GraphOptions::GraphType::Graph_SmallWorld, std::unique_ptr<GraphBuilder>(new SmallWorldGraphBuilder)));
+	builders_.insert(std::make_pair(GraphBuilder::GraphOptions::GraphType::Graph_Butterfly, std::unique_ptr<GraphBuilder>(new ButterflyGraphBuilder)));
+	builders_.insert(std::make_pair(GraphBuilder::GraphOptions::GraphType::Graph_ShuffleExchange, std::unique_ptr<GraphBuilder>(new ShuffleExchangeBuilder)));
+	builders_.insert(std::make_pair(GraphBuilder::GraphOptions::GraphType::Graph_DeBruin, std::unique_ptr<GraphBuilder>(new DeBruinBuilder)));
+
 }
 
 

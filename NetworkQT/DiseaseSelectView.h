@@ -20,7 +20,7 @@ private:
 public Q_SLOTS:
 	void on_diseaseComboBox_currentIndexChanged(QString s);
 	void on_nextButton_clicked();
-	void on_diseaseParamSelectViewFinished(int state, const QMap<DiseaseParamSelectView::Parameters, double>& params);
+	void on_diseaseParamSelectViewFinished(int state, const DiseaseSimulation::DiseaseOptions& params);
 Q_SIGNALS:
 	void diseaseSelectViewFinished(int state, const DiseaseSimulation::DiseaseOptions& options);
 private:

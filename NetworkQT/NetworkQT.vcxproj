@@ -103,11 +103,13 @@
     <ClCompile Include="BroadcastSessionEditInputDialog.cpp" />
     <ClCompile Include="BroadcastSessionView.cpp" />
     <ClCompile Include="BroadcastSimulation.cpp" />
+    <ClCompile Include="ButterflyGraphBuilder.cpp" />
     <ClCompile Include="CCGraphBuilder.cpp" />
     <ClCompile Include="CleanUp.cpp" />
     <ClCompile Include="CMDGraphRenderer.cpp" />
     <ClCompile Include="CompleteGraphBuilder.cpp" />
     <ClCompile Include="CustomGraphBuilder.cpp" />
+    <ClCompile Include="DeBruinBuilder.cpp" />
     <ClCompile Include="DefaultNotificationCenter.cpp" />
     <ClCompile Include="DipperGraphBuilder.cpp" />
     <ClCompile Include="DiseaseFactory.cpp" />
@@ -228,6 +230,7 @@
     <ClCompile Include="ScaleFreeRandomGraphBuilder.cpp" />
     <ClCompile Include="Session.cpp" />
     <ClCompile Include="SessionView.cpp" />
+    <ClCompile Include="ShuffleExchangeBuilder.cpp" />
     <ClCompile Include="Simulation.cpp" />
     <ClCompile Include="SmallWorldGraphBuilder.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -250,9 +253,11 @@
     <ClInclude Include="BroadcastReceiveSchemeRadio.h" />
     <ClInclude Include="BroadcastScheme.h" />
     <ClInclude Include="BroadcastSendSchemeRadio.h" />
+    <ClInclude Include="ButterflyGraphBuilder.h" />
     <ClInclude Include="CCGraphBuilder.h" />
     <ClInclude Include="CleanUp.h" />
     <ClInclude Include="CustomGraphBuilder.h" />
+    <ClInclude Include="DeBruinBuilder.h" />
     <ClInclude Include="DipperGraphBuilder.h" />
     <ClInclude Include="DiseaseFactory.h" />
     <CustomBuild Include="DiseaseSelectView.h">
@@ -321,6 +326,7 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DQT_PRINTSUPPORT_LIB  "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtPrintSupport" "-IC:\Program Files (x86)\Visual Leak Detector\include" "-fstdafx.h" "-f../../SessionView.h"</Command>
     </CustomBuild>
+    <ClInclude Include="ShuffleExchangeBuilder.h" />
     <ClInclude Include="Simulation.h" />
     <ClInclude Include="SmallWorldGraphBuilder.h" />
     <ClInclude Include="TorusGraphBuilder.h" />

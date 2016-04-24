@@ -3,7 +3,6 @@
 
 #include "ui_SessionView.h"
 #include "Session.h"
-#include "BroadcastSessionEditInputDialog.h"
 
 class SessionView : public QDialog
 {
@@ -19,8 +18,7 @@ private:
 	Session_Ptr session_;
 	QPixmap image_;
 	QGraphicsScene* imageScene_;
-	BroadcastSessionEditInputDialog* editDialog_;
-	public Q_SLOTS:
+public Q_SLOTS:
 	void on_saveButton_clicked();
 	void on_tickButton_clicked();
 	void on_finishButton_clicked();
@@ -28,18 +26,25 @@ private:
 	void on_previousButton_clicked();
 	void on_redrawButton_clicked();
 	void on_resetButton_clicked();
-	void on_tickSpinBox_valueChanged(int v);
-	void on_editTypeBox_currentIndexChanged(QString s);
-	void editDialogDidFinish(int state, const GraphEditAction& action);
+	void on_lastButton_clicked();
+	void on_changeStateButton_clicked();
+	void on_addEdgeButton_clicked();
+	void on_removeEdgeButton_clicked();
+	void on_addVertexButton_clicked();
+	void on_removeVertexButton_clicked();
+	void on_renderCheckBox_stateChanged(int s);;
 Q_SIGNALS:
 	void sessionViewDidFinish(int status);
 private:
 	Ui::SessionView ui;
 	std::map<std::string, int> plotIndexMap_;
+	std::map<std::string, int> allowedStates_;
+	GraphEditAction editAction_;
 	void draw(const boost::filesystem::path& img);
-	void buildEditInputDialog();
 	void initializeGraphView();
 	void updatePlot();
+	void updateSpinBoxes();
+	void edit();
 	Qt::GlobalColor convert(Color color);
 };
 

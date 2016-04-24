@@ -7,7 +7,8 @@ public:
 	~DiseaseSimulationSIRS();
 	virtual bool tick(int count = 1);
 	virtual std::string description() const;
+	void edit(const GraphEditAction& edit);
 protected:
-	const int imm_period_;
+	virtual void iterate();
 };
 

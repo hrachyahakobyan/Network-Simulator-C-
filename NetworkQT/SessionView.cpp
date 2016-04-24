@@ -2,7 +2,7 @@
 #include "SessionView.h"
 
 SessionView::SessionView(QWidget *parent)
-	: QDialog(parent), editDialog_(0)
+	: QDialog(parent)
 {
 	ui.setupUi(this);
 	ui.tickSpinBox->setValue(1);
@@ -10,13 +10,23 @@ SessionView::SessionView(QWidget *parent)
 }
 
 SessionView::SessionView(QWidget* parent, std::unique_ptr<Session> session)
-	: QDialog(parent), session_(std::move(session)), editDialog_(0)
+	: QDialog(parent), session_(std::move(session))
 {
 	ui.setupUi(this);
 	ui.tickSpinBox->setValue(1);
 	imageScene_ = new QGraphicsScene(this);
+
+	allowedStates_ = (*session_).allowedStates();
+	for (auto it = allowedStates_.begin(); it != allowedStates_.end(); ++it)
+	{
+		ui.addVertextStateComboBox->addItem(QString((*it).first.c_str()));
+		ui.changeStateComboBox->addItem(QString((*it).first.c_str()));
+	}
+	updateSpinBoxes();
+	ui.renderCheckBox->setCheckState(Qt::CheckState::Checked);
 	draw((*session_).last());
 	initializeGraphView();
+	ui.tickSpinBox->setMinimum(1);
 }
 
 SessionView::~SessionView()
@@ -24,8 +34,6 @@ SessionView::~SessionView()
 	session_.reset();
 	imageScene_->clear();
 	delete imageScene_;
-	if (editDialog_ != 0)
-		delete editDialog_;
 }
 
 void SessionView::initializeGraphView()
@@ -160,27 +168,27 @@ void SessionView::on_previousButton_clicked()
 	draw((*session_).previous());
 }
 
-void SessionView::on_editTypeBox_currentIndexChanged(QString s)
+
+void SessionView::on_lastButton_clicked()
 {
-	if (ui.editTypeBox->currentIndex() != 0)
-	{
-		buildEditInputDialog();
-	}
+	qDebug() << "SessionView last button clicked \n";
+	draw((*session_).last());
 }
+
 
 void SessionView::on_resetButton_clicked()
 {
 	(*session_).reset();
 	draw((*session_).last());
+	ui.renderCheckBox->setCheckState(Qt::CheckState::Checked);
 	updatePlot();
+	updateSpinBoxes();
 }
 
-void SessionView::on_tickSpinBox_valueChanged(int v)
+void SessionView::on_renderCheckBox_stateChanged(int s)
 {
-	if (v < 1)
-	{
-		ui.tickSpinBox->setValue(1);
-	}
+	qDebug() << "SessionView changed render state " << s << "\n";
+	(*session_).shouldRender = s == Qt::CheckState::Checked ? true : false;
 }
 
 void SessionView::accept()
@@ -197,51 +205,71 @@ void SessionView::reject()
 
 void SessionView::draw(const boost::filesystem::path& img)
 {
-	image_.load(img.string().c_str());
-	imageScene_->clear();
-	imageScene_->addPixmap(image_);
-	imageScene_->setSceneRect(image_.rect());
-	ui.graphicsView->setScene(imageScene_);
-}
-
-void SessionView::buildEditInputDialog()
-{
-	if (ui.editTypeBox->currentIndex() != 0)
+	if (ui.renderCheckBox->checkState() == Qt::CheckState::Checked)
 	{
-		GraphEditAction::EditType type = GraphEditAction::EditType(ui.editTypeBox->currentIndex() - 1);
-		QList<QString> labels;
-		if (type == GraphEditAction::EditType::AddEdge || type == GraphEditAction::EditType::DeleteEdge)
-		{
-			labels << "Source" << "Target";
-		}
-		else if (type == GraphEditAction::EditType::SetState)
-		{
-			labels << "State" << "Vertex";
-		}
-		else if (type == GraphEditAction::EditType::AddVertex)
-		{
-			labels << "State";
-		}
-		else
-		{
-			labels << "Vertex";
-		}
-		editDialog_ = new BroadcastSessionEditInputDialog(this, labels, type);
-		connect(editDialog_, SIGNAL(editDialogDidFinish(int, const GraphEditAction&)), this, SLOT(editDialogDidFinish(int, const GraphEditAction&)));
-		editDialog_->exec();
+		image_.load(img.string().c_str());
+		imageScene_->clear();
+		imageScene_->addPixmap(image_);
+		imageScene_->setSceneRect(image_.rect());
+		ui.graphicsView->setScene(imageScene_);
 	}
 }
 
-
-void SessionView::editDialogDidFinish(int state, const GraphEditAction& action)
+void SessionView::updateSpinBoxes()
 {
-	qDebug() << "Graph edit input finished with state " << state << "\n";
-	if (state == QDialog::Accepted)
-	{
-		(*session_).edit(action);
-		draw((*session_).last());
-	}
-	ui.editTypeBox->setCurrentIndex(0);
-	delete editDialog_;
-	editDialog_ = 0;
+	int vertexCount = (*session_).vertexCount() - 1;
+	ui.changeStateSpinbox->setMinimum(0);
+	ui.changeStateSpinbox->setMaximum(vertexCount);
+	ui.sourceSpinbox->setMinimum(0);
+	ui.sourceSpinbox->setMaximum(vertexCount);
+	ui.targetSpinbox->setMinimum(0);
+	ui.targetSpinbox->setMaximum(vertexCount);
+	ui.removeVertexSpinbox->setMinimum(0);
+	ui.removeVertexSpinbox->setMaximum(vertexCount);
+}
+
+/*Edit actions*/
+void SessionView::on_changeStateButton_clicked()
+{
+	editAction_.type_ = GraphEditAction::EditType::SetState;
+	editAction_.v_ = ui.changeStateSpinbox->value();
+	editAction_.state_ = allowedStates_[ui.changeStateComboBox->currentText().toStdString()];
+	edit();
+}
+
+void SessionView::on_addEdgeButton_clicked()
+{
+	editAction_.type_ = GraphEditAction::EditType::AddEdge;
+	editAction_.src_ = ui.sourceSpinbox->value();
+	editAction_.targ_ = ui.targetSpinbox->value();
+	edit();
+}
+
+void SessionView::on_removeEdgeButton_clicked()
+{
+	editAction_.type_ = GraphEditAction::EditType::DeleteEdge;
+	editAction_.src_ = ui.sourceSpinbox->value();
+	editAction_.targ_ = ui.targetSpinbox->value();
+	edit();
+}
+
+void SessionView::on_addVertexButton_clicked()
+{
+	editAction_.type_ = GraphEditAction::EditType::AddVertex;
+	editAction_.state_ = allowedStates_[ui.addVertextStateComboBox->currentText().toStdString()];
+	edit();
+}
+
+void SessionView::on_removeVertexButton_clicked()
+{
+	editAction_.type_ = GraphEditAction::EditType::DeleteVertex;
+	editAction_.v_ = ui.removeVertexSpinbox->value();
+	edit();
+}
+
+void SessionView::edit()
+{
+	(*session_).edit(editAction_);
+	draw((*session_).last());
+	updateSpinBoxes();
 }

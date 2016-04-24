@@ -27,6 +27,7 @@ public:
 	bool tick(int count = 1);
 	bool finished() const;
 	std::string description() const;
+	std::map<std::string, int> allowedStates() const;
 
 private:
 	scheme_p scheme_p_;

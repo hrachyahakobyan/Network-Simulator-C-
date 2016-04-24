@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>538</width>
+    <width>534</width>
     <height>251</height>
    </rect>
   </property>
@@ -29,7 +29,7 @@
   <widget class="QDoubleSpinBox" name="infectionRateSpinbox">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>30</x>
      <y>30</y>
      <width>101</width>
      <height>22</height>
@@ -39,7 +39,7 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>30</x>
      <y>10</y>
      <width>101</width>
      <height>16</height>
@@ -52,7 +52,7 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>30</x>
      <y>80</y>
      <width>101</width>
      <height>16</height>
@@ -65,7 +65,7 @@
   <widget class="QSpinBox" name="infectionPeriodSpinbox">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>30</x>
      <y>100</y>
      <width>101</width>
      <height>22</height>
@@ -75,7 +75,7 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>30</x>
      <y>150</y>
      <width>101</width>
      <height>16</height>
@@ -88,11 +88,109 @@
   <widget class="QSpinBox" name="immunityPeriodSpinbox">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>30</x>
      <y>170</y>
      <width>101</width>
      <height>22</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="immunityLossRateSpinbox">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>170</y>
+     <width>101</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>150</y>
+     <width>101</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Immunity loss rate</string>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="recoveryRateSpinbox">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>100</y>
+     <width>101</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>80</y>
+     <width>101</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Recovery rate</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="infectionPeriodButton">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>100</y>
+     <width>16</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="recoveryRateButton">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>100</y>
+     <width>16</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="immunityPeriodButton">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>170</y>
+     <width>16</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="immunityLossRateButton">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>170</y>
+     <width>16</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>

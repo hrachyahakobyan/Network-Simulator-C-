@@ -3,7 +3,7 @@
 
 
 Session::Session(Sim_Ptr sim_ptr, Write_Ptr write_ptr, Rend_Ptr rend_ptr) : sim_ptr_(std::move(sim_ptr)),
-write_ptr_(std::move(write_ptr)), rend_ptr_(std::move(rend_ptr)), cur_index_(0), eng_index_(0), engines_(RENDER_ENGINES)
+write_ptr_(std::move(write_ptr)), rend_ptr_(std::move(rend_ptr)), cur_index_(0), eng_index_(0), engines_(RENDER_ENGINES), shouldRender(true)
 {
 	sim_path_ = FileManager::sharedManager()->simulation_path();
 	assert(FileManager::sharedManager()->dir_exists(sim_path_) && "ERROR: HNABroadcastSession: failed to create directory");
@@ -20,6 +20,23 @@ Session::~Session()
 std::string Session::description() const
 {
 	return (*sim_ptr_).description();
+}
+
+std::map<std::string, int> Session::allowedStates() const
+{
+	return (*sim_ptr_).allowedStates();
+}
+
+
+
+int Session::vertexCount() const
+{
+	return (*sim_ptr_).vertexCount();
+}
+
+int Session::edgeCount() const
+{
+	return (*sim_ptr_).edgeCount();
 }
 
 bool Session::tick(int count)
@@ -97,10 +114,13 @@ boost::filesystem::path Session::next()
 
 void Session::draw()
 {
-	std::string name = std::to_string(img_paths_.size());
-	boost::filesystem::path file_path = (*write_ptr_).writeGraph((*sim_ptr_).state(), sim_path_, name);
-	boost::filesystem::path image_path = (*rend_ptr_).render_graph(file_path, sim_path_, name, IMG_EXT_JPG, engines_[eng_index_]);
-	img_paths_.push_back(image_path);
+	if (shouldRender)
+	{
+		std::string name = std::to_string(img_paths_.size());
+		boost::filesystem::path file_path = (*write_ptr_).writeGraph((*sim_ptr_).state(), sim_path_, name);
+		boost::filesystem::path image_path = (*rend_ptr_).render_graph(file_path, sim_path_, name, IMG_EXT_JPG, engines_[eng_index_]);
+		img_paths_.push_back(image_path);
+	}
 }
 
 void Session::save(const boost::filesystem::path& dest)
@@ -124,6 +144,7 @@ void Session::reset()
 	(*sim_ptr_).reset();
 	cur_index_ = 0;
 	img_paths_.clear();
+	shouldRender = true;
 	FileManager::sharedManager()->clear_dir(sim_path_);
 	draw();
 }

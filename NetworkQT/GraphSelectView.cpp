@@ -23,6 +23,9 @@ GraphSelectView::GraphSelectView(QWidget *parent)
 	inputMap_.insert(13, qMakePair(GraphBuilder::GraphOptions::GraphType::Graph_FixedRandom, QList<QString>({ "Vertices" })));
 	inputMap_.insert(14, qMakePair(GraphBuilder::GraphOptions::GraphType::Graph_ScaleFreeRandom, QList<QString>({ "New Vertices", "Kernel", "Edges" })));
 	inputMap_.insert(15, qMakePair(GraphBuilder::GraphOptions::GraphType::Graph_SmallWorld, QList<QString>({ "Vertices", "K", "B" })));
+	inputMap_.insert(16, qMakePair(GraphBuilder::GraphOptions::GraphType::Graph_Butterfly, QList<QString>({ "Dimension" })));
+	inputMap_.insert(17, qMakePair(GraphBuilder::GraphOptions::GraphType::Graph_ShuffleExchange, QList<QString>({ "Dimension" })));
+	inputMap_.insert(18, qMakePair(GraphBuilder::GraphOptions::GraphType::Graph_DeBruin, QList<QString>({ "Dimension" })));
 
 	spinBoxMap_.insert(GraphBuilder::GraphOptions::GraphType::Graph_Complete, QList<QPair<QString, QPair<int, int>>>(
 	{qMakePair(QString("Vertices"), qMakePair(1, 20))}));
@@ -54,6 +57,12 @@ GraphSelectView::GraphSelectView(QWidget *parent)
 	{ qMakePair(QString("New Vertices"), qMakePair(1, 1000)), qMakePair(QString("Kernel"), qMakePair(1, 1000)), qMakePair(QString("Edges"), qMakePair(1, 1000))}));
 	spinBoxMap_.insert(GraphBuilder::GraphOptions::GraphType::Graph_SmallWorld, QList<QPair<QString, QPair<int, int>>>(
 	{ qMakePair(QString("Vertices"), qMakePair(1, 1000)), qMakePair(QString("K"), qMakePair(1, 1000)), qMakePair(QString("B"), qMakePair(1, 100)) }));
+	spinBoxMap_.insert(GraphBuilder::GraphOptions::GraphType::Graph_Butterfly, QList<QPair<QString, QPair<int, int>>>(
+	{ qMakePair(QString("Dimension"), qMakePair(1, 8)) }));
+	spinBoxMap_.insert(GraphBuilder::GraphOptions::GraphType::Graph_ShuffleExchange, QList<QPair<QString, QPair<int, int>>>(
+	{ qMakePair(QString("Dimension"), qMakePair(1, 8)) }));
+	spinBoxMap_.insert(GraphBuilder::GraphOptions::GraphType::Graph_DeBruin, QList<QPair<QString, QPair<int, int>>>(
+	{ qMakePair(QString("Dimension"), qMakePair(1, 8)) }));
 
 }
 

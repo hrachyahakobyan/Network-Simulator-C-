@@ -9,13 +9,14 @@ public:
 	virtual bool finished() const;
 	virtual void edit(const GraphEditAction& edit);
 	virtual std::string description() const;
+	virtual std::map<std::string, int> allowedStates() const;
 protected:
 	void initializeData();
 	void updateData();
 	void send(const HNAGraph::Vertex& sender, std::map<HNAGraph::Vertex, HNAGraph::HNANodeBundle>& messages);
 	void receive(const HNAGraph::Vertex& node, const std::map<HNAGraph::Vertex, HNAGraph::HNANodeBundle>& messages);
+	virtual void iterate();
 protected:
 	enum SIS_States{Suspectible, Infected};
-
 };
 
