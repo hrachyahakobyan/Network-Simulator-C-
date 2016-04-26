@@ -6,8 +6,8 @@ public:
 	enum ModelType{ SIR, SIS, SIRS };
 	struct DiseaseOptions
 	{
-		enum class ImmunityType{Fixed, Probabilistic};
-		enum class InfectionType{Fixed, Probabilistic};
+		enum class ImmunityType{ Fixed, Probabilistic };
+		enum class InfectionType{ Fixed, Probabilistic };
 
 		ModelType type;
 		/*The probability that an infected unit will infect a susceptible unit within one unit of time*/
@@ -26,6 +26,20 @@ public:
 		double rec_rate_;
 		/*The length of period of the infected state*/
 		int inf_period_;
+		typedef HNAGraph::HNANodeBundle::Sex Sex;
+		typedef std::map<Sex, int> SexMap;
+		std::map<Sex, SexMap> sexCoeffMap_;
+		/*Constructor*/
+		DiseaseOptions() : sexCoeffMap_({{ Sex::Male, { { Sex::Male, 1 }, { Sex::Female, 1 } } }, { Sex::Female, { { Sex::Male, 1 }, { Sex::Female, 1 } } }
+	}) {};
+		
+	void setSexCoeff(Sex s1, Sex s2, double coeff)
+	{
+		if (coeff >= 0 && coeff <= 1)
+		{
+			sexCoeffMap_[s1][s2] = coeff;
+		}
+	}
 	};
 public:
 	DiseaseSimulation();

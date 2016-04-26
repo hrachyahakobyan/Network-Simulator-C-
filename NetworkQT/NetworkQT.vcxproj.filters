@@ -114,6 +114,12 @@
     <Filter Include="Source Files\Core\Simulations\Session">
       <UniqueIdentifier>{675140a0-2982-4c53-ade4-baf686e1905d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Tests">
+      <UniqueIdentifier>{0321e102-1328-4063-ad2d-7cd9219105db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Test">
+      <UniqueIdentifier>{e82137e6-86c6-4d50-82ab-38b6b49506e7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -419,6 +425,15 @@
     <ClCompile Include="DeBruinBuilder.cpp">
       <Filter>Source Files\Core\Graph\Builders</Filter>
     </ClCompile>
+    <ClCompile Include="DiseaseTest.cpp">
+      <Filter>Source Files\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomTest.cpp">
+      <Filter>Source Files\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="SimTest.cpp">
+      <Filter>Source Files\Test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -636,6 +651,15 @@
     </ClInclude>
     <ClInclude Include="DeBruinBuilder.h">
       <Filter>Header Files\Core\Graph\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="SimTest.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomTest.h">
+      <Filter>Header Files\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="DiseaseTest.h">
+      <Filter>Header Files\Tests</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

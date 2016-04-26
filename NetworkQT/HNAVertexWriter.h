@@ -51,17 +51,23 @@ public:
 
 	void operator()(std::ostream &out, const HNAGraph::Vertex& v) const
 	{
-		if (options_.write_labels_ == false && options_.write_colors_ == false)
-			return;
-		out << "[";
+		out << "[shape=";
+		if (v_params_[v].sex_ == HNAGraph::HNANodeBundle::Sex::Male)
+		{
+			out << "circle";
+		}
+		else
+		{
+			out << "doublecircle";
+		}
 		if (options_.write_labels_ == true)
 		{
-			out << "label=\"" << v_params_[v].label_ << "\", ";
+			out << ",label=\"" << v_params_[v].label_ << "\" ";
 		}
 		if (options_.write_colors_ == true)
 		{
 			if (v_params_[v].state_ > - 1)
-				out << "style=filled, " << "fillcolor=\"" << color_map_.at(v_params_[v].state_) << "\", fontcolor=\"" << font_color_map_.at(color_map_.at(v_params_[v].state_)) << "\"";
+				out << ",style=filled, " << "fillcolor=\"" << color_map_.at(v_params_[v].state_) << "\", fontcolor=\"" << font_color_map_.at(color_map_.at(v_params_[v].state_)) << "\"";
 		}
 		if (deg_map_.empty() == false)
 		{

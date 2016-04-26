@@ -120,6 +120,7 @@
     <ClCompile Include="DiseaseSimulationSIR.cpp" />
     <ClCompile Include="DiseaseSimulationSIRS.cpp" />
     <ClCompile Include="DiseaseSimulationSIS.cpp" />
+    <ClCompile Include="DiseaseTest.cpp" />
     <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="FixedRanomTreeBuilder.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_BroadcastSelectView.cpp">
@@ -226,11 +227,13 @@
     <ClCompile Include="qcustomplot.cpp" />
     <ClCompile Include="RandomGraphBuilder.cpp" />
     <ClCompile Include="RandomManager.cpp" />
+    <ClCompile Include="RandomTest.cpp" />
     <ClCompile Include="RandomTreeBuilder.cpp" />
     <ClCompile Include="ScaleFreeRandomGraphBuilder.cpp" />
     <ClCompile Include="Session.cpp" />
     <ClCompile Include="SessionView.cpp" />
     <ClCompile Include="ShuffleExchangeBuilder.cpp" />
+    <ClCompile Include="SimTest.cpp" />
     <ClCompile Include="Simulation.cpp" />
     <ClCompile Include="SmallWorldGraphBuilder.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -285,6 +288,7 @@
     <ClInclude Include="DiseaseSimulationSIR.h" />
     <ClInclude Include="DiseaseSimulationSIRS.h" />
     <ClInclude Include="DiseaseSimulationSIS.h" />
+    <ClInclude Include="DiseaseTest.h" />
     <ClInclude Include="FixedRanomTreeBuilder.h" />
     <ClInclude Include="GeneratedFiles\ui_DiseaseParamSelectView.h" />
     <ClInclude Include="GeneratedFiles\ui_DiseaseSelectView.h" />
@@ -313,6 +317,7 @@
     </CustomBuild>
     <ClInclude Include="RandomGraphBuilder.h" />
     <ClInclude Include="RandomManager.h" />
+    <ClInclude Include="RandomTest.h" />
     <ClInclude Include="RandomTreeBuilder.h" />
     <ClInclude Include="ScaleFreeRandomGraphBuilder.h" />
     <ClInclude Include="Session.h" />
@@ -327,6 +332,7 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DQT_PRINTSUPPORT_LIB  "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtPrintSupport" "-IC:\Program Files (x86)\Visual Leak Detector\include" "-fstdafx.h" "-f../../SessionView.h"</Command>
     </CustomBuild>
     <ClInclude Include="ShuffleExchangeBuilder.h" />
+    <ClInclude Include="SimTest.h" />
     <ClInclude Include="Simulation.h" />
     <ClInclude Include="SmallWorldGraphBuilder.h" />
     <ClInclude Include="TorusGraphBuilder.h" />

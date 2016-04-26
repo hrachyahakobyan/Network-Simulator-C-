@@ -35,7 +35,8 @@ public:
 
 	void operator () (std::ostream& os) const
 	{
-		os << "node[fixedsize=true, shape=circle]\n";
+		os << "node[fixedsize=true]\n";
+		os << "graph[overlap=false]\n";
 		if (options_.w_edges_ == false && options_.w_nodes_ == false && options_.w_type_ == false)
 			return;
 		os << "label = \"";
@@ -70,6 +71,7 @@ public:
 			title.append(std::to_string(g_prop_.broadcast_time_));
 			title.append("\n");
 		}
+		title.append("Shape: Circle = M, double circle = F");
 		title.append("\"");
 		os << title;
 

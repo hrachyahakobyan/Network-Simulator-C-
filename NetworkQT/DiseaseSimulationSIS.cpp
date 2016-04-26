@@ -131,6 +131,7 @@ bool DiseaseSimulationSIS::finished() const
 
 void DiseaseSimulationSIS::send(const HNAGraph::Vertex& sender, std::map<HNAGraph::Vertex, HNAGraph::HNANodeBundle>& messages)
 {
+	typedef DiseaseSimulation::DiseaseOptions::Sex Sex;
 	messages.clear();
 	if ((*graph_p_).properties(sender).state_ != SIS_States::Infected)
 		return;
@@ -141,7 +142,11 @@ void DiseaseSimulationSIS::send(const HNAGraph::Vertex& sender, std::map<HNAGrap
 		HNAGraph::HNANodeBundle cur_v_prop = (*graph_p_).properties(cur_v);
 		if (cur_v_prop.state_ == SIS_States::Suspectible)
 		{
-			bool infect = RandomManager::sharedManager()->event(options_.inf_rate_);
+			Sex senderSex = (*graph_p_).properties(sender).sex_;
+			Sex receiverSex = (*graph_p_).properties(cur_v).sex_;
+			double coeff = options_.sexCoeffMap_[senderSex][receiverSex];
+			double rate = options_.inf_rate_ * coeff;
+			bool infect = RandomManager::sharedManager()->event(rate);
 			if (infect)
 			{
 				HNAGraph::HNANodeBundle message;

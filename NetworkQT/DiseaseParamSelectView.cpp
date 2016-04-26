@@ -15,6 +15,16 @@ DiseaseParamSelectView::DiseaseParamSelectView(QWidget *parent)
 	ui.immunityLossRateSpinbox->setMinimum(0);
 	ui.immunityLossRateSpinbox->setMaximum(1);
 
+	
+	ui.maleMaleCoeffSpinbox->setMinimum(0);
+	ui.maleMaleCoeffSpinbox->setMaximum(1);
+	ui.maleFemaleCoeffSpinbox->setMinimum(0);
+	ui.maleFemaleCoeffSpinbox->setMaximum(1);
+	ui.femaleFemaleCoeffSpinbox->setMinimum(0);
+	ui.femaleFemaleCoeffSpinbox->setMaximum(1);
+	ui.femaleMaleCoeffSpinbox->setMinimum(0);
+	ui.femaleMaleCoeffSpinbox->setMaximum(1);
+
 	connect(ui.infectionPeriodSpinbox, SIGNAL(valueChanged(const QString&)), this, SLOT(onInfectionPeriodSpinboxValueChanged(const QString&)));
 	connect(ui.infectionRateSpinbox, SIGNAL(valueChanged(const QString&)), this, SLOT(onInfectionRateSpinboxValueChanged(const QString&)));
 	connect(ui.immunityPeriodSpinbox, SIGNAL(valueChanged(const QString&)), this, SLOT(onImmunityPeriodSpinboxValueChanged(const QString&)));
@@ -55,6 +65,10 @@ void DiseaseParamSelectView::initialize()
 	options_.imm_period_ = ui.immunityPeriodSpinbox->value();
 	options_.imm_loss_rate_ = ui.immunityLossRateSpinbox->value();
 	options_.inf_period_ = ui.infectionPeriodSpinbox->value();
+	ui.maleFemaleCoeffSpinbox->setValue(1);
+	ui.maleMaleCoeffSpinbox->setValue(1);
+	ui.femaleFemaleCoeffSpinbox->setValue(1);
+	ui.femaleMaleCoeffSpinbox->setValue(1);
 }
 
 void DiseaseParamSelectView::reset()
@@ -72,7 +86,12 @@ void DiseaseParamSelectView::reset()
 
 void DiseaseParamSelectView::accept()
 {
+	typedef DiseaseSimulation::DiseaseOptions::Sex Sex;
 	QDialog::accept();
+	options_.setSexCoeff(Sex::Male, Sex::Male, ui.maleMaleCoeffSpinbox->value());
+	options_.setSexCoeff(Sex::Male, Sex::Female, ui.maleFemaleCoeffSpinbox->value());
+	options_.setSexCoeff(Sex::Female, Sex::Male, ui.femaleMaleCoeffSpinbox->value());
+	options_.setSexCoeff(Sex::Female, Sex::Female, ui.femaleFemaleCoeffSpinbox->value());
 	DiseaseSimulation::DiseaseOptions copy(options_);
 	Q_EMIT diseaseParamSelectViewFinished(QDialog::Accepted, copy);
 }

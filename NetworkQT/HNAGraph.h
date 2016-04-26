@@ -15,13 +15,14 @@ class HNAGraph
 public:
 	struct HNANodeBundle
 	{
+		enum class Sex{Male, Female};
+		Sex sex_;
 		std::string label_;
 		int state_;
 		std::set<int> informers_;
-		
 		int inf_preiod_;
 		int imm_period_;
-		HNANodeBundle() : state_(0){};
+		HNANodeBundle() : state_(0), sex_(Sex::Male){};
 	};
 
 	struct HNAEdgeBundle

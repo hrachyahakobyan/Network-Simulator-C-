@@ -26,6 +26,7 @@ public:
 	~BroadcastSimulation();
 	bool tick(int count = 1);
 	bool finished() const;
+	int broadcastTime() const;
 	std::string description() const;
 	std::map<std::string, int> allowedStates() const;
 

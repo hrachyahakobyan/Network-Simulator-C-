@@ -14,7 +14,6 @@ public:
 		if (n == 1)
 			return std::unique_ptr<HNAGraph>(new HNAGraph(1));
 		boost::minstd_rand gen;
-		std::cout << double(p) / 100;
 		HNAGraph::GraphContainer g(ERGen(gen, n, double(p)/100), ERGen(), n);
 		std::unique_ptr<HNAGraph> gptr(new HNAGraph());
 		(*gptr).g_container = g;

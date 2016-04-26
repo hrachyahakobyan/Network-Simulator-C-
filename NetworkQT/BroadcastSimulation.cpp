@@ -20,6 +20,12 @@ std::map<std::string, int> BroadcastSimulation::allowedStates() const
 	return std::map<std::string, int>({ {"Uninformed", 0}, {"Informed", 1} });
 }
 
+
+int BroadcastSimulation::broadcastTime() const
+{
+	return (*graph_p_).properties().broadcast_time_;
+}
+
 bool BroadcastSimulation::tick(int count)
 {
 	assert(count > 0 && "ERROR: BroadcastAlgorithm: nonpositive tick");

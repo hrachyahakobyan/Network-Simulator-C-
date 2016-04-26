@@ -40,6 +40,7 @@ public:
 
 	boost::filesystem::path simulation_path();
 	boost::filesystem::path graph_path();
+	boost::filesystem::path stat_path();
 
 
 private:
@@ -50,5 +51,6 @@ private:
 	Path pdata_;
 	Path psim_;
 	Path pgraph_;
+	Path pstat_;
 };
 

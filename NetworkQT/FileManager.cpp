@@ -9,7 +9,7 @@ FileManager::FileManager()
 	pdata_ = ("../data");
 	psim_ = pdata_; psim_.concat("/simulations");
 	pgraph_ = pdata_; pgraph_.concat("/graphs");
-
+	pstat_ = pdata_; pstat_.concat("/statistics");
 	std::cout << pdata_ << std::endl;
 	std::cout << psim_ << std::endl;
 	std::cout << pgraph_ << std::endl;
@@ -20,6 +20,8 @@ FileManager::FileManager()
 		make_dir(psim_);
 	if (dir_exists(pgraph_) == false)
 		make_dir(pgraph_);
+	if (dir_exists(pstat_) == false)
+		make_dir(pstat_);
 	assert(dir_exists(pdata_) && dir_exists(psim_) && dir_exists(pgraph_) && "ERROR: FileManager: Setup failed");
 }
 
@@ -148,6 +150,17 @@ boost::filesystem::path FileManager::graph_path()
 	std::string time_string = TimeManager::sharedTimeManager()->date_string();
 	time_string.append("-graph");
 	Path path(pgraph_);
+	path.append("/");
+	path.append(time_string);
+	make_dir(path);
+	return path;
+}
+
+boost::filesystem::path FileManager::stat_path()
+{
+	std::string time_string = TimeManager::sharedTimeManager()->date_string();
+	time_string.append("-stat");
+	Path path(pstat_);
 	path.append("/");
 	path.append(time_string);
 	make_dir(path);
