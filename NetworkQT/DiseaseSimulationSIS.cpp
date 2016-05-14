@@ -59,7 +59,7 @@ bool DiseaseSimulationSIS::tick(int count)
 		(*graph_p_).properties().broadcast_time_++;
 		HNAGraph::Vertex_Range vp;
 		r_map.clear();
-
+		iterate();
 		/* Send messages */
 		for (vp = (*graph_p_).getVertices(); vp.first != vp.second; ++vp.first)
 		{
@@ -78,7 +78,7 @@ bool DiseaseSimulationSIS::tick(int count)
 			Vertex cur_v = *vp.first;
 			receive(cur_v, r_map[cur_v]);
 		}
-		iterate();
+	
 		updateData();
 	}
 	return false;

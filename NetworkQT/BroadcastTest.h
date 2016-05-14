@@ -1,10 +1,10 @@
 #pragma once
 #include "SimTest.h"
-class RandomTest : public SimTest
+
+class BroadcastTest : public SimTest
 {
 public:
-	RandomTest();
-	~RandomTest();
+	BroadcastTest();
+	~BroadcastTest();
 	void test(const GraphBuilder::GraphOptions& gop, const BroadcastSchemeOptions& sop, const TestOptions& top);
 };
-

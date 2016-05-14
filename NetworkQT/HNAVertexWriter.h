@@ -69,6 +69,10 @@ public:
 			if (v_params_[v].state_ > - 1)
 				out << ",style=filled, " << "fillcolor=\"" << color_map_.at(v_params_[v].state_) << "\", fontcolor=\"" << font_color_map_.at(color_map_.at(v_params_[v].state_)) << "\"";
 		}
+		else
+		{
+			out << ", style=filled, fillcolor=white";
+		}
 		if (deg_map_.empty() == false)
 		{
 			double size = MIN_NODE_SIZE + EXTRA_NODE_SIZE * double(deg_map_.at(v)) / (minmax_.second > 0 ? minmax_.second : 1);

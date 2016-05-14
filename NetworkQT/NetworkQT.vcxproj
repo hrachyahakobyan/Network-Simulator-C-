@@ -103,6 +103,7 @@
     <ClCompile Include="BroadcastSessionEditInputDialog.cpp" />
     <ClCompile Include="BroadcastSessionView.cpp" />
     <ClCompile Include="BroadcastSimulation.cpp" />
+    <ClCompile Include="BroadcastTest.cpp" />
     <ClCompile Include="ButterflyGraphBuilder.cpp" />
     <ClCompile Include="CCGraphBuilder.cpp" />
     <ClCompile Include="CleanUp.cpp" />
@@ -120,7 +121,6 @@
     <ClCompile Include="DiseaseSimulationSIR.cpp" />
     <ClCompile Include="DiseaseSimulationSIRS.cpp" />
     <ClCompile Include="DiseaseSimulationSIS.cpp" />
-    <ClCompile Include="DiseaseTest.cpp" />
     <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="FixedRanomTreeBuilder.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_BroadcastSelectView.cpp">
@@ -227,7 +227,6 @@
     <ClCompile Include="qcustomplot.cpp" />
     <ClCompile Include="RandomGraphBuilder.cpp" />
     <ClCompile Include="RandomManager.cpp" />
-    <ClCompile Include="RandomTest.cpp" />
     <ClCompile Include="RandomTreeBuilder.cpp" />
     <ClCompile Include="ScaleFreeRandomGraphBuilder.cpp" />
     <ClCompile Include="Session.cpp" />
@@ -256,6 +255,7 @@
     <ClInclude Include="BroadcastReceiveSchemeRadio.h" />
     <ClInclude Include="BroadcastScheme.h" />
     <ClInclude Include="BroadcastSendSchemeRadio.h" />
+    <ClInclude Include="BroadcastTest.h" />
     <ClInclude Include="ButterflyGraphBuilder.h" />
     <ClInclude Include="CCGraphBuilder.h" />
     <ClInclude Include="CleanUp.h" />
@@ -288,7 +288,6 @@
     <ClInclude Include="DiseaseSimulationSIR.h" />
     <ClInclude Include="DiseaseSimulationSIRS.h" />
     <ClInclude Include="DiseaseSimulationSIS.h" />
-    <ClInclude Include="DiseaseTest.h" />
     <ClInclude Include="FixedRanomTreeBuilder.h" />
     <ClInclude Include="GeneratedFiles\ui_DiseaseParamSelectView.h" />
     <ClInclude Include="GeneratedFiles\ui_DiseaseSelectView.h" />
@@ -317,7 +316,6 @@
     </CustomBuild>
     <ClInclude Include="RandomGraphBuilder.h" />
     <ClInclude Include="RandomManager.h" />
-    <ClInclude Include="RandomTest.h" />
     <ClInclude Include="RandomTreeBuilder.h" />
     <ClInclude Include="ScaleFreeRandomGraphBuilder.h" />
     <ClInclude Include="Session.h" />

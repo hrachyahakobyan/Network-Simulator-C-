@@ -9,6 +9,8 @@ public:
 	virtual std::string description() const;
 	void edit(const GraphEditAction& edit);
 protected:
-	virtual void iterate();
+	void iterate();
+	void updateData();
+	void initializeData();
 };
 

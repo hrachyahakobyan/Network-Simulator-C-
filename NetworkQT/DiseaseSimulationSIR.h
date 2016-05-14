@@ -17,7 +17,7 @@ protected:
 protected:
 	enum SIR_States{Suspectible, Infected, Recovered};
 protected:
-	void updateData();
+	virtual void updateData();
 	virtual void initializeData();
 };
 

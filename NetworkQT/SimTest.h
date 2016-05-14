@@ -4,8 +4,7 @@
 struct TestOptions
 {
 	int iterCount_;
-	int graphCount_;
-	TestOptions() : iterCount_(1), graphCount_(1){};
+	TestOptions() : iterCount_(1){};
 };
 
 class SimTest

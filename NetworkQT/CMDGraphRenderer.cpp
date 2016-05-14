@@ -27,4 +27,5 @@ void CMDGraphRenderer::construct_command(const path& src_path, const path& dst_p
 	command.append(src_path.string());
 	command.append(" -o ");
 	command.append(image_path);
+	command.append(" -Goutputorder=edgesfirst");
 }

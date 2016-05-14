@@ -1,10 +1,10 @@
 #include "stdafx.h"
 #include "networkqt.h"
 #include "BroadcastSimulation.h"
-#include "RandomTest.h"
+#include "BroadcastTest.h"
 #include <QtWidgets/QApplication>
 
-#define QtAPP false
+#define QtAPP true
 
 
 int main(int argc, char *argv[])
@@ -19,16 +19,15 @@ int main(int argc, char *argv[])
 	else
 	{
 		GraphBuilder::GraphOptions g;
-		g.type_ = GraphBuilder::GraphOptions::GraphType::Graph_Random;
+		g.type_ = GraphBuilder::GraphOptions::GraphType::Graph_Complete;
 		g.n_vertices_ = 100;
-		g.p_ = 20;
 		BroadcastSchemeOptions op;
-		op.send_type_ = SEND_SCHEME_M2;
+		op.send_type_ = SEND_SCHEME_M1;
 		op.receive_type_ = RECEIVE_SCHEME_M;
 		op.finish_type_ = FINISH_SCHEME_M;
 		TestOptions top;
-		top.iterCount_ = 30;
-		RandomTest t;
+		top.iterCount_ = 100;
+		BroadcastTest t;
 		t.test(g, op, top);
 		CleanUp::cleanUp();
 		return 0;

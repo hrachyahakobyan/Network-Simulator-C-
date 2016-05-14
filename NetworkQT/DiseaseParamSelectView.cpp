@@ -25,6 +25,11 @@ DiseaseParamSelectView::DiseaseParamSelectView(QWidget *parent)
 	ui.femaleMaleCoeffSpinbox->setMinimum(0);
 	ui.femaleMaleCoeffSpinbox->setMaximum(1);
 
+	ui.infectionRateSpinbox->setDecimals(4);
+	ui.immunityLossRateSpinbox->setDecimals(4);
+	ui.recoveryRateSpinbox->setDecimals(4);
+
+
 	connect(ui.infectionPeriodSpinbox, SIGNAL(valueChanged(const QString&)), this, SLOT(onInfectionPeriodSpinboxValueChanged(const QString&)));
 	connect(ui.infectionRateSpinbox, SIGNAL(valueChanged(const QString&)), this, SLOT(onInfectionRateSpinboxValueChanged(const QString&)));
 	connect(ui.immunityPeriodSpinbox, SIGNAL(valueChanged(const QString&)), this, SLOT(onImmunityPeriodSpinboxValueChanged(const QString&)));

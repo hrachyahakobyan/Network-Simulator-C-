@@ -21,6 +21,11 @@ public:
 		int p_;
 		double b_;
 		std::string path_;
+		static const std::map<GraphType, std::string> typeMap_;
+		std::string graphType() const
+		{
+			return typeMap_.at(type_);
+		}
 	};
 
 public:

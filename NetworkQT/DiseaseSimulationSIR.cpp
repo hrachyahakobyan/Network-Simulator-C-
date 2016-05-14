@@ -60,6 +60,8 @@ bool DiseaseSimulationSIR::tick(int count)
 		HNAGraph::Vertex_Range vp;
 		r_map.clear();
 
+		iterate();
+
 		/* Send messages */
 		for (vp = (*graph_p_).getVertices(); vp.first != vp.second; ++vp.first)
 		{
@@ -79,7 +81,7 @@ bool DiseaseSimulationSIR::tick(int count)
 			receive(cur_v, r_map[cur_v]);
 		}
 		/* Iterate over infected */
-		iterate();
+
 		updateData();
 	}
 	return false;
@@ -200,7 +202,7 @@ void DiseaseSimulationSIR::edit(const GraphEditAction& edit)
 void DiseaseSimulationSIR::updateData()
 {
 	std::map<int, std::pair<Color, int>> data;
-	data[SIR_States::Infected] = std::pair<Color, int>(Color::Red, 0);
+	data[SIR_States::Infected] = std::pair<Color, int>(Color::Black, 0);
 	data[SIR_States::Recovered] = std::pair<Color, int>(Color::Green, 0);
 	data[SIR_States::Suspectible] = std::pair<Color, int>(Color::White, 0);
 	int infected = 0;
@@ -230,7 +232,7 @@ void DiseaseSimulationSIR::updateData()
 
 void DiseaseSimulationSIR::initializeData()
 {
-	data_["Infected"] = std::make_pair(Color::Red, std::vector<int>());
+	data_["Infected"] = std::make_pair(Color::Black, std::vector<int>());
 	data_["Recovered"] = std::make_pair(Color::Green, std::vector<int>());
 	data_["Susceptible"] = std::make_pair(Color::Blue, std::vector<int>());
 }

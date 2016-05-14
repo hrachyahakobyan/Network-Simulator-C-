@@ -47,7 +47,10 @@ void SessionView::initializeGraphView()
 		int index = graphCount - 1;
 		plotIndexMap_[(*it).first] = index;
 		Color color = (*it).second.first;
-		ui.graphPlotView->graph(index)->setPen(QPen(convert(color)));
+		QPen pen;
+		pen.setColor(convert(color));
+		pen.setWidth(5);
+		ui.graphPlotView->graph(index)->setPen(pen);
 		ui.graphPlotView->graph(index)->setName(QString((*it).first.c_str()));
 	}
 	QFont axisFont = font();

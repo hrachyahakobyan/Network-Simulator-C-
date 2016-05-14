@@ -425,13 +425,10 @@
     <ClCompile Include="DeBruinBuilder.cpp">
       <Filter>Source Files\Core\Graph\Builders</Filter>
     </ClCompile>
-    <ClCompile Include="DiseaseTest.cpp">
-      <Filter>Source Files\Test</Filter>
-    </ClCompile>
-    <ClCompile Include="RandomTest.cpp">
-      <Filter>Source Files\Test</Filter>
-    </ClCompile>
     <ClCompile Include="SimTest.cpp">
+      <Filter>Source Files\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="BroadcastTest.cpp">
       <Filter>Source Files\Test</Filter>
     </ClCompile>
   </ItemGroup>
@@ -655,10 +652,7 @@
     <ClInclude Include="SimTest.h">
       <Filter>Header Files\Tests</Filter>
     </ClInclude>
-    <ClInclude Include="RandomTest.h">
-      <Filter>Header Files\Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="DiseaseTest.h">
+    <ClInclude Include="BroadcastTest.h">
       <Filter>Header Files\Tests</Filter>
     </ClInclude>
   </ItemGroup>

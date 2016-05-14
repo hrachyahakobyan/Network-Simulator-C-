@@ -74,6 +74,7 @@ bool DiseaseSimulationSIRS::tick(int count)
 		HNAGraph::Vertex_Range vp;
 		r_map.clear();
 
+		iterate();
 		/* Send messages */
 		for (vp = (*graph_p_).getVertices(); vp.first != vp.second; ++vp.first)
 		{
@@ -93,7 +94,7 @@ bool DiseaseSimulationSIRS::tick(int count)
 			receive(cur_v, r_map[cur_v]);
 		}
 		/* Iterate over infected */
-		iterate();
+
 		updateData();
 	}
 	return false;
@@ -150,4 +151,42 @@ void DiseaseSimulationSIRS::iterate()
 			}
 		}
 	}
+}
+
+void DiseaseSimulationSIRS::updateData()
+{
+	std::map<int, std::pair<Color, int>> data;
+	data[SIR_States::Infected] = std::pair<Color, int>(Color::Black, 0);
+	data[SIR_States::Recovered] = std::pair<Color, int>(Color::Green, 0);
+	data[SIR_States::Suspectible] = std::pair<Color, int>(Color::White, 0);
+	int infected = 0;
+	int recovered = 0;
+	int susceptible = 0;
+	HNAGraph::Vertex_Range vp;
+	for (vp = (*graph_p_).getVertices(); vp.first != vp.second; ++vp.first)
+	{
+		int state = (*graph_p_).properties(*vp.first).state_;
+		if (state == SIR_States::Infected)
+		{
+			infected++;
+		}
+		else if (state == SIR_States::Suspectible)
+		{
+			susceptible++;
+		}
+		else
+		{
+			recovered++;
+		}
+	}
+	data_["Susceptible"].second.push_back(susceptible);
+	data_["Infected"].second.push_back(infected);
+	data_["Immune"].second.push_back(recovered);
+}
+
+void DiseaseSimulationSIRS::initializeData()
+{
+	data_["Infected"] = std::make_pair(Color::Black, std::vector<int>());
+	data_["Immune"] = std::make_pair(Color::Green, std::vector<int>());
+	data_["Susceptible"] = std::make_pair(Color::Blue, std::vector<int>());
 }
