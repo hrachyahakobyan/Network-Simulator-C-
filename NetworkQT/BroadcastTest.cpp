@@ -13,8 +13,9 @@ BroadcastTest::~BroadcastTest()
 
 
 
-void BroadcastTest::test(const GraphBuilder::GraphOptions& gop, const BroadcastSchemeOptions& sop, const TestOptions& top)
+void BroadcastTest::test(const GraphBuilder::GraphOptions& gop, const BroadcastSchemeOptions& sop, const TestOptions& top, Progress_F f)
 {
+	isCancelled_ = false;
 	typedef boost::filesystem::path Path;
 	Path folderPath = FileManager::sharedManager()->stat_path();
 	int iterCount = top.iterCount_;
@@ -28,6 +29,12 @@ void BroadcastTest::test(const GraphBuilder::GraphOptions& gop, const BroadcastS
 	for (int j = 0; j < iterCount; j++)
 	{
 		qDebug() << "Iteration " << j << "\n";
+		if (isCancelled_)
+		{
+			qDebug() << "Cancelled, finishing test\n";
+			isCancelled_ = false;
+			return;
+		}
 		int randomOriginator = RandomManager::sharedManager()->random(0, (*sim_ptr).vertexCount() - 1);
 		editAction.v_ = randomOriginator;
 		(*sim_ptr).edit(editAction);

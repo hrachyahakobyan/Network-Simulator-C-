@@ -12,12 +12,15 @@ class SimTest
 public:
 	SimTest();
 	~SimTest();
-
-	virtual void test(const GraphBuilder::GraphOptions& gop, const BroadcastSchemeOptions& sop, const TestOptions& top) = 0;
+	bool isCancelled_;
+	typedef void(*Progress_F)(int, double);
+	virtual void test(const GraphBuilder::GraphOptions& gop, const BroadcastSchemeOptions& sop, const TestOptions& top, Progress_F f = 0) = 0;
+protected:
 	template <typename T> double mean(const std::vector<T>& vals) ;
 	template <typename T> double var(const std::vector<T>& vals) ;
 	template <typename T> T median(std::vector<T> vals) ;
 	template <typename T> std::pair<T, T> minmax(const std::vector<T>& vals) ;
+
 };
 
 template <typename T>

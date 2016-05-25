@@ -49,6 +49,7 @@
      </widget>
      <addaction name="actionGraph"/>
      <addaction name="menuSimulation_2"/>
+     <addaction name="actionTest"/>
     </widget>
     <addaction name="menuNew"/>
     <addaction name="actionExit"/>
@@ -91,6 +92,11 @@
   <action name="actionDiseaseModel">
    <property name="text">
     <string>Disease model</string>
+   </property>
+  </action>
+  <action name="actionTest">
+   <property name="text">
+    <string>Test</string>
    </property>
   </action>
  </widget>

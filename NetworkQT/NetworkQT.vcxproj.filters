@@ -431,6 +431,15 @@
     <ClCompile Include="BroadcastTest.cpp">
       <Filter>Source Files\Test</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_BroadcastTestView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_BroadcastTestView.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="BroadcastTestView.cpp">
+      <Filter>Source Files\QT</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -655,6 +664,9 @@
     <ClInclude Include="BroadcastTest.h">
       <Filter>Header Files\Tests</Filter>
     </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_BroadcastTestView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="networkqt.ui">
@@ -715,6 +727,12 @@
       <Filter>Header Files\QT</Filter>
     </CustomBuild>
     <CustomBuild Include="qcustomplot.h">
+      <Filter>Header Files\QT</Filter>
+    </CustomBuild>
+    <CustomBuild Include="BroadcastTestView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="BroadcastTestView.h">
       <Filter>Header Files\QT</Filter>
     </CustomBuild>
   </ItemGroup>
