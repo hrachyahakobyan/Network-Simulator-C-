@@ -41,5 +41,20 @@ http://www.graphviz.org/
 
 The program was created as a part of University course prohect on Theory of Communication Networks in the American University of Armenia
 
+# Graph topologies
+
+The program allows creation of many graph topologies widely studies in graph theory many of them having practical applications in communication networks, civil engineering, etc.
+
+The program allows generation of more than 20 different types of topologies, ranging from the most simple ones studies in graph theory to those currently in active research.
+
+Some of the most interesting topologies are listed below
+
+* [Barabasi-Albert scale free network](http://barabasi.com/f/622.pdf)
+* [Wattz-Strogatz model for small-world network](https://en.wikipedia.org/wiki/Watts_and_Strogatz_model)
+* [Erdős–Rényi model for random graphs](https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93R%C3%A9nyi_model)
+
+
+
+
 
 
