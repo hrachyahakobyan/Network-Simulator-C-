@@ -13,9 +13,13 @@ BroadcastTest::~BroadcastTest()
 
 
 
-void BroadcastTest::test(const GraphBuilder::GraphOptions& gop, const BroadcastSchemeOptions& sop, const TestOptions& top, Progress_F f)
+void BroadcastTest::test(const GraphBuilder::GraphOptions& gop, const BroadcastSchemeOptions& sop, const TestOptions& top, SimTestCallBack* callback)
 {
 	isCancelled_ = false;
+	isRunning_ = true;
+
+	double totalTime = 0;
+
 	typedef boost::filesystem::path Path;
 	Path folderPath = FileManager::sharedManager()->stat_path();
 	int iterCount = top.iterCount_;
@@ -28,11 +32,15 @@ void BroadcastTest::test(const GraphBuilder::GraphOptions& gop, const BroadcastS
 	int edgeCount = (*sim_ptr).edgeCount();
 	for (int j = 0; j < iterCount; j++)
 	{
+		std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
 		qDebug() << "Iteration " << j << "\n";
 		if (isCancelled_)
 		{
 			qDebug() << "Cancelled, finishing test\n";
 			isCancelled_ = false;
+			isRunning_ = false;
+			if (callback)
+				callback->testCallback(j + 1, 0, true);
 			return;
 		}
 		int randomOriginator = RandomManager::sharedManager()->random(0, (*sim_ptr).vertexCount() - 1);
@@ -42,6 +50,12 @@ void BroadcastTest::test(const GraphBuilder::GraphOptions& gop, const BroadcastS
 		int bTime = (*sim_ptr).broadcastTime();
 		bTimes[j] = bTime;
 		(*sim_ptr).reset();
+		std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
+		double iterDur = std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1).count();
+		totalTime += iterDur;
+		double estimate = double(iterCount - j - 1) / (j + 1) * totalTime;
+		if (callback)
+			callback->testCallback(j + 1, estimate, false);
 	}
 
 		/*Write the results*/
@@ -59,6 +73,7 @@ void BroadcastTest::test(const GraphBuilder::GraphOptions& gop, const BroadcastS
 		file << "Graph type " << gop.graphType() << "\n";
 		file << "Vertex count  = " << (*sim_ptr).vertexCount() << "\n";
 		file << "Edge count = " << (*sim_ptr).edgeCount() << "\n";
+		file << "Iteration count " << iterCount << "\n";
 		file << "\n \n";
 		file << "Broadcast type = " << sop.send_type_ << "\n";
 		file << "\n \n";
@@ -70,4 +85,7 @@ void BroadcastTest::test(const GraphBuilder::GraphOptions& gop, const BroadcastS
 		file << "Median brodcast time " << medianBT << "\n";
 		file << "\n \n";
 		file.close();
+		isRunning_ = false;
+		if (callback)
+			callback->testCallback(iterCount, 0, true, folderPath.string());
 }

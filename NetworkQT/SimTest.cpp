@@ -2,7 +2,7 @@
 #include "SimTest.h"
 
 
-SimTest::SimTest()
+SimTest::SimTest() : isRunning_(false), isCancelled_(false)
 {
 }
 
@@ -11,3 +11,7 @@ SimTest::~SimTest()
 {
 }
 
+void SimTest::cancel()
+{
+	isCancelled_ = true;
+}
