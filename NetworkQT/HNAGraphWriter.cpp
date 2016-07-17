@@ -13,8 +13,8 @@ boost::filesystem::path HNAGraphWriter::writeGraph(const HNAGraph& graph, const 
 	v_.set_deg_map(graph.deg_map());
 	v_.set_v_prop(graph.v_params());
 	g_.set_g_prop(graph.properties());
-	g_.edges() = graph.getEdgeCount();
-	g_.vertices() = graph.getVertexCount();
+	g_.edges() = graph.edge_count();
+	g_.vertices() = graph.vertex_count();
 	std::string p(path.string());
 	assert(boost::filesystem::exists(p) && "ERROR: HNAGraphWriter: path does not exist ");
 	p.append("/");

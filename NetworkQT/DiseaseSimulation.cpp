@@ -13,7 +13,7 @@ options_(options),
 Simulation(std::move(HNAGraphFactory::sharedFactory()->getGraph(g_options)))
 {
 	HNAGraph::Vertex_Range vp;
-	for (vp = (*graph_p_).getVertices(); vp.first != vp.second; ++vp.first)
+	for (vp = (*graph_p_).vertices(); vp.first != vp.second; ++vp.first)
 	{
 		HNAGraph::Vertex cur = *vp.first;
 		bool male = RandomManager::sharedManager()->event(0.5);

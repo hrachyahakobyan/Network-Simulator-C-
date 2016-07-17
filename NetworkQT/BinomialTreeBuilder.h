@@ -1,5 +1,5 @@
 #pragma once
-
+#include "GraphBuilder.h"
 class BinomialTreeBuilder : GraphBuilder
 {
 public:
@@ -18,7 +18,7 @@ public:
 		for (int i = 1; i <= height; i++)
 		{
 			HNAGraph g2 = HNAGraph(*gpt);
-			(*gpt).Attach(g2, 0, 0);
+			(*gpt).attach(g2, 0, 0);
 		}
 		std::string type = GRAPH_BINOMIAL;
 		type.append(", height = ");

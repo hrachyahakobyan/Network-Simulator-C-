@@ -22,7 +22,7 @@ public:
 		PathGraphBuilder bldp;
 		std::unique_ptr<HNAGraph> gptrc = bldc.getGraph(compOptions);
 		std::unique_ptr<HNAGraph> gptrp = bldp.getGraph(pathOptions);
-		(*gptrc).Attach(*gptrp, 0, 0);
+		(*gptrc).attach(*gptrp, 0, 0);
 		gptrp.reset();
 		(*gptrc).properties().type_ = "Dipper";
 		return gptrc;

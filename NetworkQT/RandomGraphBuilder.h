@@ -1,5 +1,5 @@
 #pragma once
-
+#include "GraphBuilder.h"
 class RandomGraphBuilder : public GraphBuilder
 {
 	typedef boost::erdos_renyi_iterator<boost::minstd_rand, HNAGraph::GraphContainer> ERGen;

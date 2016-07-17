@@ -90,7 +90,7 @@ void BroadcastSimulation::updateData()
 	int informed = 0;
 	int uninformed = 0;
 	HNAGraph::Vertex_Range vp;
-	for (vp = (*graph_p_).getVertices(); vp.first != vp.second; ++vp.first)
+	for (vp = (*graph_p_).vertices(); vp.first != vp.second; ++vp.first)
 	{
 		int state = (*graph_p_).properties(*vp.first).state_;
 		if (state == Two_State::informed)

@@ -1,5 +1,6 @@
 #pragma once
 #include "SimTest.h"
+#include "FileManager.h"
 #include <chrono>
 
 class BroadcastTest : public SimTest

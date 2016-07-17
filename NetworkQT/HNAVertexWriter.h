@@ -1,5 +1,6 @@
 #pragma once
 #include <fstream>
+#include "HNAGraph.h"
 
 #define MIN_NODE_SIZE 0.4
 #define EXTRA_NODE_SIZE 0.4

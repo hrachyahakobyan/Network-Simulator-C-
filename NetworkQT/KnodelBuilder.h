@@ -1,5 +1,5 @@
 #pragma once
-
+#include "GraphBuilder.h"
 class KnodelBuilder : GraphBuilder
 {
 public:
@@ -22,7 +22,7 @@ public:
 				for (int y = 0; y <= n - 1; y++)
 				{
 					if ((x + y) % n == top)
-					   (*gptr).AddEdge(x, y);
+					   (*gptr).add_edge(x, y);
 				}
 				
 		}

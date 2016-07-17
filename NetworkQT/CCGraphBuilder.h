@@ -1,5 +1,5 @@
 #pragma once
-
+#include "GraphBuilder.h"
 class CCCGraphBuilder : public GraphBuilder
 {
 public:
@@ -23,9 +23,9 @@ public:
 				int y2 = mod(j - 1, dim);
 				int x3 = i ^ int(std::pow(2, j));
 				int y3 = j;
-				(*gptr).AddEdge(x0*dim + y0, x1*dim + y1);
-				(*gptr).AddEdge(x0*dim + y0, x2*dim + y2);
-				(*gptr).AddEdge(x0*dim + y0, x3*dim + y3);
+				(*gptr).add_edge(x0*dim + y0, x1*dim + y1);
+				(*gptr).add_edge(x0*dim + y0, x2*dim + y2);
+				(*gptr).add_edge(x0*dim + y0, x3*dim + y3);
 			}
 		}
 		(*gptr).properties().type_ = "CCC";

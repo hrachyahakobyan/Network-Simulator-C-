@@ -1,5 +1,6 @@
 #pragma once
 #include "GraphBuilder.h"
+#include "RandomManager.h"
 class SmallWorldGraphBuilder : public GraphBuilder
 {
 public:
@@ -38,18 +39,18 @@ public:
 				int diff2 = abs(n - 1 - k / 2);
 				if ((diff1 % diff2) <= k / 2 && (diff1 % diff2) > 0 )
 				{
-					(*gptr).AddEdge(i, j);
+					(*gptr).add_edge(i, j);
 					notNeighbors[i].erase(std::remove(notNeighbors[i].begin(), notNeighbors[i].end(), j), notNeighbors[i].end());
 					notNeighbors[j].erase(std::remove(notNeighbors[j].begin(), notNeighbors[j].end(), i), notNeighbors[j].end());
 				}
 			}
 		}
-		std::cout << "Edges " << (*gptr).getEdgeCount();
+		std::cout << "Edges " << (*gptr).edge_count();
 		for (int i = 0; i < n; i++)
 		{
 			for (int j = i + 1; j < n; j++)
 			{
-				if ((*gptr).edgeExists(i, j))
+				if ((*gptr).edge_exists(i, j))
 				{
 					bool rewire = RandomManager::sharedManager()->event(b);
 					if (rewire)
@@ -57,8 +58,8 @@ public:
 						int notNCount = notNeighbors[i].size();
 						int randomIndex = RandomManager::sharedManager()->random(0, notNCount - 1);
 						int target = notNeighbors[i][randomIndex];
-						(*gptr).AddEdge(i, target);
-						(*gptr).RemoveEdge(i, j);
+						(*gptr).add_edge(i, target);
+						(*gptr).remove_edge(i, j);
 						notNeighbors[i].erase(std::remove(notNeighbors[i].begin(), notNeighbors[i].end(), target), notNeighbors[i].end());
 						notNeighbors[target].erase(std::remove(notNeighbors[target].begin(), notNeighbors[target].end(), i), notNeighbors[target].end());
 						notNeighbors[i].push_back(j);

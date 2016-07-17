@@ -34,12 +34,12 @@ bool Simulation::finish(int max_ticks )
 
 int Simulation::edgeCount() const
 {
-	return (*graph_p_).getEdgeCount();
+	return (*graph_p_).edge_count();
 }
 
 int Simulation::vertexCount() const
 {
-	return (*graph_p_).getVertexCount();
+	return (*graph_p_).vertex_count();
 }
 
 void Simulation::edit(const GraphEditAction& edit)
@@ -48,24 +48,24 @@ void Simulation::edit(const GraphEditAction& edit)
 	{
 	case GraphEditAction::EditType::AddEdge:
 	{
-		(*graph_p_).AddEdge(edit.src_, edit.targ_);
+		(*graph_p_).add_edge(edit.src_, edit.targ_);
 	}
 	break;
 	case GraphEditAction::EditType::AddVertex:
 	{
-		(*graph_p_).AddVertex();
+		(*graph_p_).add_vertex();
 		if (edit.state_ >= 0)
-			(*graph_p_).properties((*graph_p_).getVertexCount() - 1).state_ = edit.state_;
+			(*graph_p_).properties((*graph_p_).vertex_count() - 1).state_ = edit.state_;
 	}
 	break;
 	case GraphEditAction::EditType::DeleteEdge:
 	{
-		(*graph_p_).RemoveEdge(edit.src_, edit.targ_);
+		(*graph_p_).remove_edge(edit.src_, edit.targ_);
 	}
 	break;
 	case GraphEditAction::EditType::DeleteVertex:
 	{
-		(*graph_p_).RemoveVertex(edit.v_);
+		(*graph_p_).remove_vertex(edit.v_);
 	}
 	break;
 	case GraphEditAction::EditType::SetState:
@@ -86,7 +86,7 @@ std::map<std::string, std::pair<Color, std::vector<int>>> Simulation::data()
 void Simulation::reset()
 {
 	/*Reset vertex states*/
-	HNAGraph::Vertex_Range vp = (*graph_p_).getVertices();
+	HNAGraph::Vertex_Range vp = (*graph_p_).vertices();
 	for (; vp.first != vp.second; ++vp.first)
 	{
 		(*graph_p_).properties(*vp.first).state_ = 0;

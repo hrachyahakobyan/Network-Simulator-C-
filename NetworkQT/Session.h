@@ -2,6 +2,8 @@
 #include "Simulation.h"
 #include "CMDGraphRenderer.h"
 #include "HNAGraphWriter.h"
+#include "FileManager.h"
+#include "TimeManager.h"
 
 class Session
 {

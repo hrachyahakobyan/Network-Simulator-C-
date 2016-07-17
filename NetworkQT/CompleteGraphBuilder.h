@@ -1,5 +1,5 @@
 #pragma once
-
+#include "GraphBuilder.h"
 class CompleteGraphBuilder : public GraphBuilder
 {
 public:
@@ -17,7 +17,7 @@ public:
 			for (; vp2 != vp.second; ++vp2)
 			{
 				if (graph_indeces[*vp.first] != graph_indeces[*vp2])
-					(*gptr).AddEdge(*vp.first, *vp2);
+					(*gptr).add_edge(*vp.first, *vp2);
 			}
 		}
 		std::string type(GRAPH_COMPLETE);

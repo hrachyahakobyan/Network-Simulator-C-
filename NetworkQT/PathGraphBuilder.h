@@ -1,5 +1,5 @@
 #pragma once
-
+#include "GraphBuilder.h"
 class PathGraphBuilder : public GraphBuilder
 {
 public:
@@ -11,7 +11,7 @@ public:
 		assert(n > 0 && "ERROR: PathGraphBuilder: nonpositive vertices");
 		std::unique_ptr<HNAGraph> gptr(new HNAGraph(n));
 		for (int i = 0; i < n - 1; i++)
-			(*gptr).AddEdge(i, i + 1);
+			(*gptr).add_edge(i, i + 1);
 		return gptr;
 	}
 };

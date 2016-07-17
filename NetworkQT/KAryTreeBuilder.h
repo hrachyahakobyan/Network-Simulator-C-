@@ -1,5 +1,5 @@
 #pragma once
-
+#include "GraphBuilder.h"
 class KAryTreeBuilder : GraphBuilder
 {
 public:
@@ -23,13 +23,13 @@ private:
 		if (height == 1)
 		{
 			for (int i = 0; i < k; i++)
-				g.Attach(HNAGraph(1), 0, 0);
+				g.attach(HNAGraph(1), 0, 0);
 			return g;
 		}
 		else
 		{
 			for (int i = 0; i < k; i++)
-				g.Attach(getGraphRecursive(height - 1, k),0,0);
+				g.attach(getGraphRecursive(height - 1, k),0,0);
 			return g;
 		}
 	}
@@ -49,7 +49,7 @@ private:
 				parent = i / k - 1;
 			else
 				parent = int(floor(i / k));
-			(*gptr).AddEdge(parent, i); // connect nodes with indeces parent and i
+			(*gptr).add_edge(parent, i); // connect nodes with indeces parent and i
 		}
 		std::string type(GRAPH_KTREE);
 		type.append(", height = ");

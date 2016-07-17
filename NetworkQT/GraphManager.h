@@ -2,6 +2,7 @@
 #include "HNAGraphWriter.h"
 #include "GraphBuilder.h"
 #include "CMDGraphRenderer.h"
+#include "FileManager.h"
 
 class GraphManager
 {

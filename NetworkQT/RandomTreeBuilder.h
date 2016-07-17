@@ -1,5 +1,6 @@
 #pragma once
-
+#include "GraphBuilder.h"
+#include "RandomManager.h"
 class RandomTreeBuilder :	public GraphBuilder
 {
 public:
@@ -23,7 +24,7 @@ private:
 		for (int i = 0; i < children; i++)
 		{
 			std::unique_ptr<HNAGraph> subtree = randomTree(max_height - 1, max_children);
-			(*tree).Attach(*subtree, 0, 0);
+			(*tree).attach(*subtree, 0, 0);
 			subtree.reset();
 		}
 		(*tree).properties().type_ = "Random Tree";

@@ -28,12 +28,12 @@
 
 #include "HNAGraph.h"
 /*Singletons*/
-#include "CleanUp.h"
-#include "FileManager.h"
-#include "RandomManager.h"
-#include "TimeManager.h"
-#include "GraphManager.h"
-#include "DefaultNotificationCenter.h"
-
-/*Builders*/
-#include "GraphBuilder.h"
+//#include "CleanUp.h"
+//#include "FileManager.h"
+//#include "RandomManager.h"
+//#include "TimeManager.h"
+//#include "GraphManager.h"
+//#include "DefaultNotificationCenter.h"
+//
+///*Builders*/
+//#include "GraphBuilder.h"

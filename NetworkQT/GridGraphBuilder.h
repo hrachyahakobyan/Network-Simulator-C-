@@ -1,5 +1,5 @@
 #pragma once
-
+#include "GraphBuilder.h"
 class GridGraphBuilder : public GraphBuilder
 {
 public:
@@ -17,11 +17,11 @@ public:
 			{
 				if (j != n - 1)
 				{
-					(*gptr).AddEdge(i*n + j, i*n + j + 1);
+					(*gptr).add_edge(i*n + j, i*n + j + 1);
 				}
 				if (i != m - 1)
 				{
-					(*gptr).AddEdge(i*n + j, (i + 1)*n + j);
+					(*gptr).add_edge(i*n + j, (i + 1)*n + j);
 				}
 			}
 		}

@@ -1,4 +1,5 @@
 #pragma once
+#include "HNAGraph.h"
 
 class GraphBuilder
 {

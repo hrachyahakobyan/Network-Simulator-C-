@@ -1,4 +1,5 @@
 #pragma once
+#include "GraphBuilder.h"
 
 class BipartiteGraphBuilder : public GraphBuilder
 {
@@ -15,7 +16,7 @@ public:
 		{
 			for (int j = n; j < n + m; j++)
 			{
-				(*gptr).AddEdge(i, j);
+				(*gptr).add_edge(i, j);
 			}
 		}
 		(*gptr).properties().type_ = "Bipartite";

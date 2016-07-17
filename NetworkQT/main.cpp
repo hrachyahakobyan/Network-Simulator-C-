@@ -2,6 +2,7 @@
 #include "networkqt.h"
 #include "BroadcastSimulation.h"
 #include "BroadcastTest.h"
+#include "CleanUp.h"
 #include <QtWidgets/QApplication>
 
 #define QtAPP true

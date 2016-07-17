@@ -61,7 +61,7 @@ bool DiseaseSimulationSIS::tick(int count)
 		r_map.clear();
 		iterate();
 		/* Send messages */
-		for (vp = (*graph_p_).getVertices(); vp.first != vp.second; ++vp.first)
+		for (vp = (*graph_p_).vertices(); vp.first != vp.second; ++vp.first)
 		{
 			s_map.clear();
 			Vertex cur_v = *vp.first;
@@ -73,7 +73,7 @@ bool DiseaseSimulationSIS::tick(int count)
 			}
 		}
 		/* Receive messages */
-		for (vp = (*graph_p_).getVertices(); vp.first != vp.second; ++vp.first)
+		for (vp = (*graph_p_).vertices(); vp.first != vp.second; ++vp.first)
 		{
 			Vertex cur_v = *vp.first;
 			receive(cur_v, r_map[cur_v]);
@@ -90,7 +90,7 @@ void DiseaseSimulationSIS::iterate()
 	typedef HNAGraph::Vertex Vertex;
 	HNAGraph::Vertex_Range vp;
 	/* Iterate over infected */
-	for (vp = (*graph_p_).getVertices(); vp.first != vp.second; ++vp.first)
+	for (vp = (*graph_p_).vertices(); vp.first != vp.second; ++vp.first)
 	{
 		Vertex cur_v = *vp.first;
 		Message* prop = &((*graph_p_).properties(cur_v));
@@ -119,7 +119,7 @@ void DiseaseSimulationSIS::iterate()
 bool DiseaseSimulationSIS::finished() const
 {
 	HNAGraph::Vertex_Range vp;
-	for (vp = (*graph_p_).getVertices(); vp.first != vp.second; ++vp.first)
+	for (vp = (*graph_p_).vertices(); vp.first != vp.second; ++vp.first)
 	{
 		HNAGraph::Vertex cur_v = *vp.first;
 		if ((*graph_p_).properties(cur_v).state_ == SIS_States::Infected)
@@ -135,7 +135,7 @@ void DiseaseSimulationSIS::send(const HNAGraph::Vertex& sender, std::map<HNAGrap
 	messages.clear();
 	if ((*graph_p_).properties(sender).state_ != SIS_States::Infected)
 		return;
-	HNAGraph::Adjacency_Range adj_v = (*graph_p_).getAdjacentVertices(sender);
+	HNAGraph::Adjacency_Range adj_v = (*graph_p_).adjacent_vertices(sender);
 	for (; adj_v.first != adj_v.second; ++adj_v.first)
 	{
 		HNAGraph::Vertex cur_v = *(adj_v.first);
@@ -184,7 +184,7 @@ void DiseaseSimulationSIS::edit(const GraphEditAction& edit)
 	{
 		if (edit.state_ == SIS_States::Infected)
 		{
-			(*graph_p_).properties((*graph_p_).getVertexCount() - 1).inf_preiod_ = options_.inf_period_;
+			(*graph_p_).properties((*graph_p_).vertex_count() - 1).inf_preiod_ = options_.inf_period_;
 		}
 	}
 	else if (edit.type_ == GraphEditAction::EditType::SetState)
@@ -207,7 +207,7 @@ void DiseaseSimulationSIS::updateData()
 	int infected = 0;
 	int susceptible = 0;
 	HNAGraph::Vertex_Range vp;
-	for (vp = (*graph_p_).getVertices(); vp.first != vp.second; ++vp.first)
+	for (vp = (*graph_p_).vertices(); vp.first != vp.second; ++vp.first)
 	{
 		int state = (*graph_p_).properties(*vp.first).state_;
 		if (state == SIS_States::Infected)

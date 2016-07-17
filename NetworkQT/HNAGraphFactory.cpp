@@ -1,23 +1,6 @@
 #include "stdafx.h"
 #include "HNAGraphFactory.h"
-#include "BinomialTreeBuilder.h"
-#include "CompleteGraphBuilder.h"
-#include "KnodelBuilder.h"
-#include "KAryTreeBuilder.h"
-#include "HypercubeBuilder.h"
-#include "GridGraphBuilder.h"
-#include "TorusGraphBuilder.h"
-#include "RandomGraphBuilder.h"
-#include "CCGraphBuilder.h"
-#include "BipartiteGraphBuilder.h"
-#include "DipperGraphBuilder.h"
-#include "RandomTreeBuilder.h"
-#include "FixedRanomTreeBuilder.h"
-#include "ScaleFreeRandomGraphBuilder.h"
-#include "SmallWorldGraphBuilder.h"
-#include "ButterflyGraphBuilder.h"
-#include "ShuffleExchangeBuilder.h"
-#include "DeBruinBuilder.h"
+
 
 HNAGraphFactory *HNAGraphFactory::graphFactory = 0;
 

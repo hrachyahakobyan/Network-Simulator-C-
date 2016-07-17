@@ -15,8 +15,8 @@ public:
 		std::unique_ptr<HNAGraph> gptr(new HNAGraph(n));
 		for (int i = 0; i < dpow; i++)
 		{
-			(*gptr).AddEdge(i, (2 * i) % dpow);
-			(*gptr).AddEdge(i, (2 * i) % dpow + 1);
+			(*gptr).add_edge(i, (2 * i) % dpow);
+			(*gptr).add_edge(i, (2 * i) % dpow + 1);
 		}
 		(*gptr).properties().type_ = "DeBruin";
 		return gptr;

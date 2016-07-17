@@ -1,4 +1,5 @@
 #pragma once
+#include "GraphBuilder.h"
 
 class TorusGraphBuilder : public GraphBuilder
 {
@@ -18,19 +19,19 @@ public:
 			{
 				if (j != n - 1)
 				{
-					(*gptr).AddEdge(i*n + j, i*n + j + 1);
+					(*gptr).add_edge(i*n + j, i*n + j + 1);
 				}
 				else
 				{
-					(*gptr).AddEdge(i*n, i*n + j);
+					(*gptr).add_edge(i*n, i*n + j);
 				}
 				if (i != m - 1)
 				{
-					(*gptr).AddEdge(i*n + j, (i + 1)*n + j);
+					(*gptr).add_edge(i*n + j, (i + 1)*n + j);
 				}
 				else
 				{
-					(*gptr).AddEdge(j, i*n + j);
+					(*gptr).add_edge(j, i*n + j);
 				}
 			}
 		}

@@ -188,9 +188,6 @@
     <ClCompile Include="CompleteGraphBuilder.cpp">
       <Filter>Source Files\Core\Graph\Builders</Filter>
     </ClCompile>
-    <ClCompile Include="DefaultNotificationCenter.cpp">
-      <Filter>Source Files\Core\Auxillary</Filter>
-    </ClCompile>
     <ClCompile Include="FileManager.cpp">
       <Filter>Source Files\Core\Auxillary</Filter>
     </ClCompile>
@@ -234,9 +231,6 @@
       <Filter>Source Files\Core\Graph\Builders</Filter>
     </ClCompile>
     <ClCompile Include="TimeManager.cpp">
-      <Filter>Source Files\Core\Auxillary</Filter>
-    </ClCompile>
-    <ClCompile Include="Timer.cpp">
       <Filter>Source Files\Core\Auxillary</Filter>
     </ClCompile>
     <ClCompile Include="GraphManager.cpp">
@@ -502,9 +496,6 @@
     <ClInclude Include="Constants.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="DefaultNotificationCenter.h">
-      <Filter>Header Files\Core\Auxillary</Filter>
-    </ClInclude>
     <ClInclude Include="GraphBuilder.h">
       <Filter>Header Files\Core\Graph\Builders</Filter>
     </ClInclude>
@@ -536,9 +527,6 @@
       <Filter>Header Files\Core\Graph\Builders</Filter>
     </ClInclude>
     <ClInclude Include="TimeManager.h">
-      <Filter>Header Files\Core\Auxillary</Filter>
-    </ClInclude>
-    <ClInclude Include="Timer.h">
       <Filter>Header Files\Core\Auxillary</Filter>
     </ClInclude>
     <ClInclude Include="FileManager.h">

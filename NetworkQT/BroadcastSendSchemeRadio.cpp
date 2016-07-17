@@ -16,7 +16,7 @@ void BroadcastSendSchemeRadio::send(const HNAGraph& graph, const HNAGraph::Verte
 	messages.clear();
 	if (graph.properties(node).state_ == Two_State::uninformed)
 		return;
-	HNAGraph::Adjacency_Range adj_v = graph.getAdjacentVertices(node);
+	HNAGraph::Adjacency_Range adj_v = graph.adjacent_vertices(node);
 	for (; adj_v.first != adj_v.second; ++adj_v.first)
 	{
 		HNAGraph::Vertex cur_v = *(adj_v.first);

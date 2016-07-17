@@ -47,7 +47,7 @@ void DiseaseSimulationSIRS::edit(const GraphEditAction& edit)
 	{
 		if (edit.state_ == SIR_States::Recovered && options_.imType_ == Options::ImmunityType::Fixed)
 		{
-			(*graph_p_).properties((*graph_p_).getVertexCount() - 1).imm_period_ = options_.imm_period_;
+			(*graph_p_).properties((*graph_p_).vertex_count() - 1).imm_period_ = options_.imm_period_;
 		}
 	}
 }
@@ -76,7 +76,7 @@ bool DiseaseSimulationSIRS::tick(int count)
 
 		iterate();
 		/* Send messages */
-		for (vp = (*graph_p_).getVertices(); vp.first != vp.second; ++vp.first)
+		for (vp = (*graph_p_).vertices(); vp.first != vp.second; ++vp.first)
 		{
 			s_map.clear();
 			Vertex cur_v = *vp.first;
@@ -88,7 +88,7 @@ bool DiseaseSimulationSIRS::tick(int count)
 			}
 		}
 		/* Receive messages */
-		for (vp = (*graph_p_).getVertices(); vp.first != vp.second; ++vp.first)
+		for (vp = (*graph_p_).vertices(); vp.first != vp.second; ++vp.first)
 		{
 			Vertex cur_v = *vp.first;
 			receive(cur_v, r_map[cur_v]);
@@ -106,7 +106,7 @@ void DiseaseSimulationSIRS::iterate()
 	typedef HNAGraph::HNANodeBundle Message;
 	typedef HNAGraph::Vertex Vertex;
 	HNAGraph::Vertex_Range vp;
-	for (vp = (*graph_p_).getVertices(); vp.first != vp.second; ++vp.first)
+	for (vp = (*graph_p_).vertices(); vp.first != vp.second; ++vp.first)
 	{
 		Vertex cur_v = *vp.first;
 		Message* prop = &((*graph_p_).properties(cur_v));
@@ -163,7 +163,7 @@ void DiseaseSimulationSIRS::updateData()
 	int recovered = 0;
 	int susceptible = 0;
 	HNAGraph::Vertex_Range vp;
-	for (vp = (*graph_p_).getVertices(); vp.first != vp.second; ++vp.first)
+	for (vp = (*graph_p_).vertices(); vp.first != vp.second; ++vp.first)
 	{
 		int state = (*graph_p_).properties(*vp.first).state_;
 		if (state == SIR_States::Infected)

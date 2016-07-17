@@ -1,5 +1,6 @@
 #pragma once
-
+#include "GraphBuilder.h"
+#include "RandomManager.h"
 class FixedRanomTreeBuilder : public GraphBuilder
 {
 public:
@@ -14,7 +15,7 @@ public:
 		else if (n == 2)
 		{
 			std::unique_ptr<HNAGraph> gptr(new HNAGraph(2));
-			(*gptr).AddEdge(0, 1);
+			(*gptr).add_edge(0, 1);
 			return gptr;
 		}
 		std::vector<int> pruefer = RandomManager::sharedManager()->pruefer(n);
@@ -31,7 +32,7 @@ public:
 			{
 				if (degs[v] == 1)
 				{
-					(*gptr).AddEdge(*it - 1, v);
+					(*gptr).add_edge(*it - 1, v);
 					degs[*it - 1] = degs[*it - 1] - 1;
 					degs[v] = degs[v] - 1;
 					break;
@@ -50,7 +51,7 @@ public:
 					v = i;
 			}
 		}
-		(*gptr).AddEdge(u, v);
+		(*gptr).add_edge(u, v);
 		return gptr;
 	}
 };

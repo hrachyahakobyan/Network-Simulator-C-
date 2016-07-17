@@ -22,8 +22,8 @@ public:
 			int jpow = int(std::pow(2, j));
 			for (int i = 0; i < dpow; i++)
 			{
-				(*gptr).AddEdge(i + j * dpow, i + (((j + 1) % d)*dpow));
-				(*gptr).AddEdge(i + j * dpow, i + (((j + 1) % d) * dpow + s * jpow));
+				(*gptr).add_edge(i + j * dpow, i + (((j + 1) % d)*dpow));
+				(*gptr).add_edge(i + j * dpow, i + (((j + 1) % d) * dpow + s * jpow));
 				if (sign == jpow - 1)
 				{
 					s *= -1;

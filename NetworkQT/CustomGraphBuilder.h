@@ -1,5 +1,5 @@
 #pragma once
-
+#include "GraphBuilder.h"
 class CustomGraphBuilder : public GraphBuilder
 {
 public:

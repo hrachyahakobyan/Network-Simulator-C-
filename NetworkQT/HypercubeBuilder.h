@@ -1,5 +1,5 @@
 #pragma once
-
+#include "GraphBuilder.h"
 class HypercubeBuilder : public GraphBuilder
 {
 public:
@@ -33,7 +33,7 @@ public:
 				{
 					if (graph_indeces[*vp2.first] == *it)
 					{
-						(*gptr).AddEdge(v, *vp2.first);
+						(*gptr).add_edge(v, *vp2.first);
 						break;
 					}
 				}

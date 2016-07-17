@@ -22,7 +22,6 @@ void CleanUp::cleanUp()
 	FileManager::release();
 	TimeManager::release();
 	GraphManager::release();
-	DefaultNotificationCenter::release();
 	HNAGraphFactory::release();
 	BroadcastFinishSchemeFactory::release();
 	BroadcastReceiveSchemeFactory::release();

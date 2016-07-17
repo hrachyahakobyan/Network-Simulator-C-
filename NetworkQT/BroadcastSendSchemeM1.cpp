@@ -15,7 +15,7 @@ void BroadcastSendSchemeM1::send(const HNAGraph& graph, const HNAGraph::Vertex& 
 	messages.clear();
 	if (graph.properties(node).state_ == Two_State::uninformed)
 		return;
-	HNAGraph::Adjacency_Range adj_v = graph.getAdjacentVertices(node);
+	HNAGraph::Adjacency_Range adj_v = graph.adjacent_vertices(node);
 	std::vector<HNAGraph::Vertex> uninf_neighbors;
 	for (; adj_v.first != adj_v.second; ++adj_v.first)
 	{

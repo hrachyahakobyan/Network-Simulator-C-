@@ -1,7 +1,7 @@
 #pragma once
 
 #include "FixedRanomTreeBuilder.h"
-
+#include "RandomManager.h"
 class ScaleFreeRandomGraphBuilder : public GraphBuilder
 {
 public:
@@ -23,8 +23,8 @@ public:
 		RandomManager* rand = RandomManager::sharedManager();
 		for (HNAGraph::Vertex v = m; v < n + m; v++)
 		{
-			(*gptr).AddVertex();
-			std::set<HNAGraph::Vertex> vp = (*gptr).getVerticesSet();
+			(*gptr).add_vertex();
+			std::set<HNAGraph::Vertex> vp = (*gptr).vertices_set();
 			for (int l = 0; l < k; l++)
 			{
 				std::vector<double> probs;
@@ -34,13 +34,13 @@ public:
 				for (vpit = vp.begin(); vpit != vp.end(); ++vpit)
 				{
 					if (*vpit != v)
-						sum += (*gptr).getVertexDegree(*vpit);
+						sum += (*gptr).vertex_degree(*vpit);
 				}
 				for (vpit = vp.begin(); vpit != vp.end(); ++vpit)
 				{
 					if (v != *vpit)
 					{
-						int deg = (*gptr).getVertexDegree(*vpit);
+						int deg = (*gptr).vertex_degree(*vpit);
 						double p = sum == 0 ? 1 : double(deg) / sum;
 						probs.push_back(p);
 						vs.push_back(*vpit);
@@ -50,7 +50,7 @@ public:
 				}
 				int index = rand->random_index(probs);
 				vp.erase(vs[index]);
-				(*gptr).AddEdge(vs[index], v);
+				(*gptr).add_edge(vs[index], v);
 			}
 		}
 		std::string type("Scale Free Random Graph");
