@@ -6,144 +6,142 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1144</width>
-    <height>810</height>
+    <width>1038</width>
+    <height>808</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>GraphSelectView</string>
   </property>
-  <widget class="QComboBox" name="graphTypeBox">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>161</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="currentText">
-    <string>Graph Type</string>
-   </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <property name="text">
-     <string>Graph Type</string>
-    </property>
+    <widget class="QComboBox" name="graphTypeBox">
+     <property name="maximumSize">
+      <size>
+       <width>200</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="currentText">
+      <string>Graph Type</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Graph Type</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Complete Graph</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Hypercube</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Knodel</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Grid</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Torus</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Binomial</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>K Tree</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Random Graph</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cube connected cycle</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Bipartite</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Dipper</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Random Tree</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Fixed Random Tree</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Scale Free Random Graph</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Small World</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Butterfly</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Shuffle Exchange</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>DeBruin</string>
+      </property>
+     </item>
+    </widget>
    </item>
    <item>
-    <property name="text">
-     <string>Complete Graph</string>
-    </property>
+    <widget class="QGraphicsView" name="graphicsView"/>
    </item>
    <item>
-    <property name="text">
-     <string>Hypercube</string>
-    </property>
+    <widget class="QPushButton" name="okButton">
+     <property name="maximumSize">
+      <size>
+       <width>100</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::RightToLeft</enum>
+     </property>
+     <property name="text">
+      <string>OK</string>
+     </property>
+    </widget>
    </item>
-   <item>
-    <property name="text">
-     <string>Knodel</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Grid</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Torus</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Binomial</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>K Tree</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Random Graph</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Cube connected cycle</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Bipartite</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Dipper</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Random Tree</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Fixed Random Tree</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Scale Free Random Graph</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Small World</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Butterfly</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Shuffle Exchange</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>DeBruin</string>
-    </property>
-   </item>
-  </widget>
-  <widget class="QGraphicsView" name="graphicsView">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>40</y>
-     <width>1111</width>
-     <height>701</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="okButton">
-   <property name="geometry">
-    <rect>
-     <x>1050</x>
-     <y>760</y>
-     <width>75</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>OK</string>
-   </property>
-  </widget>
+  </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
