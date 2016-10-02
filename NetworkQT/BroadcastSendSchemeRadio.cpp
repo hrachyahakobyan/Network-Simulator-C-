@@ -29,5 +29,5 @@ void BroadcastSendSchemeRadio::send(const HNAGraph& graph, const HNAGraph::Verte
 
 std::string BroadcastSendSchemeRadio::description() const
 {
-	return "M1";
+	return "Radio";
 }

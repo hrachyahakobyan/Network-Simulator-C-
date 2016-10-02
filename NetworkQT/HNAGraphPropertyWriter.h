@@ -71,7 +71,7 @@ public:
 			title.append(std::to_string(g_prop_.broadcast_time_));
 			title.append("\n");
 		}
-		title.append("Shape: Circle = M, double circle = F");
+		//title.append("Shape: Circle = M, double circle = F");
 		title.append("\"");
 		os << title;
 
