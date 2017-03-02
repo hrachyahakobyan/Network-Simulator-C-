@@ -1,4 +1,4 @@
-# networks-aua-app
+# Network Simulator
 A network simulator in C++
 
 * Introduction
